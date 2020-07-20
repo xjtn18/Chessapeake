@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/Jacob/dev/projects/ChessLand/inc/Piece.h
+
+/Users/Jacob/dev/projects/ChessLand/inc/Pieces.h
+Piece.h
+/Users/Jacob/dev/projects/ChessLand/inc/Piece.h
+constants.h
+/Users/Jacob/dev/projects/ChessLand/inc/constants.h
+string
+-
+
+/Users/Jacob/dev/projects/ChessLand/inc/constants.h
+map
+-
+iostream
+-
+
+/Users/Jacob/dev/projects/ChessLand/src/Pawn.cpp
+../inc/Pieces.h
+/Users/Jacob/dev/projects/ChessLand/inc/Pieces.h
+../inc/constants.h
+/Users/Jacob/dev/projects/ChessLand/inc/constants.h
+string
+-
+
