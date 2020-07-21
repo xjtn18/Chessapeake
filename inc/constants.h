@@ -2,10 +2,11 @@
 #include <map>
 #include <iostream>
 #include <typeinfo>
+#include <math.h>
 
 // workflow helper functions
 
-// this template prints anything (best if singular value)
+// this template prints anything (singular value)
 template <typename T>
 void p(T x){
 	std::cout << x << std::endl;
@@ -23,7 +24,7 @@ void p(T* x, int len){
 }
 
 
-
+//chess land helper functions/ class templates
 
 // maps chess board letter notation to integers
 const std::map<char, int> coordMap =
@@ -46,40 +47,26 @@ struct Coord {
 
 
 template <class C>
-class Matrix {
+class FlatMatrix {
 public:
 	C** mat;
 	int high;
 	int wide;
-	int size;
+	int SIZE;
 
-	Matrix(int numCol, int numRow) : high(numRow), wide(numCol), mat(new C*[numCol * numRow]), size(numCol * numRow){
-		for (int x = 0; x < this->size; x++){
+	FlatMatrix(int numCol, int numRow) : high(numRow), wide(numCol), mat(new C*[numCol * numRow]), SIZE(numCol * numRow){
+		for (int x = 0; x < this->SIZE; x++){
 			mat[x] = nullptr;
 		}
 	}
 
 	C*& operator()(int col, int row){
 		return mat[col * this->high + row];
+	}
 
+	C*& operator[](int ind){
+		return mat[ind];
 	}
 };
 
-
-
-template <typename T>
-void printMatrix(int w, int h, T* matrix){
-	// Takes a width and a height
-	int x;
-	for (int y = 0; y < (w * h); y++){
-		x = y;
-		if (matrix[x] != nullptr){
-			std::cout << matrix[x]->symb << " ";
-		} else {
-			std::cout << ". ";
-		}
-		if (y % h == h-1)
-			std::cout << "\n";
-	}
-}
 

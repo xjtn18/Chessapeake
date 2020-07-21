@@ -4,7 +4,7 @@
 #include "inc/AbstractPiece.h"
 
 GameInstance::GameInstance(int numCol, int numRow)
- 	: boardWidth(numCol), boardHeight(numRow), mainboard(Matrix<AbstractPiece>(numCol, numRow))
+ 	: boardWidth(numCol), boardHeight(numRow), mainboard(FlatMatrix<AbstractPiece>(numCol, numRow))
 {
 	setupBoard();
 }
@@ -48,8 +48,21 @@ void GameInstance::setupBoard(){
 	mainboard(6,7) = new Knight(kingTop);
 }
 
-void GameInstance::displayBoard(){
-	printMatrix(boardWidth, boardHeight, mainboard.mat);
+
+
+void GameInstance::printBoard(){
+	// Takes a width and a height
+	int rotatedIndex;
+	for (int x = 0; x < (mainboard.SIZE); x++){
+		// rotate the 1D matrix 90 degrees cc
+		rotatedIndex = mainboard.SIZE - ((x % mainboard.high + 1) * mainboard.high) + floor(x / mainboard.high);
+
+		if (mainboard[rotatedIndex] != nullptr){
+			std::cout << mainboard[rotatedIndex]->symb << " ";
+		} else {
+			std::cout << ". ";
+		}
+		if (x % mainboard.high == mainboard.high-1)
+			std::cout << "\n";
+	}
 }
-
-

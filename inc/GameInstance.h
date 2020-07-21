@@ -4,7 +4,7 @@
 
 class GameInstance {
 
-	Matrix<AbstractPiece> mainboard;
+	FlatMatrix<AbstractPiece> mainboard;
 
 public:
 	int boardWidth = 8;
@@ -13,5 +13,6 @@ public:
 	GameInstance(int numCol, int numRow);
 	void setupBoard();
 	void displayBoard();
+	void printBoard();
 
 };

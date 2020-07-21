@@ -15,7 +15,7 @@ Coord chessNotationToCoord(std::string notate){
 
 int main(){
 	GameInstance game = GameInstance(8,8);
-	game.displayBoard();
+	game.printBoard();
 	
 	return 0;
 }
