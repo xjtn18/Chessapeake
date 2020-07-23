@@ -77,9 +77,22 @@ include CMakeFiles/out.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/out.dir/flags.make
 
+CMakeFiles/out.dir/src/Coord.cpp.o: CMakeFiles/out.dir/flags.make
+CMakeFiles/out.dir/src/Coord.cpp.o: ../src/Coord.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/out.dir/src/Coord.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out.dir/src/Coord.cpp.o -c /Users/Jacob/dev/projects/ChessLand/src/Coord.cpp
+
+CMakeFiles/out.dir/src/Coord.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/out.dir/src/Coord.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Jacob/dev/projects/ChessLand/src/Coord.cpp > CMakeFiles/out.dir/src/Coord.cpp.i
+
+CMakeFiles/out.dir/src/Coord.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/out.dir/src/Coord.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Jacob/dev/projects/ChessLand/src/Coord.cpp -o CMakeFiles/out.dir/src/Coord.cpp.s
+
 CMakeFiles/out.dir/src/main.cpp.o: CMakeFiles/out.dir/flags.make
 CMakeFiles/out.dir/src/main.cpp.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/out.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/out.dir/src/main.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out.dir/src/main.cpp.o -c /Users/Jacob/dev/projects/ChessLand/src/main.cpp
 
 CMakeFiles/out.dir/src/main.cpp.i: cmake_force
@@ -92,7 +105,7 @@ CMakeFiles/out.dir/src/main.cpp.s: cmake_force
 
 CMakeFiles/out.dir/src/Pawn.cpp.o: CMakeFiles/out.dir/flags.make
 CMakeFiles/out.dir/src/Pawn.cpp.o: ../src/Pawn.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/out.dir/src/Pawn.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/out.dir/src/Pawn.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out.dir/src/Pawn.cpp.o -c /Users/Jacob/dev/projects/ChessLand/src/Pawn.cpp
 
 CMakeFiles/out.dir/src/Pawn.cpp.i: cmake_force
@@ -105,7 +118,7 @@ CMakeFiles/out.dir/src/Pawn.cpp.s: cmake_force
 
 CMakeFiles/out.dir/src/King.cpp.o: CMakeFiles/out.dir/flags.make
 CMakeFiles/out.dir/src/King.cpp.o: ../src/King.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/out.dir/src/King.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/out.dir/src/King.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out.dir/src/King.cpp.o -c /Users/Jacob/dev/projects/ChessLand/src/King.cpp
 
 CMakeFiles/out.dir/src/King.cpp.i: cmake_force
@@ -118,7 +131,7 @@ CMakeFiles/out.dir/src/King.cpp.s: cmake_force
 
 CMakeFiles/out.dir/src/Queen.cpp.o: CMakeFiles/out.dir/flags.make
 CMakeFiles/out.dir/src/Queen.cpp.o: ../src/Queen.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/out.dir/src/Queen.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/out.dir/src/Queen.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out.dir/src/Queen.cpp.o -c /Users/Jacob/dev/projects/ChessLand/src/Queen.cpp
 
 CMakeFiles/out.dir/src/Queen.cpp.i: cmake_force
@@ -131,7 +144,7 @@ CMakeFiles/out.dir/src/Queen.cpp.s: cmake_force
 
 CMakeFiles/out.dir/src/Rook.cpp.o: CMakeFiles/out.dir/flags.make
 CMakeFiles/out.dir/src/Rook.cpp.o: ../src/Rook.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/out.dir/src/Rook.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/out.dir/src/Rook.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out.dir/src/Rook.cpp.o -c /Users/Jacob/dev/projects/ChessLand/src/Rook.cpp
 
 CMakeFiles/out.dir/src/Rook.cpp.i: cmake_force
@@ -144,7 +157,7 @@ CMakeFiles/out.dir/src/Rook.cpp.s: cmake_force
 
 CMakeFiles/out.dir/src/Knight.cpp.o: CMakeFiles/out.dir/flags.make
 CMakeFiles/out.dir/src/Knight.cpp.o: ../src/Knight.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/out.dir/src/Knight.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/out.dir/src/Knight.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out.dir/src/Knight.cpp.o -c /Users/Jacob/dev/projects/ChessLand/src/Knight.cpp
 
 CMakeFiles/out.dir/src/Knight.cpp.i: cmake_force
@@ -157,7 +170,7 @@ CMakeFiles/out.dir/src/Knight.cpp.s: cmake_force
 
 CMakeFiles/out.dir/src/Bishop.cpp.o: CMakeFiles/out.dir/flags.make
 CMakeFiles/out.dir/src/Bishop.cpp.o: ../src/Bishop.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/out.dir/src/Bishop.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/out.dir/src/Bishop.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out.dir/src/Bishop.cpp.o -c /Users/Jacob/dev/projects/ChessLand/src/Bishop.cpp
 
 CMakeFiles/out.dir/src/Bishop.cpp.i: cmake_force
@@ -170,7 +183,7 @@ CMakeFiles/out.dir/src/Bishop.cpp.s: cmake_force
 
 CMakeFiles/out.dir/src/GameInstance.cpp.o: CMakeFiles/out.dir/flags.make
 CMakeFiles/out.dir/src/GameInstance.cpp.o: ../src/GameInstance.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/out.dir/src/GameInstance.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/out.dir/src/GameInstance.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out.dir/src/GameInstance.cpp.o -c /Users/Jacob/dev/projects/ChessLand/src/GameInstance.cpp
 
 CMakeFiles/out.dir/src/GameInstance.cpp.i: cmake_force
@@ -181,8 +194,22 @@ CMakeFiles/out.dir/src/GameInstance.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/out.dir/src/GameInstance.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Jacob/dev/projects/ChessLand/src/GameInstance.cpp -o CMakeFiles/out.dir/src/GameInstance.cpp.s
 
+CMakeFiles/out.dir/src/helper.cpp.o: CMakeFiles/out.dir/flags.make
+CMakeFiles/out.dir/src/helper.cpp.o: ../src/helper.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/out.dir/src/helper.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out.dir/src/helper.cpp.o -c /Users/Jacob/dev/projects/ChessLand/src/helper.cpp
+
+CMakeFiles/out.dir/src/helper.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/out.dir/src/helper.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Jacob/dev/projects/ChessLand/src/helper.cpp > CMakeFiles/out.dir/src/helper.cpp.i
+
+CMakeFiles/out.dir/src/helper.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/out.dir/src/helper.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Jacob/dev/projects/ChessLand/src/helper.cpp -o CMakeFiles/out.dir/src/helper.cpp.s
+
 # Object files for target out
 out_OBJECTS = \
+"CMakeFiles/out.dir/src/Coord.cpp.o" \
 "CMakeFiles/out.dir/src/main.cpp.o" \
 "CMakeFiles/out.dir/src/Pawn.cpp.o" \
 "CMakeFiles/out.dir/src/King.cpp.o" \
@@ -190,11 +217,13 @@ out_OBJECTS = \
 "CMakeFiles/out.dir/src/Rook.cpp.o" \
 "CMakeFiles/out.dir/src/Knight.cpp.o" \
 "CMakeFiles/out.dir/src/Bishop.cpp.o" \
-"CMakeFiles/out.dir/src/GameInstance.cpp.o"
+"CMakeFiles/out.dir/src/GameInstance.cpp.o" \
+"CMakeFiles/out.dir/src/helper.cpp.o"
 
 # External object files for target out
 out_EXTERNAL_OBJECTS =
 
+out: CMakeFiles/out.dir/src/Coord.cpp.o
 out: CMakeFiles/out.dir/src/main.cpp.o
 out: CMakeFiles/out.dir/src/Pawn.cpp.o
 out: CMakeFiles/out.dir/src/King.cpp.o
@@ -203,9 +232,10 @@ out: CMakeFiles/out.dir/src/Rook.cpp.o
 out: CMakeFiles/out.dir/src/Knight.cpp.o
 out: CMakeFiles/out.dir/src/Bishop.cpp.o
 out: CMakeFiles/out.dir/src/GameInstance.cpp.o
+out: CMakeFiles/out.dir/src/helper.cpp.o
 out: CMakeFiles/out.dir/build.make
 out: CMakeFiles/out.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable out"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable out"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/out.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

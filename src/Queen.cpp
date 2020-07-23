@@ -1,22 +1,11 @@
 #include "inc/Pieces.h"
-#include <string>
-#include <iterator>
-
-Queen::Queen(int loc[2]){
-	currentLocation[0] = loc[0];
-	currentLocation[1] = loc[2];
-	symb='Q';
-}
 
 
-void Queen::move(){
-	p("hello");
-}
+Queen::Queen(std::string init_color) : AbstractPiece(init_color, 'Q')  { }
 
-
-void Queen::setLocation(int col, int row){
-	currentLocation[0] = col;
-	currentLocation[1] = row;
+std::vector<Coord> Queen::getPlacements(FlatMatrix<AbstractPiece> board, int col, int row){
+	std::vector<Coord> placements;
+	return placements;
 }
 
 

@@ -7,6 +7,7 @@ project(ChessLand)
 set(incName inc)
 
 add_executable(out
+	src/Coord.cpp
 	src/main.cpp
 	src/Pawn.cpp
 	src/King.cpp
@@ -15,6 +16,7 @@ add_executable(out
 	src/Knight.cpp
 	src/Bishop.cpp
 	src/GameInstance.cpp
+	src/helper.cpp
 )
 
 target_include_directories(out PRIVATE $(incName))

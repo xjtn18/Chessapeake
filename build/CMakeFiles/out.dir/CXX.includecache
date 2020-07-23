@@ -7,12 +7,28 @@
 #IncludeRegexTransform: 
 
 /Users/Jacob/dev/projects/ChessLand/src/GameInstance.cpp
-inc/constants.h
-/Users/Jacob/dev/projects/ChessLand/src/inc/constants.h
 inc/GameInstance.h
 /Users/Jacob/dev/projects/ChessLand/src/inc/GameInstance.h
 inc/Pieces.h
 /Users/Jacob/dev/projects/ChessLand/src/inc/Pieces.h
-inc/AbstractPiece.h
-/Users/Jacob/dev/projects/ChessLand/src/inc/AbstractPiece.h
+
+/Users/Jacob/dev/projects/ChessLand/src/main.cpp
+inc/Pieces.h
+/Users/Jacob/dev/projects/ChessLand/src/inc/Pieces.h
+inc/constants.h
+/Users/Jacob/dev/projects/ChessLand/src/inc/constants.h
+inc/GameInstance.h
+/Users/Jacob/dev/projects/ChessLand/src/inc/GameInstance.h
+inc/Coord.h
+/Users/Jacob/dev/projects/ChessLand/src/inc/Coord.h
+iostream
+-
+string
+-
+regex
+-
+stdlib.h
+-
+process.h
+-
 

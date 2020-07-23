@@ -3,6 +3,8 @@
 
 CMakeFiles/out.dir/src/Bishop.cpp.o
  /Users/Jacob/dev/projects/ChessLand/src/Bishop.cpp
+CMakeFiles/out.dir/src/Coord.cpp.o
+ /Users/Jacob/dev/projects/ChessLand/src/Coord.cpp
 CMakeFiles/out.dir/src/GameInstance.cpp.o
  /Users/Jacob/dev/projects/ChessLand/src/GameInstance.cpp
 CMakeFiles/out.dir/src/King.cpp.o
@@ -15,5 +17,7 @@ CMakeFiles/out.dir/src/Queen.cpp.o
  /Users/Jacob/dev/projects/ChessLand/src/Queen.cpp
 CMakeFiles/out.dir/src/Rook.cpp.o
  /Users/Jacob/dev/projects/ChessLand/src/Rook.cpp
+CMakeFiles/out.dir/src/helper.cpp.o
+ /Users/Jacob/dev/projects/ChessLand/src/helper.cpp
 CMakeFiles/out.dir/src/main.cpp.o
  /Users/Jacob/dev/projects/ChessLand/src/main.cpp

@@ -1,23 +1,38 @@
 #include "inc/Pieces.h"
-#include <string>
-#include <iterator>
 
-Pawn::Pawn(int loc[2]){
-	currentLocation[0] = loc[0];
-	currentLocation[1] = loc[2];
-	symb='P';
+
+Pawn::Pawn(std::string init_color) : AbstractPiece(init_color, 'P'){ }
+
+
+std::vector<Coord> Pawn::getPlacements(FlatMatrix<AbstractPiece> board, int col, int row){
+	std::vector<Coord> placements;
+	Coord c;
+
+	int prow = row + this->dir;
+	int range = row + ((1 + !(int)this->moved) * this->dir); //equates to 2 if the pawn has not been moved
+	while (prow < board.high && prow >= 0 && board(col, prow) == nullptr && prow != range + this->dir){
+		if (board(col, prow) == nullptr){
+			c = {col, prow};
+			placements.push_back(c);
+		}
+		prow = prow + this->dir;
+	}
+	
+	//attack placements
+	AbstractPiece* attackSquareLeft = board(col+1,row + this->dir);
+	if (attackSquareLeft != nullptr && attackSquareLeft->color != this->color){
+		c = {col + 1, row + this->dir};
+		placements.push_back(c);
+	}
+
+	AbstractPiece* attackSquareRight = board(col-1,row + this->dir);
+	if (attackSquareRight != nullptr && attackSquareRight->color != this->color){
+		c = {col - 1, row + this->dir};
+		placements.push_back(c);
+	}
+	
+	return placements;
 }
-
-
-void Pawn::move(){
-	p("hello");
-}
-
-
-void Pawn::setLocation(int col, int row){
-	currentLocation[0] = col;
-	currentLocation[1] = row;
-}
-
-
+	
+	
 

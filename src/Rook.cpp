@@ -1,23 +1,14 @@
 #include "inc/Pieces.h"
-#include <string>
-#include <iterator>
 
-Rook::Rook(int loc[2]){
-	currentLocation[0] = loc[0];
-	currentLocation[1] = loc[2];
-	symb='R';
+
+Rook::Rook(std::string init_color) : AbstractPiece(init_color, 'R') { }
+
+
+std::vector<Coord> Rook::getPlacements(FlatMatrix<AbstractPiece> board, int col, int row){
+	std::vector<Coord> placements;
+	return placements;
 }
 
-
-void Rook::move(){
-	p("hello");
-}
-
-
-void Rook::setLocation(int col, int row){
-	currentLocation[0] = col;
-	currentLocation[1] = row;
-}
 
 
 

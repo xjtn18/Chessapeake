@@ -1,53 +1,74 @@
 #pragma once
-#include "AbstractPiece.h"
+#include <iterator>
+#include <vector>
 #include "constants.h"
-#include <string>
+#include "Coord.h"
 
-class Pawn : public AbstractPiece {
-public:
-	Pawn(int loc[2]);
-	void move();
-	void setLocation(int col, int row);
+
+class AbstractPiece {
+	public:
+		bool moved = false;
+		char symb;
+		std::string color;
+		int dir;
+
+		virtual std::vector<Coord> getPlacements(FlatMatrix<AbstractPiece> board, int col, int row) = 0;
+		virtual ~AbstractPiece(){};
+
+	protected:
+		AbstractPiece(std::string init_color, char symbol = '?') : color(init_color), dir(whiteBottom.at(init_color)), symb(symbol) { }
 
 };
 
+
+class Pawn : public AbstractPiece {
+public:
+	using AbstractPiece::AbstractPiece;
+	Pawn(std::string init_color);
+	std::vector<Coord> getPlacements(FlatMatrix<AbstractPiece> board, int col, int row);
+
+};
+
+
 class King : public AbstractPiece {
 public:
-	King(int loc[2]);
-	void move();
-	void setLocation(int col, int row);
+	using AbstractPiece::AbstractPiece;
+	King(std::string init_color);
+	std::vector<Coord> getPlacements(FlatMatrix<AbstractPiece> board, int col, int row);
 
 };
 
 class Bishop : public AbstractPiece {
 public:
-	Bishop(int loc[2]);
-	void move();
-	void setLocation(int col, int row);
+	Bishop(std::string init_color);
+	std::vector<Coord> getPlacements(FlatMatrix<AbstractPiece> board, int col, int row);
 
 };
+
 
 class Queen : public AbstractPiece {
 public:
-	Queen(int loc[2]);
-	void move();
-	void setLocation(int col, int row);
+	using AbstractPiece::AbstractPiece;
+	Queen(std::string init_color);
+	std::vector<Coord> getPlacements(FlatMatrix<AbstractPiece> board, int col, int row);
 
 };
+
 
 class Rook : public AbstractPiece {
 public:
-	Rook(int loc[2]);
-	void move();
-	void setLocation(int col, int row);
+	using AbstractPiece::AbstractPiece;
+	Rook(std::string init_color);
+	std::vector<Coord> getPlacements(FlatMatrix<AbstractPiece> board, int col, int row);
 
 };
 
+
 class Knight : public AbstractPiece {
 public:
-	Knight(int loc[2]);
-	void move();
-	void setLocation(int col, int row);
+	using AbstractPiece::AbstractPiece;
+	Knight(std::string init_color);
+	std::vector<Coord> getPlacements(FlatMatrix<AbstractPiece> board, int col, int row);
 
 };
 

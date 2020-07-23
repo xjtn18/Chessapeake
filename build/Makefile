@@ -170,6 +170,33 @@ src/Bishop.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/Bishop.cpp.s
 .PHONY : src/Bishop.cpp.s
 
+src/Coord.o: src/Coord.cpp.o
+
+.PHONY : src/Coord.o
+
+# target to build an object file
+src/Coord.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/Coord.cpp.o
+.PHONY : src/Coord.cpp.o
+
+src/Coord.i: src/Coord.cpp.i
+
+.PHONY : src/Coord.i
+
+# target to preprocess a source file
+src/Coord.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/Coord.cpp.i
+.PHONY : src/Coord.cpp.i
+
+src/Coord.s: src/Coord.cpp.s
+
+.PHONY : src/Coord.s
+
+# target to generate assembly for a file
+src/Coord.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/Coord.cpp.s
+.PHONY : src/Coord.cpp.s
+
 src/GameInstance.o: src/GameInstance.cpp.o
 
 .PHONY : src/GameInstance.o
@@ -332,6 +359,33 @@ src/Rook.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/Rook.cpp.s
 .PHONY : src/Rook.cpp.s
 
+src/helper.o: src/helper.cpp.o
+
+.PHONY : src/helper.o
+
+# target to build an object file
+src/helper.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/helper.cpp.o
+.PHONY : src/helper.cpp.o
+
+src/helper.i: src/helper.cpp.i
+
+.PHONY : src/helper.i
+
+# target to preprocess a source file
+src/helper.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/helper.cpp.i
+.PHONY : src/helper.cpp.i
+
+src/helper.s: src/helper.cpp.s
+
+.PHONY : src/helper.s
+
+# target to generate assembly for a file
+src/helper.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/helper.cpp.s
+.PHONY : src/helper.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -371,6 +425,9 @@ help:
 	@echo "... src/Bishop.o"
 	@echo "... src/Bishop.i"
 	@echo "... src/Bishop.s"
+	@echo "... src/Coord.o"
+	@echo "... src/Coord.i"
+	@echo "... src/Coord.s"
 	@echo "... src/GameInstance.o"
 	@echo "... src/GameInstance.i"
 	@echo "... src/GameInstance.s"
@@ -389,6 +446,9 @@ help:
 	@echo "... src/Rook.o"
 	@echo "... src/Rook.i"
 	@echo "... src/Rook.s"
+	@echo "... src/helper.o"
+	@echo "... src/helper.i"
+	@echo "... src/helper.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

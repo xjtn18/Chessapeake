@@ -3,6 +3,8 @@
 
 CMakeFiles/out.dir/src/Bishop.cpp.o: ../src/Bishop.cpp
 
+CMakeFiles/out.dir/src/Coord.cpp.o: ../src/Coord.cpp
+
 CMakeFiles/out.dir/src/GameInstance.cpp.o: ../src/GameInstance.cpp
 
 CMakeFiles/out.dir/src/King.cpp.o: ../src/King.cpp
@@ -14,6 +16,8 @@ CMakeFiles/out.dir/src/Pawn.cpp.o: ../src/Pawn.cpp
 CMakeFiles/out.dir/src/Queen.cpp.o: ../src/Queen.cpp
 
 CMakeFiles/out.dir/src/Rook.cpp.o: ../src/Rook.cpp
+
+CMakeFiles/out.dir/src/helper.cpp.o: ../src/helper.cpp
 
 CMakeFiles/out.dir/src/main.cpp.o: ../src/main.cpp
 

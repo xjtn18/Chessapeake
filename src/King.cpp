@@ -1,23 +1,14 @@
 #include "inc/Pieces.h"
-#include <string>
-#include <iterator>
 
-King::King(int loc[2]){
-	currentLocation[0] = loc[0];
-	currentLocation[1] = loc[2];
-	symb='K';
+
+King::King(std::string init_color) : AbstractPiece(init_color, 'K') { }
+
+
+std::vector<Coord> King::getPlacements(FlatMatrix<AbstractPiece> board, int col, int row){
+	std::vector<Coord> placements;
+	return placements;
 }
 
-
-void King::move(){
-	p("hello");
-}
-
-
-void King::setLocation(int col, int row){
-	currentLocation[0] = col;
-	currentLocation[1] = row;
-}
 
 
 
