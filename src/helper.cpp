@@ -1,10 +1,6 @@
 #include "inc/helper.h"
+#include "inc/constants.h"
 
-void p(std::vector<Coord> v){
-	for (auto e : v)
-		std::cout << e << " - ";
-	std::cout << "\n";
-}
 
 
 void sleep(int sleeptime){

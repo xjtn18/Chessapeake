@@ -17,12 +17,14 @@ public:
 
 	GameInstance(int numCol, int numRow);
 	void setupBoard();
-	void displayBoard();
 	void printBoard();
 	void requestMove(Coord c, Coord d);
 	void tick();
 	void swapToMove();
+	bool outBounds(int col, int row);
 	Coord findPawnInColumn(int col, int row);
+	Coord findKing();
+	Coord findBishop(int col, int row);
 
 };
 

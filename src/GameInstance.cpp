@@ -58,9 +58,10 @@ void GameInstance::requestMove(Coord c, Coord d){
 	if (std::find(v.begin(), v.end(), d) != v.end()){
 		mainboard(d.x, d.y) = movedPiece;
 		mainboard(c.x, c.y) = nullptr; // empty previous residing square
+		p("moving");
 		this->tick();
 	} else {
-		p("Invalid move");
+		std::cout << "Invalid move" << std::endl;
 	}
 }
 
@@ -93,9 +94,17 @@ void GameInstance::printBoard(){
 }
 
 
+bool GameInstance::outBounds(int col, int row){
+	return col >= mainboard.wide ||
+		col < 0 ||
+		row >= mainboard.high ||
+		row < 0;
+}
+
+
 
 Coord GameInstance::findPawnInColumn(int col, int drow){
-	Coord c;
+	Coord c = {-1,-1};
 	Coord d = {col, drow};
 	AbstractPiece* piece;
 	for (int y = 0; y < mainboard.high; y++){
@@ -104,18 +113,53 @@ Coord GameInstance::findPawnInColumn(int col, int drow){
 			std::vector<Coord> v = piece->getPlacements(mainboard, col, y);
 			if (std::find(v.begin(), v.end(), d) != v.end()){
 				c = {col, y};
-				return c;
+				break;
 			}
 		}
 	}
 	// didnt find pawn that could make this move; invalid
-	//BAD_MOVE_FLAG = true;
-	p("Invalid move");
-	//this->gameOver = true;
-	c = {-1,-1}; // dummy bad value
+	if (!c)
+		std::cout << "Invalid Move" << std::endl;
 	return c;
 }
 
+
+Coord GameInstance::findKing(){
+	Coord c = {-1,-1};
+	AbstractPiece* piece;
+	for (int x = 0; x < mainboard.SIZE; x++){
+		piece = mainboard[x];
+		if (dynamic_cast<King*>(piece) != nullptr && piece->color == this->toMove){ // if its a Pawn
+			c = mainboard.rawIndexTo2D(x);
+			break;
+		}
+	}
+	return c;
+}
+
+
+
+
+Coord GameInstance::findBishop(int col, int row){
+	Coord c = {-1,-1};
+	Coord d = {col, row};
+	AbstractPiece* piece;
+	for (int x = 0; x < mainboard.wide; x++){
+		for (int y = 0; y < mainboard.high; y++){
+			piece = mainboard(x, y);
+			if (dynamic_cast<Bishop*>(piece) != nullptr && piece->color == this->toMove){ // if its a Pawn
+				std::vector<Coord> v = piece->getPlacements(mainboard, x, y);
+				if (std::find(v.begin(), v.end(), d) != v.end()){
+					c = {x, y};
+					break;
+				}
+			}
+		}
+	}
+	if (!c)
+		std::cout << "Invalid Move" << std::endl;
+	return c;
+}
 
 
 

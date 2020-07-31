@@ -9,6 +9,7 @@
 
 #define CLEAROUT system("clear")
 
+
 // Uncomment this if you are running on windows
 // #define CLEAROUT system("CLS")
 
@@ -25,13 +26,18 @@
 #endif
 */
 
+const std::map<std::string, std::string> piecePatterns{
+	{"pawn", "[a-h][1-8]"},
+	{"king", "K[a-h][1-8]"},
+	{"bishop", "B[a-h][1-8]"}, 
+	{"queen", "Q[a-h][1-8]"},
+	{"rook", "R[a-h][1-8]"},
+	{"knight", "N[a-h][1-8]"}
+};
 
 
-Coord chessNotationToCoord(std::string notation){
-	Coord c;
-	c.x = coordMap.at(notation[0]) - 1;
-	c.y = std::atoi(&notation[1]) - 1;
-	return c;
+bool patternMatch(std::string input, std::string piece_str){
+	return std::regex_match(input, std::regex(piecePatterns.at(piece_str)));
 }
 
 
@@ -39,7 +45,7 @@ void parseMoveRequestInput(std::string input, GameInstance& game){
 	Coord c, d;
 
 	// pawn move
-	if (std::regex_match(input, std::regex("[a-h][1-8]"))){
+	if (patternMatch(input, "pawn")){
 		int col = coordMap.at(input[0]) - 1;
 		int drow = std::atoi(&input[1]) - 1;
 		c = game.findPawnInColumn(col, drow);
@@ -49,13 +55,30 @@ void parseMoveRequestInput(std::string input, GameInstance& game){
 	
 	
 	// pawn capture
+	
+
+	// king move
+	} else if (patternMatch(input, "king")){
+		int dcol = coordMap.at(input[1]) - 1;
+		int drow = std::atoi(&input[2]) - 1;
+		c = game.findKing();
+		d = {dcol, drow};
+		game.requestMove(c,d);
+		
+	// bishop move
+	} else if (patternMatch(input, "bishop")){
+		int dcol = coordMap.at(input[1]) - 1;
+		int drow = std::atoi(&input[2]) - 1;
+		c = game.findBishop(dcol, drow);
+		d = {dcol, drow};
+		game.requestMove(c,d);
 
 	
 	} else if (input == "exit"){
 		return;
 
 	} else {
-		p("Invalid move");
+		p("Invalid notation");
 	}
 
 

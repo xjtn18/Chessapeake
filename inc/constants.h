@@ -11,10 +11,13 @@
 // ##################
 
 
+#define PRINT_DEBUG 0 // set this to 0 if you dont want to see any of your debug prints
 
 // this template prints anything (singular value)
 template <typename T>
-void p(T x, bool nl = true, int sleeptime = 1){
+void p(T x, bool nl = true, int sleeptime = 0){
+	if (!PRINT_DEBUG)
+		return;
 	std::cout << x;
 	if (nl)
 		std::cout << "\n";
@@ -26,14 +29,26 @@ void p(T x, bool nl = true, int sleeptime = 1){
 template <typename T>
 void p(T* x, int len){
 	for (int y = 0; y < len; y++){
-		std::cout << x[y];
-		if (y != len-1){ std::cout << ", ";}
+		p(x[y], false);
+		if (y != len-1){
+			p(", ", false);
+		}
 	}
-	std::cout << "\n";
+	p("");
 
 }
 
-
+// this template prints vectors
+template <typename T>
+void p(std::vector<T> v){
+	if (v.empty())
+		p("VECTOR EMPTY");
+		return;
+	for (auto e : v)
+		p(e, false);
+		p(" - ", false);
+	p("");
+}
 
 // ##################
 //chess land helper functions/ class templates
@@ -102,6 +117,10 @@ public:
 			col < 0 ||
 			row >= this->high ||
 			row < 0;
+	}
+
+	Coord rawIndexTo2D(int idx){
+		return {int(floor(idx / this->high)), idx % this->high};
 	}
 };
 
