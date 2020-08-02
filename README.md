@@ -1,15 +1,17 @@
 # ChessLand
 
 
-Issues:  
-	- switch to unique_ptr's for safer memory cleanup  
 
-### How to run
+### How to build and run
 
 	- cd build/  
 	- cmake ..  
 	- make  
-	- ./out  
+	- ./out (or out.exe if on Windows)
 
 ### Notes
-	- For screen clearing to work on Windows, uncomment the "#define CLEAROUT system('CLS')" in src/main.cpp and comment out the unix defintion (temporary workaround)  
+
+
+Issues:  
+	- switch to unique_ptr's for safer memory cleanup  
+	- make an undo stack to hold all move history to undo more than 1 move back

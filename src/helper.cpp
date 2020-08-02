@@ -1,6 +1,5 @@
-#include "inc/helper.h"
-#include "inc/constants.h"
-
+#include "../inc/helper.h"
+#include "../inc/constants.h"
 
 
 void sleep(int sleeptime){

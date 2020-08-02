@@ -59,38 +59,27 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/Cellar/cmake/3.17.3/bin/cmake
+CMAKE_COMMAND = "C:/Program Files/CMake/bin/cmake.exe"
 
 # The command to remove a file.
-RM = /usr/local/Cellar/cmake/3.17.3/bin/cmake -E rm -f
+RM = "C:/Program Files/CMake/bin/cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/Jacob/dev/projects/ChessLand
+CMAKE_SOURCE_DIR = C:/dev/projects/ChessLand
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/Jacob/dev/projects/ChessLand/build
+CMAKE_BINARY_DIR = C:/dev/projects/ChessLand/build
 
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/local/Cellar/cmake/3.17.3/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/local/Cellar/cmake/3.17.3/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:/Program Files/CMake/bin/cmake-gui.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -98,11 +87,22 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	"C:/Program Files/CMake/bin/cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Jacob/dev/projects/ChessLand/build/CMakeFiles /Users/Jacob/dev/projects/ChessLand/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:/dev/projects/ChessLand/build/CMakeFiles C:/dev/projects/ChessLand/build/CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Jacob/dev/projects/ChessLand/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:/dev/projects/ChessLand/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <math.h>
 #include <vector>
+#include <stdexcept>
 #include "Coord.h"
 #include "helper.h"
 
@@ -11,7 +12,8 @@
 // ##################
 
 
-#define PRINT_DEBUG 0 // set this to 0 if you dont want to see any of your debug prints
+#define PRINT_DEBUG 1 // set this to 0 if you dont want to see any of your debug prints
+
 
 // this template prints anything (singular value)
 template <typename T>
@@ -100,16 +102,14 @@ public:
 		// Same idea applies, first index is the x axis (column) and second index is the y axis (row)
 		if (!this->outBounds(col, row))
 			return mat[col * this->high + row];
-		C* nul = nullptr; // dummy bad value
-		return nul;
+		throw std::out_of_range("Bad board index");
 	}
 
 	C*& operator[](int ind){
 		// Use this if you have a raw index into the 1D array; will probably rarely be used if ever.
 		if (ind >= 0 && ind < this->SIZE)
 			return mat[ind];
-		C* nul = nullptr; // dummy bad value
-		return nul;
+		throw std::out_of_range("Bad board index");
 	}
 
 	bool outBounds(int col, int row){
@@ -122,6 +122,13 @@ public:
 	Coord rawIndexTo2D(int idx){
 		return {int(floor(idx / this->high)), idx % this->high};
 	}
+
+	~FlatMatrix(){
+		//delete[] mat;
+		// ^^^ program doesnt like this for some reason
+	}
+
+
 };
 
 

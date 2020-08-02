@@ -1,4 +1,4 @@
-#include "inc/Pieces.h"
+#include "../inc/Pieces.h"
 
 
 Rook::Rook(std::string init_color) : AbstractPiece(init_color, 'R') { }

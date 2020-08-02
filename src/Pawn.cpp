@@ -1,4 +1,4 @@
-#include "inc/Pieces.h"
+#include "../inc/Pieces.h"
 
 
 Pawn::Pawn(std::string init_color) : AbstractPiece(init_color, 'P'){ }
@@ -9,7 +9,7 @@ std::vector<Coord> Pawn::getPlacements(FlatMatrix<AbstractPiece> board, int col,
 	Coord c;
 
 	int prow = row + this->dir;
-	int range = row + ((1 + !(int)this->moved) * this->dir); //equates to 2 if the pawn has not been moved
+	int range = row + ((1 + (int)(!this->moved)) * this->dir); //equates to 2 if the pawn has not been moved
 	while (prow < board.high && prow >= 0 && board(col, prow) == nullptr && prow != range + this->dir){
 		if (board(col, prow) == nullptr){
 			c = {col, prow};
@@ -19,17 +19,21 @@ std::vector<Coord> Pawn::getPlacements(FlatMatrix<AbstractPiece> board, int col,
 	}
 	
 	//attack placements
-	AbstractPiece* attackSquareLeft = board(col+1,row + this->dir);
-	if (attackSquareLeft != nullptr && attackSquareLeft->color != this->color){
-		c = {col + 1, row + this->dir};
-		placements.push_back(c);
-	}
+	try {
+		AbstractPiece* attackSquareLeft = board(col+1,row + this->dir);
+		if (attackSquareLeft != nullptr && attackSquareLeft->color != this->color){
+			c = {col + 1, row + this->dir};
+			placements.push_back(c);
+		}
+	} catch (const std::out_of_range& oor){}
 
-	AbstractPiece* attackSquareRight = board(col-1,row + this->dir);
-	if (attackSquareRight != nullptr && attackSquareRight->color != this->color){
-		c = {col - 1, row + this->dir};
-		placements.push_back(c);
-	}
+	try {
+		AbstractPiece* attackSquareRight = board(col-1,row + this->dir);
+		if (attackSquareRight != nullptr && attackSquareRight->color != this->color){
+			c = {col - 1, row + this->dir};
+			placements.push_back(c);
+		}
+	} catch (const std::out_of_range& oor){}
 	
 	return placements;
 }

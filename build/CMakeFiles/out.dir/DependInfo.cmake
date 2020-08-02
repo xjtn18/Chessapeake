@@ -4,22 +4,21 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/Jacob/dev/projects/ChessLand/src/Bishop.cpp" "/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/Bishop.cpp.o"
-  "/Users/Jacob/dev/projects/ChessLand/src/Coord.cpp" "/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/Coord.cpp.o"
-  "/Users/Jacob/dev/projects/ChessLand/src/GameInstance.cpp" "/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/GameInstance.cpp.o"
-  "/Users/Jacob/dev/projects/ChessLand/src/King.cpp" "/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/King.cpp.o"
-  "/Users/Jacob/dev/projects/ChessLand/src/Knight.cpp" "/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/Knight.cpp.o"
-  "/Users/Jacob/dev/projects/ChessLand/src/Pawn.cpp" "/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/Pawn.cpp.o"
-  "/Users/Jacob/dev/projects/ChessLand/src/Queen.cpp" "/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/Queen.cpp.o"
-  "/Users/Jacob/dev/projects/ChessLand/src/Rook.cpp" "/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/Rook.cpp.o"
-  "/Users/Jacob/dev/projects/ChessLand/src/helper.cpp" "/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/helper.cpp.o"
-  "/Users/Jacob/dev/projects/ChessLand/src/main.cpp" "/Users/Jacob/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/main.cpp.o"
+  "C:/dev/projects/ChessLand/src/Bishop.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/Bishop.cpp.o"
+  "C:/dev/projects/ChessLand/src/Coord.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/Coord.cpp.o"
+  "C:/dev/projects/ChessLand/src/GameInstance.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/GameInstance.cpp.o"
+  "C:/dev/projects/ChessLand/src/King.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/King.cpp.o"
+  "C:/dev/projects/ChessLand/src/Knight.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/Knight.cpp.o"
+  "C:/dev/projects/ChessLand/src/Pawn.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/Pawn.cpp.o"
+  "C:/dev/projects/ChessLand/src/Queen.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/Queen.cpp.o"
+  "C:/dev/projects/ChessLand/src/Rook.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/Rook.cpp.o"
+  "C:/dev/projects/ChessLand/src/helper.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/helper.cpp.o"
+  "C:/dev/projects/ChessLand/src/main.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/main.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "AppleClang")
+set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "../$(incName)"
   )
 
 # Targets to which this target links.

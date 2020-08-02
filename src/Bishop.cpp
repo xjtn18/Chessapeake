@@ -1,4 +1,4 @@
-#include "inc/Pieces.h"
+#include "../inc/Pieces.h"
 
 
 Bishop::Bishop(std::string init_color) : AbstractPiece(init_color, 'B') { }

@@ -1,20 +1,17 @@
-#include "inc/Pieces.h"
-#include "inc/constants.h"
-#include "inc/GameInstance.h"
-#include "inc/Coord.h"
+#include "../inc/Pieces.h"
+#include "../inc/constants.h"
+#include "../inc/GameInstance.h"
+#include "../inc/Coord.h"
 #include <iostream>
 #include <string>
 #include <regex>
 #include <stdlib.h>
 
-#define CLEAROUT system("clear")
+// Change to 'CLS' instead of 'clear' this if you are running on windows without cygwin
+#define CLEAROUT system("clear") 
 
 
-// Uncomment this if you are running on windows
-// #define CLEAROUT system("CLS")
-
-
-// this doesnt work
+// below doesnt work
 /*
 #ifdef __unix
 #define CLEAROUT system("clear")
@@ -54,7 +51,7 @@ void parseMoveRequestInput(std::string input, GameInstance& game){
 		game.requestMove(c,d);
 	
 	
-	// pawn capture
+	// pawn capture (wip)
 	
 
 	// king move
@@ -64,6 +61,7 @@ void parseMoveRequestInput(std::string input, GameInstance& game){
 		c = game.findKing();
 		d = {dcol, drow};
 		game.requestMove(c,d);
+
 		
 	// bishop move
 	} else if (patternMatch(input, "bishop")){
@@ -74,13 +72,9 @@ void parseMoveRequestInput(std::string input, GameInstance& game){
 		game.requestMove(c,d);
 
 	
-	} else if (input == "exit"){
-		return;
-
 	} else {
-		p("Invalid notation");
+		p("Invalid notation", true, 1);
 	}
-
 
 }
 
@@ -95,20 +89,23 @@ void commandLoop(GameInstance& game){
 		std::cout << "\n" << game.toMove << " to move :: ";
 		std::getline(std::cin, input); // pull move input
 
-		if (input == "exit")
+		if (input == "ex"){
 			GAME_EXIT = true; // break the loop
-
-		parseMoveRequestInput(input, game); // check move
-		if (game.gameOver){
-			CLEAROUT;
-			return;
+		} else if (input == "u"){ // undo last move
+			game.undo();
+		} else {
+			parseMoveRequestInput(input, game); // check move
+			if (game.gameOver){
+				CLEAROUT;
+				return;
+			}
 		}
 	}
 }
 
 
 int main(){
-	GameInstance game = GameInstance(8,8);
+	GameInstance game = GameInstance(8,8); // create an 8x8 board
 	commandLoop(game);
 	
 	return 0;

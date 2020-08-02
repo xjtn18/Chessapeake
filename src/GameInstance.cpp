@@ -1,10 +1,13 @@
-#include "inc/GameInstance.h"
-#include "inc/Pieces.h"
+#include "../inc/GameInstance.h"
+#include "../inc/Pieces.h"
 
 GameInstance::GameInstance(int numCol, int numRow)
  	: boardWidth(numCol), boardHeight(numRow), mainboard(FlatMatrix<AbstractPiece>(numCol, numRow))
 {
 	setupBoard();
+}
+
+GameInstance::~GameInstance(){
 }
 
 
@@ -51,18 +54,25 @@ void GameInstance::tick(){
 
 void GameInstance::requestMove(Coord c, Coord d){
 	// c being moved piece coordinates, d being destination coordinates
-	AbstractPiece* movedPiece = mainboard(c.x, c.y);
-	//p(movedPiece->color);
-	std::vector<Coord> v = movedPiece->getPlacements(mainboard, c.x, c.y);
-	//p(v);
+	std::vector<Coord> v = mainboard(c.x,c.y)->getPlacements(mainboard, c.x, c.y);
 	if (std::find(v.begin(), v.end(), d) != v.end()){
-		mainboard(d.x, d.y) = movedPiece;
-		mainboard(c.x, c.y) = nullptr; // empty previous residing square
-		p("moving");
-		this->tick();
+		this->makeMove(c, d);
 	} else {
 		std::cout << "Invalid move" << std::endl;
 	}
+
+}
+
+
+void GameInstance::makeMove(Coord c, Coord d){
+	AbstractPiece* movedPiece = mainboard(c.x, c.y);
+	mainboard(d.x, d.y) = movedPiece;
+	mainboard(c.x, c.y) = nullptr; // empty previous residing square
+	movedPiece->moved = true;
+	this->lastMoved = movedPiece;
+	this->lastDepartureSquare = c;
+	this->lastArrivalSquare = d;
+	this->tick();
 }
 
 
@@ -72,6 +82,13 @@ void GameInstance::swapToMove(){
 	} else {
 		this->toMove = "white";
 	}
+}
+
+
+void GameInstance::undo(){
+	mainboard(lastDepartureSquare.x, lastDepartureSquare.y) = this->lastMoved;
+	mainboard(lastArrivalSquare.x, lastArrivalSquare.y) = nullptr;
+	this->tick(); // might need to make this a 'tick back' function in the future
 }
 
 

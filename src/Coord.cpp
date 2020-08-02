@@ -1,4 +1,4 @@
-#include "inc/Coord.h"
+#include "../inc/Coord.h"
 
 bool Coord::operator==(const Coord& lhs){
 	return this->x == lhs.x && this->y == lhs.y;

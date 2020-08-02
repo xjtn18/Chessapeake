@@ -1,4 +1,4 @@
-#include "inc/Pieces.h"
+#include "../inc/Pieces.h"
 
 
 Knight::Knight(std::string init_color) : AbstractPiece(init_color, 'N') { }
