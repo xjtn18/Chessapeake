@@ -19,6 +19,7 @@ CMakeFiles/out.dir/src/GameInstance.cpp.obj
  C:/dev/projects/ChessLand/src/GameInstance.cpp
 CMakeFiles/out.dir/src/King.cpp.obj
  C:/dev/projects/ChessLand/inc/Coord.h
+ C:/dev/projects/ChessLand/inc/GameInstance.h
  C:/dev/projects/ChessLand/inc/Pieces.h
  C:/dev/projects/ChessLand/inc/constants.h
  C:/dev/projects/ChessLand/inc/helper.h

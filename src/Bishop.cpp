@@ -3,7 +3,7 @@
 
 Bishop::Bishop(std::string init_color) : AbstractPiece(init_color, 'B') { }
 
-std::vector<Coord> Bishop::getPlacements(FlatMatrix<AbstractPiece> board, int col, int row){
+std::vector<Coord> Bishop::getPlacements(FlatMatrix<AbstractPiece> board, int col, int row, int depth){
 	std::vector<Coord> placements;
 	std::vector<Coord> directions = {{1,1}, {-1,-1}, {1,-1}, {-1,1}};
 	AbstractPiece* square;

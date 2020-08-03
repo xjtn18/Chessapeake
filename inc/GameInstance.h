@@ -8,12 +8,12 @@
 
 
 struct UndoState {
-	// stores that state needed to properly undo a move
-	AbstractPiece* lastMoved = nullptr;
-	bool hasMoved;
-	AbstractPiece* captured = nullptr;
-	Coord lastDepartureSquare;
-	Coord lastArrivalSquare;
+	// stores the state needed to properly undo a move
+	std::vector<AbstractPiece*> movers;
+	std::vector<AbstractPiece*> captures;
+	std::vector<bool> hasMoved;
+	std::vector<Coord> origins;
+	std::vector<Coord> landings;
 };
 
 
@@ -35,9 +35,9 @@ public:
 	void requestMove(Coord c, Coord d);
 	void makeMove(Coord c, Coord d);
 	void tick();
-	void swapToMove();
-	bool outBounds(int col, int row);
+	std::string swapPlayer(std::string color);
 	void undo();
+	static std::vector<Coord> allAttackedSquares(FlatMatrix<AbstractPiece>& board, std::string defenderColor);
 	Coord findPawn(int col, int row);
 	Coord findKing();
 

@@ -1,5 +1,5 @@
 #include "../inc/GameInstance.h"
-#include "../inc/Pieces.h"
+
 
 GameInstance::GameInstance(int numCol, int numRow)
  	: boardWidth(numCol), boardHeight(numRow), mainboard(FlatMatrix<AbstractPiece>(numCol, numRow))
@@ -48,7 +48,7 @@ void GameInstance::setupBoard(){
 
 
 void GameInstance::tick(){
-	this->swapToMove();
+	this->toMove = swapPlayer(this->toMove);
 }
 
 
@@ -58,28 +58,55 @@ void GameInstance::requestMove(Coord c, Coord d){
 	if (std::find(v.begin(), v.end(), d) != v.end()){
 		this->makeMove(c, d);
 	} else {
-		std::cout << "Invalid move" << std::endl;
+		p("Invalid Move");
 	}
-
 }
 
 
 void GameInstance::makeMove(Coord c, Coord d){
-	AbstractPiece* movedPiece = mainboard(c.x, c.y);
-	AbstractPiece* captured = mainboard(d.x, d.y);
-	mainboard(d.x, d.y) = movedPiece;
+	UndoState us;
+	AbstractPiece* mover = mainboard(c.x, c.y);
+	AbstractPiece* capture = mainboard(d.x, d.y);
+	mainboard(d.x, d.y) = mover;
 	mainboard(c.x, c.y) = nullptr; // empty previous residing square
-	undoStack.push({movedPiece, movedPiece->moved, captured, c, d});
-	movedPiece->moved = true;
+	us.movers.push_back(mover);
+	us.captures.push_back(capture);
+	us.hasMoved.push_back(mover->moved);
+	us.origins.push_back(c);
+	us.landings.push_back(d);
+
+	// check if castle move
+	int rook_position;
+	if (dynamic_cast<King*>(mover) != nullptr && abs(c.x - d.x) == 2){ // if a King was moved two squares, then they castled
+		if (c.x < d.x){ // kingside castle
+			rook_position = mainboard.wide - 1;
+		} else { // queenside castle
+			rook_position = 0;
+		}
+		AbstractPiece* castled_rook = mainboard(rook_position, d.y);
+		mainboard(d.x + 1 - (int)(c.x < d.x) * 2, d.y) = mainboard(rook_position, d.y); // move the rook
+		mainboard(rook_position, d.y) = nullptr; // empty previous residing corner
+		us.movers.push_back(castled_rook);
+		us.captures.push_back(nullptr);
+		us.hasMoved.push_back(castled_rook->moved);
+		us.origins.push_back({rook_position, d.y});
+		us.landings.push_back({d.x + 1 - (int)(c.x < d.x) * 2, d.y});
+	}
+
+	
+	// store state for undo stack
+	undoStack.push(us);
+
+	mover->moved = true;
 	this->tick();
 }
 
 
-void GameInstance::swapToMove(){
-	if (this->toMove == "white"){
-		this->toMove = "black";
+std::string GameInstance::swapPlayer(std::string color){
+	if (color == "white"){
+		return "black";
 	} else {
-		this->toMove = "white";
+		return "white";
 	}
 }
 
@@ -87,10 +114,14 @@ void GameInstance::swapToMove(){
 void GameInstance::undo(){
 	if (this->undoStack.empty()) // nothing to undo
 		return;
+
 	UndoState us = this->undoStack.top(); // get the top UndoState
-	mainboard(us.lastDepartureSquare.x, us.lastDepartureSquare.y) = us.lastMoved;
-	us.lastMoved->moved = us.hasMoved; // set the piece's 'moved' boolean to what is was before the move was made
-	mainboard(us.lastArrivalSquare.x, us.lastArrivalSquare.y) = us.captured;
+	for (int i = 0; i < us.movers.size(); i++){
+		mainboard(us.origins[i].x, us.origins[i].y) = us.movers[i];
+		mainboard(us.landings[i].x, us.landings[i].y) = us.captures[i];
+		us.movers[i]->moved = us.hasMoved[i]; // set the piece's 'moved' boolean to what is was before the move was made
+	}
+
 	this->undoStack.pop(); // remove the top UndoState
 	this->tick(); // might need to make this a 'tick back' function in the future
 }
@@ -112,14 +143,6 @@ void GameInstance::printBoard(){
 		if (x % h == h-1)
 			std::cout << "\n";
 	}
-}
-
-
-bool GameInstance::outBounds(int col, int row){
-	return col >= mainboard.wide ||
-		col < 0 ||
-		row >= mainboard.high ||
-		row < 0;
 }
 
 
@@ -158,7 +181,22 @@ Coord GameInstance::findKing(){
 	return c;
 }
 
-
+// NOTE: you dont write 'static' in the cpp definition, only the header; static in .cpp means something DIFFERENT
+std::vector<Coord> GameInstance::allAttackedSquares(FlatMatrix<AbstractPiece>& board, std::string defenderColor){
+	AbstractPiece* square;
+	std::vector<Coord> allPlacements, currPlacements;
+	for (int x = 0; x < board.wide; x++){
+		for (int y = 0; y < board.high; y++){
+			square = board(x,y);
+			if (square != nullptr && square->color != defenderColor){
+				currPlacements = square->getPlacements(board, x, y, 1);
+				for (auto e : currPlacements)
+					allPlacements.push_back(e);
+			}
+		}
+	}
+	return allPlacements;
+}
 
 
 

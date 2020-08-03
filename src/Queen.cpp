@@ -3,7 +3,7 @@
 
 Queen::Queen(std::string init_color) : AbstractPiece(init_color, 'Q')  { }
 
-std::vector<Coord> Queen::getPlacements(FlatMatrix<AbstractPiece> board, int col, int row){
+std::vector<Coord> Queen::getPlacements(FlatMatrix<AbstractPiece> board, int col, int row, int depth){
 	std::vector<Coord> placements;
 	std::vector<Coord> directions = {{1,0}, {-1,0}, {0,-1}, {0,1}, {1,1}, {-1,-1}, {1,-1}, {-1,1}};
 	AbstractPiece* square;

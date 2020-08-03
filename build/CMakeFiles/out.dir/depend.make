@@ -18,6 +18,7 @@ CMakeFiles/out.dir/src/GameInstance.cpp.obj: ../inc/helper.h
 CMakeFiles/out.dir/src/GameInstance.cpp.obj: ../src/GameInstance.cpp
 
 CMakeFiles/out.dir/src/King.cpp.obj: ../inc/Coord.h
+CMakeFiles/out.dir/src/King.cpp.obj: ../inc/GameInstance.h
 CMakeFiles/out.dir/src/King.cpp.obj: ../inc/Pieces.h
 CMakeFiles/out.dir/src/King.cpp.obj: ../inc/constants.h
 CMakeFiles/out.dir/src/King.cpp.obj: ../inc/helper.h

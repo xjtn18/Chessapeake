@@ -59,10 +59,8 @@ void parseMoveRequestInput(std::string input, GameInstance& game){
 		int dcol = coordMap.at(input[1]) - 1;
 		int drow = std::atoi(&input[2]) - 1;
 		c = game.findKing();
-		d = {dcol, drow};
-		game.requestMove(c,d);
+		game.requestMove(c,{dcol,drow});
 
-		
 	// bishop move
 	} else if (patternMatch(input, "bishop")){
 		getCurrentAndDestination<Bishop>(input, game);
@@ -78,9 +76,12 @@ void parseMoveRequestInput(std::string input, GameInstance& game){
 	// queen move
 	} else if (patternMatch(input, "queen")){
 		getCurrentAndDestination<Queen>(input, game);
+	
+	} else if (input == "O-O"){
+		
 
 	} else {
-		p("Invalid notation", true, 1);
+		p("Improper notation", true, 1);
 		return;
 	}
 	
