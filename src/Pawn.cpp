@@ -25,7 +25,7 @@ std::vector<Coord> Pawn::getPlacements(FlatMatrix<AbstractPiece> board, int col,
 			c = {col + 1, row + this->dir};
 			placements.push_back(c);
 		}
-	} catch (const std::out_of_range& oor){}
+	} catch (const std::out_of_range& oor) {}
 
 	try {
 		AbstractPiece* attackSquareRight = board(col-1,row + this->dir);

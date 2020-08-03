@@ -15,8 +15,8 @@ std::vector<Coord> Bishop::getPlacements(FlatMatrix<AbstractPiece> board, int co
 			square = board(ccol, crow);
 			if (square == nullptr || square->color != this->color){
 				placements.push_back({ccol, crow});
-				ccol = col + e.x;
-				crow = row + e.y;
+				ccol = ccol + e.x;
+				crow = crow + e.y;
 			} else {
 				break;
 			}
@@ -25,8 +25,6 @@ std::vector<Coord> Bishop::getPlacements(FlatMatrix<AbstractPiece> board, int co
 			
 	return placements;
 }
-
-
 
 
 

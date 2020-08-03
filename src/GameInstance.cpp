@@ -66,12 +66,11 @@ void GameInstance::requestMove(Coord c, Coord d){
 
 void GameInstance::makeMove(Coord c, Coord d){
 	AbstractPiece* movedPiece = mainboard(c.x, c.y);
+	AbstractPiece* captured = mainboard(d.x, d.y);
 	mainboard(d.x, d.y) = movedPiece;
 	mainboard(c.x, c.y) = nullptr; // empty previous residing square
+	undoStack.push({movedPiece, movedPiece->moved, captured, c, d});
 	movedPiece->moved = true;
-	this->lastMoved = movedPiece;
-	this->lastDepartureSquare = c;
-	this->lastArrivalSquare = d;
 	this->tick();
 }
 
@@ -86,8 +85,13 @@ void GameInstance::swapToMove(){
 
 
 void GameInstance::undo(){
-	mainboard(lastDepartureSquare.x, lastDepartureSquare.y) = this->lastMoved;
-	mainboard(lastArrivalSquare.x, lastArrivalSquare.y) = nullptr;
+	if (this->undoStack.empty()) // nothing to undo
+		return;
+	UndoState us = this->undoStack.top(); // get the top UndoState
+	mainboard(us.lastDepartureSquare.x, us.lastDepartureSquare.y) = us.lastMoved;
+	us.lastMoved->moved = us.hasMoved; // set the piece's 'moved' boolean to what is was before the move was made
+	mainboard(us.lastArrivalSquare.x, us.lastArrivalSquare.y) = us.captured;
+	this->undoStack.pop(); // remove the top UndoState
 	this->tick(); // might need to make this a 'tick back' function in the future
 }
 
@@ -120,9 +124,9 @@ bool GameInstance::outBounds(int col, int row){
 
 
 
-Coord GameInstance::findPawnInColumn(int col, int drow){
+Coord GameInstance::findPawn(int col, int row){
 	Coord c = {-1,-1};
-	Coord d = {col, drow};
+	Coord d = {col, row};
 	AbstractPiece* piece;
 	for (int y = 0; y < mainboard.high; y++){
 		piece = mainboard(col, y);
@@ -136,7 +140,7 @@ Coord GameInstance::findPawnInColumn(int col, int drow){
 	}
 	// didnt find pawn that could make this move; invalid
 	if (!c)
-		std::cout << "Invalid Move" << std::endl;
+		p("Invalid Move");
 	return c;
 }
 
@@ -146,7 +150,7 @@ Coord GameInstance::findKing(){
 	AbstractPiece* piece;
 	for (int x = 0; x < mainboard.SIZE; x++){
 		piece = mainboard[x];
-		if (dynamic_cast<King*>(piece) != nullptr && piece->color == this->toMove){ // if its a Pawn
+		if (dynamic_cast<King*>(piece) != nullptr && piece->color == this->toMove){ // if its the King we want
 			c = mainboard.rawIndexTo2D(x);
 			break;
 		}
@@ -156,27 +160,6 @@ Coord GameInstance::findKing(){
 
 
 
-
-Coord GameInstance::findBishop(int col, int row){
-	Coord c = {-1,-1};
-	Coord d = {col, row};
-	AbstractPiece* piece;
-	for (int x = 0; x < mainboard.wide; x++){
-		for (int y = 0; y < mainboard.high; y++){
-			piece = mainboard(x, y);
-			if (dynamic_cast<Bishop*>(piece) != nullptr && piece->color == this->toMove){ // if its a Pawn
-				std::vector<Coord> v = piece->getPlacements(mainboard, x, y);
-				if (std::find(v.begin(), v.end(), d) != v.end()){
-					c = {x, y};
-					break;
-				}
-			}
-		}
-	}
-	if (!c)
-		std::cout << "Invalid Move" << std::endl;
-	return c;
-}
 
 
 

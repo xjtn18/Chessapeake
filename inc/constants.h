@@ -17,7 +17,7 @@
 
 // this template prints anything (singular value)
 template <typename T>
-void p(T x, bool nl = true, int sleeptime = 0){
+void p(T x, bool nl = true, int sleeptime = 1){
 	if (!PRINT_DEBUG)
 		return;
 	std::cout << x;

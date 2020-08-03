@@ -2,6 +2,7 @@
 #include "../inc/constants.h"
 #include "../inc/GameInstance.h"
 #include "../inc/Coord.h"
+#include "../inc/move.h"
 #include <iostream>
 #include <string>
 #include <regex>
@@ -38,18 +39,17 @@ bool patternMatch(std::string input, std::string piece_str){
 }
 
 
+
 void parseMoveRequestInput(std::string input, GameInstance& game){
 	Coord c, d;
 
 	// pawn move
 	if (patternMatch(input, "pawn")){
-		int col = coordMap.at(input[0]) - 1;
+		int dcol = coordMap.at(input[0]) - 1;
 		int drow = std::atoi(&input[1]) - 1;
-		c = game.findPawnInColumn(col, drow);
+		c = game.findPawn(dcol, drow);
 		if (!c) return; // no such pawn that can make this move; invalid
-		d = {col, drow};
-		game.requestMove(c,d);
-	
+		game.requestMove(c,{dcol, drow});
 	
 	// pawn capture (wip)
 	
@@ -65,16 +65,25 @@ void parseMoveRequestInput(std::string input, GameInstance& game){
 		
 	// bishop move
 	} else if (patternMatch(input, "bishop")){
-		int dcol = coordMap.at(input[1]) - 1;
-		int drow = std::atoi(&input[2]) - 1;
-		c = game.findBishop(dcol, drow);
-		d = {dcol, drow};
-		game.requestMove(c,d);
+		getCurrentAndDestination<Bishop>(input, game);
 
-	
+	// knight move
+	} else if (patternMatch(input, "knight")){
+		getCurrentAndDestination<Knight>(input, game);
+
+	// rook move
+	} else if (patternMatch(input, "rook")){
+		getCurrentAndDestination<Rook>(input, game);
+
+	// queen move
+	} else if (patternMatch(input, "queen")){
+		getCurrentAndDestination<Queen>(input, game);
+
 	} else {
 		p("Invalid notation", true, 1);
+		return;
 	}
+	
 
 }
 
@@ -89,14 +98,15 @@ void commandLoop(GameInstance& game){
 		std::cout << "\n" << game.toMove << " to move :: ";
 		std::getline(std::cin, input); // pull move input
 
-		if (input == "ex"){
+		if (input == "exit"){
 			GAME_EXIT = true; // break the loop
+
 		} else if (input == "u"){ // undo last move
 			game.undo();
+
 		} else {
-			parseMoveRequestInput(input, game); // check move
+			parseMoveRequestInput(input, game); // check move request
 			if (game.gameOver){
-				CLEAROUT;
 				return;
 			}
 		}
@@ -110,4 +120,6 @@ int main(){
 	
 	return 0;
 }
+
+
 

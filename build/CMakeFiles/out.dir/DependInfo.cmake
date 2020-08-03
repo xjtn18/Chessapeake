@@ -4,16 +4,16 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/dev/projects/ChessLand/src/Bishop.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/Bishop.cpp.o"
-  "C:/dev/projects/ChessLand/src/Coord.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/Coord.cpp.o"
-  "C:/dev/projects/ChessLand/src/GameInstance.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/GameInstance.cpp.o"
-  "C:/dev/projects/ChessLand/src/King.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/King.cpp.o"
-  "C:/dev/projects/ChessLand/src/Knight.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/Knight.cpp.o"
-  "C:/dev/projects/ChessLand/src/Pawn.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/Pawn.cpp.o"
-  "C:/dev/projects/ChessLand/src/Queen.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/Queen.cpp.o"
-  "C:/dev/projects/ChessLand/src/Rook.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/Rook.cpp.o"
-  "C:/dev/projects/ChessLand/src/helper.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/helper.cpp.o"
-  "C:/dev/projects/ChessLand/src/main.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/main.cpp.o"
+  "C:/dev/projects/ChessLand/src/Bishop.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/Bishop.cpp.obj"
+  "C:/dev/projects/ChessLand/src/Coord.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/Coord.cpp.obj"
+  "C:/dev/projects/ChessLand/src/GameInstance.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/GameInstance.cpp.obj"
+  "C:/dev/projects/ChessLand/src/King.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/King.cpp.obj"
+  "C:/dev/projects/ChessLand/src/Knight.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/Knight.cpp.obj"
+  "C:/dev/projects/ChessLand/src/Pawn.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/Pawn.cpp.obj"
+  "C:/dev/projects/ChessLand/src/Queen.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/Queen.cpp.obj"
+  "C:/dev/projects/ChessLand/src/Rook.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/Rook.cpp.obj"
+  "C:/dev/projects/ChessLand/src/helper.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/helper.cpp.obj"
+  "C:/dev/projects/ChessLand/src/main.cpp" "C:/dev/projects/ChessLand/build/CMakeFiles/out.dir/src/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

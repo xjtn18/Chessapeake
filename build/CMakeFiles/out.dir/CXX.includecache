@@ -21,6 +21,8 @@ helper.h
 C:/dev/projects/ChessLand/inc/helper.h
 algorithm
 -
+stack
+-
 
 C:/dev/projects/ChessLand/inc/Pieces.h
 iterator
@@ -53,10 +55,24 @@ chrono
 -
 thread
 -
-Coord.h
-C:/dev/projects/ChessLand/inc/Coord.h
 vector
 -
+Coord.h
+C:/dev/projects/ChessLand/inc/Coord.h
+
+C:/dev/projects/ChessLand/inc/move.h
+GameInstance.h
+C:/dev/projects/ChessLand/inc/GameInstance.h
+constants.h
+C:/dev/projects/ChessLand/inc/constants.h
+Coord.h
+C:/dev/projects/ChessLand/inc/Coord.h
+
+C:/dev/projects/ChessLand/src/GameInstance.cpp
+../inc/GameInstance.h
+C:/dev/projects/ChessLand/inc/GameInstance.h
+../inc/Pieces.h
+C:/dev/projects/ChessLand/inc/Pieces.h
 
 C:/dev/projects/ChessLand/src/main.cpp
 ../inc/Pieces.h
@@ -67,6 +83,8 @@ C:/dev/projects/ChessLand/inc/constants.h
 C:/dev/projects/ChessLand/inc/GameInstance.h
 ../inc/Coord.h
 C:/dev/projects/ChessLand/inc/Coord.h
+../inc/move.h
+C:/dev/projects/ChessLand/inc/move.h
 iostream
 -
 string
