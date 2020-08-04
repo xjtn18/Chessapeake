@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/out.dir/src/GameInstance.cpp.obj"
   "CMakeFiles/out.dir/src/King.cpp.obj"
   "CMakeFiles/out.dir/src/Knight.cpp.obj"
+  "CMakeFiles/out.dir/src/MoveParser.cpp.obj"
   "CMakeFiles/out.dir/src/Pawn.cpp.obj"
   "CMakeFiles/out.dir/src/Queen.cpp.obj"
   "CMakeFiles/out.dir/src/Rook.cpp.obj"

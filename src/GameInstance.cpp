@@ -7,6 +7,12 @@ GameInstance::GameInstance(int numCol, int numRow)
 	setupBoard();
 }
 
+
+GameInstance::GameInstance(const GameInstance& rhs)
+	: mainboard(rhs.mainboard)
+{ }
+
+
 GameInstance::~GameInstance(){
 }
 
@@ -52,6 +58,8 @@ void GameInstance::tick(){
 }
 
 
+
+
 void GameInstance::requestMove(Coord c, Coord d){
 	// c being moved piece coordinates, d being destination coordinates
 	std::vector<Coord> v = mainboard(c.x,c.y)->getPlacements(mainboard, c.x, c.y);
@@ -64,16 +72,12 @@ void GameInstance::requestMove(Coord c, Coord d){
 
 
 void GameInstance::makeMove(Coord c, Coord d){
-	UndoState us;
+	State us;
 	AbstractPiece* mover = mainboard(c.x, c.y);
 	AbstractPiece* capture = mainboard(d.x, d.y);
 	mainboard(d.x, d.y) = mover;
 	mainboard(c.x, c.y) = nullptr; // empty previous residing square
-	us.movers.push_back(mover);
-	us.captures.push_back(capture);
-	us.hasMoved.push_back(mover->moved);
-	us.origins.push_back(c);
-	us.landings.push_back(d);
+	us.add(mover, capture, c, d);
 
 	// check if castle move
 	int rook_position;
@@ -86,16 +90,13 @@ void GameInstance::makeMove(Coord c, Coord d){
 		AbstractPiece* castled_rook = mainboard(rook_position, d.y);
 		mainboard(d.x + 1 - (int)(c.x < d.x) * 2, d.y) = mainboard(rook_position, d.y); // move the rook
 		mainboard(rook_position, d.y) = nullptr; // empty previous residing corner
-		us.movers.push_back(castled_rook);
-		us.captures.push_back(nullptr);
-		us.hasMoved.push_back(castled_rook->moved);
-		us.origins.push_back({rook_position, d.y});
-		us.landings.push_back({d.x + 1 - (int)(c.x < d.x) * 2, d.y});
+		us.add(castled_rook, nullptr, {rook_position, d.y}, {d.x + 1 - (int)(c.x < d.x) * 2, d.y});
 	}
 
 	
 	// store state for undo stack
 	undoStack.push(us);
+	redoStack = {}; // clear the redo stack; a move was made in a previous position
 
 	mover->moved = true;
 	this->tick();
@@ -115,14 +116,34 @@ void GameInstance::undo(){
 	if (this->undoStack.empty()) // nothing to undo
 		return;
 
-	UndoState us = this->undoStack.top(); // get the top UndoState
+	State us = this->undoStack.top(); // get the top UndoState
+
 	for (int i = 0; i < us.movers.size(); i++){
 		mainboard(us.origins[i].x, us.origins[i].y) = us.movers[i];
 		mainboard(us.landings[i].x, us.landings[i].y) = us.captures[i];
 		us.movers[i]->moved = us.hasMoved[i]; // set the piece's 'moved' boolean to what is was before the move was made
 	}
 
+	redoStack.push(us);
 	this->undoStack.pop(); // remove the top UndoState
+	this->tick(); // might need to make this a 'tick back' function in the future
+}
+
+
+void GameInstance::redo(){
+	if (this->redoStack.empty()) // nothing to undo
+		return;
+
+	State us = this->redoStack.top(); // get the top UndoState
+
+	for (int i = 0; i < us.movers.size(); i++){
+		mainboard(us.origins[i].x, us.origins[i].y) = us.captures[i];
+		mainboard(us.landings[i].x, us.landings[i].y) = us.movers[i];
+		us.movers[i]->moved = !us.hasMoved[i]; // set the piece's 'moved' boolean to what is was before the move was made
+	}
+
+	undoStack.push(us);
+	this->redoStack.pop(); // remove the top UndoState
 	this->tick(); // might need to make this a 'tick back' function in the future
 }
 
@@ -180,6 +201,8 @@ Coord GameInstance::findKing(){
 	}
 	return c;
 }
+
+
 
 // NOTE: you dont write 'static' in the cpp definition, only the header; static in .cpp means something DIFFERENT
 std::vector<Coord> GameInstance::allAttackedSquares(FlatMatrix<AbstractPiece>& board, std::string defenderColor){

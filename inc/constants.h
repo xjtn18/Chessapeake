@@ -97,6 +97,12 @@ public:
 		: high(numRow), wide(numCol), mat(new C*[numCol * numRow]), SIZE(numCol * numRow)
 	{}
 
+	/*
+	FlatMatrix(const FlatMatrix& rhs)
+		: mat(new C*[])
+	{ }
+	*/
+
 	C*& operator()(int col, int row){
 		// Use THIS to index the matrix, as if it were a normal 2D matrix
 		// Same idea applies, first index is the x axis (column) and second index is the y axis (row)
@@ -125,7 +131,7 @@ public:
 
 	~FlatMatrix(){
 		//delete[] mat;
-		// ^^^ program doesnt like this for some reason
+		// ^^^ program doesnt like this for some reason, probably because its an array of pointers
 	}
 
 

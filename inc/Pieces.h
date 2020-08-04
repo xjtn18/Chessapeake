@@ -1,8 +1,8 @@
 #pragma once
 #include <iterator>
 #include <vector>
-#include "constants.h"
 #include "Coord.h"
+#include "helper.h"
 
 
 class AbstractPiece {

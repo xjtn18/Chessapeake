@@ -17,6 +17,7 @@ add_executable(out
 	src/Bishop.cpp
 	src/GameInstance.cpp
 	src/helper.cpp
+	src/MoveParser.cpp
 )
 
 #target_include_directories(out PRIVATE $(incName))

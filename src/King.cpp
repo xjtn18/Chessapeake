@@ -44,8 +44,8 @@ void King::checkCastling(FlatMatrix<AbstractPiece>& board, int col, int row, std
 	bool passingSafe = true;
 	if (!kingsideRook->moved){
 		// check passing squares and if currently in check
-		for ( auto p : passingSquares){
-			if (board(p.x, p.y) != nullptr || std::find(allAttacked.begin(), allAttacked.end(), p) != allAttacked.end()){
+		for ( auto ps : passingSquares){
+			if (board(ps.x, ps.y) != nullptr || std::find(allAttacked.begin(), allAttacked.end(), ps) != allAttacked.end()){
 				passingSafe = false;
 				break;
 			}

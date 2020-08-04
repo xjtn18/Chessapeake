@@ -278,6 +278,33 @@ src/Knight.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/Knight.cpp.s
 .PHONY : src/Knight.cpp.s
 
+src/MoveParser.obj: src/MoveParser.cpp.obj
+
+.PHONY : src/MoveParser.obj
+
+# target to build an object file
+src/MoveParser.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/MoveParser.cpp.obj
+.PHONY : src/MoveParser.cpp.obj
+
+src/MoveParser.i: src/MoveParser.cpp.i
+
+.PHONY : src/MoveParser.i
+
+# target to preprocess a source file
+src/MoveParser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/MoveParser.cpp.i
+.PHONY : src/MoveParser.cpp.i
+
+src/MoveParser.s: src/MoveParser.cpp.s
+
+.PHONY : src/MoveParser.s
+
+# target to generate assembly for a file
+src/MoveParser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/MoveParser.cpp.s
+.PHONY : src/MoveParser.cpp.s
+
 src/Pawn.obj: src/Pawn.cpp.obj
 
 .PHONY : src/Pawn.obj
@@ -437,6 +464,9 @@ help:
 	@echo "... src/Knight.obj"
 	@echo "... src/Knight.i"
 	@echo "... src/Knight.s"
+	@echo "... src/MoveParser.obj"
+	@echo "... src/MoveParser.i"
+	@echo "... src/MoveParser.s"
 	@echo "... src/Pawn.obj"
 	@echo "... src/Pawn.i"
 	@echo "... src/Pawn.s"

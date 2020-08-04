@@ -207,6 +207,19 @@ CMakeFiles/out.dir/src/helper.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/out.dir/src/helper.cpp.s"
 	C:/cygwin64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/dev/projects/ChessLand/src/helper.cpp -o CMakeFiles/out.dir/src/helper.cpp.s
 
+CMakeFiles/out.dir/src/MoveParser.cpp.obj: CMakeFiles/out.dir/flags.make
+CMakeFiles/out.dir/src/MoveParser.cpp.obj: ../src/MoveParser.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/dev/projects/ChessLand/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/out.dir/src/MoveParser.cpp.obj"
+	C:/cygwin64/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out.dir/src/MoveParser.cpp.obj -c C:/dev/projects/ChessLand/src/MoveParser.cpp
+
+CMakeFiles/out.dir/src/MoveParser.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/out.dir/src/MoveParser.cpp.i"
+	C:/cygwin64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:/dev/projects/ChessLand/src/MoveParser.cpp > CMakeFiles/out.dir/src/MoveParser.cpp.i
+
+CMakeFiles/out.dir/src/MoveParser.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/out.dir/src/MoveParser.cpp.s"
+	C:/cygwin64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/dev/projects/ChessLand/src/MoveParser.cpp -o CMakeFiles/out.dir/src/MoveParser.cpp.s
+
 # Object files for target out
 out_OBJECTS = \
 "CMakeFiles/out.dir/src/Coord.cpp.obj" \
@@ -218,7 +231,8 @@ out_OBJECTS = \
 "CMakeFiles/out.dir/src/Knight.cpp.obj" \
 "CMakeFiles/out.dir/src/Bishop.cpp.obj" \
 "CMakeFiles/out.dir/src/GameInstance.cpp.obj" \
-"CMakeFiles/out.dir/src/helper.cpp.obj"
+"CMakeFiles/out.dir/src/helper.cpp.obj" \
+"CMakeFiles/out.dir/src/MoveParser.cpp.obj"
 
 # External object files for target out
 out_EXTERNAL_OBJECTS =
@@ -233,9 +247,10 @@ out.exe: CMakeFiles/out.dir/src/Knight.cpp.obj
 out.exe: CMakeFiles/out.dir/src/Bishop.cpp.obj
 out.exe: CMakeFiles/out.dir/src/GameInstance.cpp.obj
 out.exe: CMakeFiles/out.dir/src/helper.cpp.obj
+out.exe: CMakeFiles/out.dir/src/MoveParser.cpp.obj
 out.exe: CMakeFiles/out.dir/build.make
 out.exe: CMakeFiles/out.dir/objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:/dev/projects/ChessLand/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable out.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:/dev/projects/ChessLand/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable out.exe"
 	"C:/Program Files/CMake/bin/cmake.exe" -E rm -f CMakeFiles/out.dir/objects.a
 	C:/cygwin64/bin/ar.exe cr CMakeFiles/out.dir/objects.a @CMakeFiles/out.dir/objects1.rsp
 	C:/cygwin64/bin/c++.exe    -Wl,--whole-archive CMakeFiles/out.dir/objects.a -Wl,--no-whole-archive  -o out.exe -Wl,--out-implib,libout.dll.a -Wl,--major-image-version,0,--minor-image-version,0 

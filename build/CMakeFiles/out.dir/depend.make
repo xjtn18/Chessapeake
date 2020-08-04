@@ -3,7 +3,6 @@
 
 CMakeFiles/out.dir/src/Bishop.cpp.obj: ../inc/Coord.h
 CMakeFiles/out.dir/src/Bishop.cpp.obj: ../inc/Pieces.h
-CMakeFiles/out.dir/src/Bishop.cpp.obj: ../inc/constants.h
 CMakeFiles/out.dir/src/Bishop.cpp.obj: ../inc/helper.h
 CMakeFiles/out.dir/src/Bishop.cpp.obj: ../src/Bishop.cpp
 
@@ -13,38 +12,39 @@ CMakeFiles/out.dir/src/Coord.cpp.obj: ../src/Coord.cpp
 CMakeFiles/out.dir/src/GameInstance.cpp.obj: ../inc/Coord.h
 CMakeFiles/out.dir/src/GameInstance.cpp.obj: ../inc/GameInstance.h
 CMakeFiles/out.dir/src/GameInstance.cpp.obj: ../inc/Pieces.h
-CMakeFiles/out.dir/src/GameInstance.cpp.obj: ../inc/constants.h
 CMakeFiles/out.dir/src/GameInstance.cpp.obj: ../inc/helper.h
 CMakeFiles/out.dir/src/GameInstance.cpp.obj: ../src/GameInstance.cpp
 
 CMakeFiles/out.dir/src/King.cpp.obj: ../inc/Coord.h
 CMakeFiles/out.dir/src/King.cpp.obj: ../inc/GameInstance.h
 CMakeFiles/out.dir/src/King.cpp.obj: ../inc/Pieces.h
-CMakeFiles/out.dir/src/King.cpp.obj: ../inc/constants.h
 CMakeFiles/out.dir/src/King.cpp.obj: ../inc/helper.h
 CMakeFiles/out.dir/src/King.cpp.obj: ../src/King.cpp
 
 CMakeFiles/out.dir/src/Knight.cpp.obj: ../inc/Coord.h
 CMakeFiles/out.dir/src/Knight.cpp.obj: ../inc/Pieces.h
-CMakeFiles/out.dir/src/Knight.cpp.obj: ../inc/constants.h
 CMakeFiles/out.dir/src/Knight.cpp.obj: ../inc/helper.h
 CMakeFiles/out.dir/src/Knight.cpp.obj: ../src/Knight.cpp
 
+CMakeFiles/out.dir/src/MoveParser.cpp.obj: ../inc/Coord.h
+CMakeFiles/out.dir/src/MoveParser.cpp.obj: ../inc/GameInstance.h
+CMakeFiles/out.dir/src/MoveParser.cpp.obj: ../inc/MoveParser.h
+CMakeFiles/out.dir/src/MoveParser.cpp.obj: ../inc/Pieces.h
+CMakeFiles/out.dir/src/MoveParser.cpp.obj: ../inc/helper.h
+CMakeFiles/out.dir/src/MoveParser.cpp.obj: ../src/MoveParser.cpp
+
 CMakeFiles/out.dir/src/Pawn.cpp.obj: ../inc/Coord.h
 CMakeFiles/out.dir/src/Pawn.cpp.obj: ../inc/Pieces.h
-CMakeFiles/out.dir/src/Pawn.cpp.obj: ../inc/constants.h
 CMakeFiles/out.dir/src/Pawn.cpp.obj: ../inc/helper.h
 CMakeFiles/out.dir/src/Pawn.cpp.obj: ../src/Pawn.cpp
 
 CMakeFiles/out.dir/src/Queen.cpp.obj: ../inc/Coord.h
 CMakeFiles/out.dir/src/Queen.cpp.obj: ../inc/Pieces.h
-CMakeFiles/out.dir/src/Queen.cpp.obj: ../inc/constants.h
 CMakeFiles/out.dir/src/Queen.cpp.obj: ../inc/helper.h
 CMakeFiles/out.dir/src/Queen.cpp.obj: ../src/Queen.cpp
 
 CMakeFiles/out.dir/src/Rook.cpp.obj: ../inc/Coord.h
 CMakeFiles/out.dir/src/Rook.cpp.obj: ../inc/Pieces.h
-CMakeFiles/out.dir/src/Rook.cpp.obj: ../inc/constants.h
 CMakeFiles/out.dir/src/Rook.cpp.obj: ../inc/helper.h
 CMakeFiles/out.dir/src/Rook.cpp.obj: ../src/Rook.cpp
 
@@ -54,9 +54,8 @@ CMakeFiles/out.dir/src/helper.cpp.obj: ../src/helper.cpp
 
 CMakeFiles/out.dir/src/main.cpp.obj: ../inc/Coord.h
 CMakeFiles/out.dir/src/main.cpp.obj: ../inc/GameInstance.h
+CMakeFiles/out.dir/src/main.cpp.obj: ../inc/MoveParser.h
 CMakeFiles/out.dir/src/main.cpp.obj: ../inc/Pieces.h
-CMakeFiles/out.dir/src/main.cpp.obj: ../inc/constants.h
 CMakeFiles/out.dir/src/main.cpp.obj: ../inc/helper.h
-CMakeFiles/out.dir/src/main.cpp.obj: ../inc/move.h
 CMakeFiles/out.dir/src/main.cpp.obj: ../src/main.cpp
 

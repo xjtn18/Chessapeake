@@ -11,8 +11,6 @@ iostream
 -
 
 C:/dev/projects/ChessLand/inc/GameInstance.h
-constants.h
-C:/dev/projects/ChessLand/inc/constants.h
 Coord.h
 C:/dev/projects/ChessLand/inc/Coord.h
 Pieces.h
@@ -23,27 +21,23 @@ algorithm
 -
 stack
 -
+fstream
+-
+
+C:/dev/projects/ChessLand/inc/MoveParser.h
+GameInstance.h
+C:/dev/projects/ChessLand/inc/GameInstance.h
+iostream
+-
+string
+-
+regex
+-
 
 C:/dev/projects/ChessLand/inc/Pieces.h
 iterator
 -
 vector
--
-constants.h
-C:/dev/projects/ChessLand/inc/constants.h
-Coord.h
-C:/dev/projects/ChessLand/inc/Coord.h
-
-C:/dev/projects/ChessLand/inc/constants.h
-map
--
-iostream
--
-math.h
--
-vector
--
-stdexcept
 -
 Coord.h
 C:/dev/projects/ChessLand/inc/Coord.h
@@ -59,6 +53,14 @@ vector
 -
 Coord.h
 C:/dev/projects/ChessLand/inc/Coord.h
+map
+-
+iostream
+-
+math.h
+-
+stdexcept
+-
 
 C:/dev/projects/ChessLand/src/GameInstance.cpp
 ../inc/GameInstance.h
@@ -69,4 +71,16 @@ C:/dev/projects/ChessLand/src/King.cpp
 C:/dev/projects/ChessLand/inc/Pieces.h
 ../inc/GameInstance.h
 C:/dev/projects/ChessLand/inc/GameInstance.h
+
+C:/dev/projects/ChessLand/src/main.cpp
+../inc/Pieces.h
+C:/dev/projects/ChessLand/inc/Pieces.h
+../inc/Coord.h
+C:/dev/projects/ChessLand/inc/Coord.h
+../inc/MoveParser.h
+C:/dev/projects/ChessLand/inc/MoveParser.h
+stdlib.h
+-
+process.h
+-
 

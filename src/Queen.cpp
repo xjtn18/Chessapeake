@@ -13,11 +13,13 @@ std::vector<Coord> Queen::getPlacements(FlatMatrix<AbstractPiece> board, int col
 		crow = row + e.y;
 		while (!board.outBounds(ccol, crow)){
 			square = board(ccol, crow);
-			if (square == nullptr || square->color != this->color){
+			if (square == nullptr){
 				placements.push_back({ccol, crow});
 				ccol = ccol + e.x;
 				crow = crow + e.y;
 			} else {
+				if (square->color != this->color)
+					placements.push_back({ccol, crow});
 				break;
 			}
 		}

@@ -1,19 +1,28 @@
 #pragma once
-#include "constants.h"
 #include "Coord.h"
 #include "Pieces.h"
 #include "helper.h"
 #include <algorithm>
 #include <stack>
+#include <fstream>
 
 
-struct UndoState {
+struct State {
 	// stores the state needed to properly undo a move
 	std::vector<AbstractPiece*> movers;
 	std::vector<AbstractPiece*> captures;
 	std::vector<bool> hasMoved;
 	std::vector<Coord> origins;
 	std::vector<Coord> landings;
+
+	void add(AbstractPiece* mover, AbstractPiece* capture, Coord c, Coord d){
+		// add the pieces that moved during this state (needs to be vectors to accomodate for castling)
+		movers.push_back(mover);
+		captures.push_back(capture);
+		hasMoved.push_back(mover->moved);
+		origins.push_back(c);
+		landings.push_back(d);
+	}
 };
 
 
@@ -26,9 +35,11 @@ public:
 	int boardHeight = 8;
 	std::string toMove = "white";
 	bool gameOver = false;
-	std::stack<UndoState> undoStack;
+	std::stack<State> undoStack;
+	std::stack<State> redoStack;
 
 	GameInstance(int numCol, int numRow);
+	GameInstance(const GameInstance& rhs);
 	~GameInstance();
 	void setupBoard();
 	void printBoard();
@@ -37,6 +48,7 @@ public:
 	void tick();
 	std::string swapPlayer(std::string color);
 	void undo();
+	void redo();
 	static std::vector<Coord> allAttackedSquares(FlatMatrix<AbstractPiece>& board, std::string defenderColor);
 	Coord findPawn(int col, int row);
 	Coord findKing();
