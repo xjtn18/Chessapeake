@@ -68,10 +68,10 @@ RM = "C:/Program Files/CMake/bin/cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:/dev/projects/ChessLand
+CMAKE_SOURCE_DIR = C:/dev/projects/Chessapeake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:/dev/projects/ChessLand/build
+CMAKE_BINARY_DIR = C:/dev/projects/Chessapeake/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -100,9 +100,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:/dev/projects/ChessLand/build/CMakeFiles C:/dev/projects/ChessLand/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:/dev/projects/Chessapeake/build/CMakeFiles C:/dev/projects/Chessapeake/build/CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:/dev/projects/ChessLand/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:/dev/projects/Chessapeake/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -143,14 +143,14 @@ out/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/build
 .PHONY : out/fast
 
-src/Bishop.obj: src/Bishop.cpp.obj
+src/Bishop.o: src/Bishop.cpp.o
 
-.PHONY : src/Bishop.obj
+.PHONY : src/Bishop.o
 
 # target to build an object file
-src/Bishop.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/Bishop.cpp.obj
-.PHONY : src/Bishop.cpp.obj
+src/Bishop.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/Bishop.cpp.o
+.PHONY : src/Bishop.cpp.o
 
 src/Bishop.i: src/Bishop.cpp.i
 
@@ -170,14 +170,14 @@ src/Bishop.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/Bishop.cpp.s
 .PHONY : src/Bishop.cpp.s
 
-src/Coord.obj: src/Coord.cpp.obj
+src/Coord.o: src/Coord.cpp.o
 
-.PHONY : src/Coord.obj
+.PHONY : src/Coord.o
 
 # target to build an object file
-src/Coord.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/Coord.cpp.obj
-.PHONY : src/Coord.cpp.obj
+src/Coord.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/Coord.cpp.o
+.PHONY : src/Coord.cpp.o
 
 src/Coord.i: src/Coord.cpp.i
 
@@ -197,14 +197,14 @@ src/Coord.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/Coord.cpp.s
 .PHONY : src/Coord.cpp.s
 
-src/GameInstance.obj: src/GameInstance.cpp.obj
+src/GameInstance.o: src/GameInstance.cpp.o
 
-.PHONY : src/GameInstance.obj
+.PHONY : src/GameInstance.o
 
 # target to build an object file
-src/GameInstance.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/GameInstance.cpp.obj
-.PHONY : src/GameInstance.cpp.obj
+src/GameInstance.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/GameInstance.cpp.o
+.PHONY : src/GameInstance.cpp.o
 
 src/GameInstance.i: src/GameInstance.cpp.i
 
@@ -224,14 +224,14 @@ src/GameInstance.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/GameInstance.cpp.s
 .PHONY : src/GameInstance.cpp.s
 
-src/King.obj: src/King.cpp.obj
+src/King.o: src/King.cpp.o
 
-.PHONY : src/King.obj
+.PHONY : src/King.o
 
 # target to build an object file
-src/King.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/King.cpp.obj
-.PHONY : src/King.cpp.obj
+src/King.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/King.cpp.o
+.PHONY : src/King.cpp.o
 
 src/King.i: src/King.cpp.i
 
@@ -251,14 +251,14 @@ src/King.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/King.cpp.s
 .PHONY : src/King.cpp.s
 
-src/Knight.obj: src/Knight.cpp.obj
+src/Knight.o: src/Knight.cpp.o
 
-.PHONY : src/Knight.obj
+.PHONY : src/Knight.o
 
 # target to build an object file
-src/Knight.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/Knight.cpp.obj
-.PHONY : src/Knight.cpp.obj
+src/Knight.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/Knight.cpp.o
+.PHONY : src/Knight.cpp.o
 
 src/Knight.i: src/Knight.cpp.i
 
@@ -278,14 +278,14 @@ src/Knight.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/Knight.cpp.s
 .PHONY : src/Knight.cpp.s
 
-src/MoveParser.obj: src/MoveParser.cpp.obj
+src/MoveParser.o: src/MoveParser.cpp.o
 
-.PHONY : src/MoveParser.obj
+.PHONY : src/MoveParser.o
 
 # target to build an object file
-src/MoveParser.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/MoveParser.cpp.obj
-.PHONY : src/MoveParser.cpp.obj
+src/MoveParser.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/MoveParser.cpp.o
+.PHONY : src/MoveParser.cpp.o
 
 src/MoveParser.i: src/MoveParser.cpp.i
 
@@ -305,14 +305,14 @@ src/MoveParser.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/MoveParser.cpp.s
 .PHONY : src/MoveParser.cpp.s
 
-src/Pawn.obj: src/Pawn.cpp.obj
+src/Pawn.o: src/Pawn.cpp.o
 
-.PHONY : src/Pawn.obj
+.PHONY : src/Pawn.o
 
 # target to build an object file
-src/Pawn.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/Pawn.cpp.obj
-.PHONY : src/Pawn.cpp.obj
+src/Pawn.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/Pawn.cpp.o
+.PHONY : src/Pawn.cpp.o
 
 src/Pawn.i: src/Pawn.cpp.i
 
@@ -332,14 +332,14 @@ src/Pawn.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/Pawn.cpp.s
 .PHONY : src/Pawn.cpp.s
 
-src/Queen.obj: src/Queen.cpp.obj
+src/Queen.o: src/Queen.cpp.o
 
-.PHONY : src/Queen.obj
+.PHONY : src/Queen.o
 
 # target to build an object file
-src/Queen.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/Queen.cpp.obj
-.PHONY : src/Queen.cpp.obj
+src/Queen.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/Queen.cpp.o
+.PHONY : src/Queen.cpp.o
 
 src/Queen.i: src/Queen.cpp.i
 
@@ -359,14 +359,14 @@ src/Queen.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/Queen.cpp.s
 .PHONY : src/Queen.cpp.s
 
-src/Rook.obj: src/Rook.cpp.obj
+src/Rook.o: src/Rook.cpp.o
 
-.PHONY : src/Rook.obj
+.PHONY : src/Rook.o
 
 # target to build an object file
-src/Rook.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/Rook.cpp.obj
-.PHONY : src/Rook.cpp.obj
+src/Rook.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/Rook.cpp.o
+.PHONY : src/Rook.cpp.o
 
 src/Rook.i: src/Rook.cpp.i
 
@@ -386,14 +386,14 @@ src/Rook.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/Rook.cpp.s
 .PHONY : src/Rook.cpp.s
 
-src/helper.obj: src/helper.cpp.obj
+src/helper.o: src/helper.cpp.o
 
-.PHONY : src/helper.obj
+.PHONY : src/helper.o
 
 # target to build an object file
-src/helper.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/helper.cpp.obj
-.PHONY : src/helper.cpp.obj
+src/helper.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/helper.cpp.o
+.PHONY : src/helper.cpp.o
 
 src/helper.i: src/helper.cpp.i
 
@@ -413,14 +413,14 @@ src/helper.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/helper.cpp.s
 .PHONY : src/helper.cpp.s
 
-src/main.obj: src/main.cpp.obj
+src/main.o: src/main.cpp.o
 
-.PHONY : src/main.obj
+.PHONY : src/main.o
 
 # target to build an object file
-src/main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/main.cpp.obj
-.PHONY : src/main.cpp.obj
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
 
@@ -449,37 +449,37 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... out"
-	@echo "... src/Bishop.obj"
+	@echo "... src/Bishop.o"
 	@echo "... src/Bishop.i"
 	@echo "... src/Bishop.s"
-	@echo "... src/Coord.obj"
+	@echo "... src/Coord.o"
 	@echo "... src/Coord.i"
 	@echo "... src/Coord.s"
-	@echo "... src/GameInstance.obj"
+	@echo "... src/GameInstance.o"
 	@echo "... src/GameInstance.i"
 	@echo "... src/GameInstance.s"
-	@echo "... src/King.obj"
+	@echo "... src/King.o"
 	@echo "... src/King.i"
 	@echo "... src/King.s"
-	@echo "... src/Knight.obj"
+	@echo "... src/Knight.o"
 	@echo "... src/Knight.i"
 	@echo "... src/Knight.s"
-	@echo "... src/MoveParser.obj"
+	@echo "... src/MoveParser.o"
 	@echo "... src/MoveParser.i"
 	@echo "... src/MoveParser.s"
-	@echo "... src/Pawn.obj"
+	@echo "... src/Pawn.o"
 	@echo "... src/Pawn.i"
 	@echo "... src/Pawn.s"
-	@echo "... src/Queen.obj"
+	@echo "... src/Queen.o"
 	@echo "... src/Queen.i"
 	@echo "... src/Queen.s"
-	@echo "... src/Rook.obj"
+	@echo "... src/Rook.o"
 	@echo "... src/Rook.i"
 	@echo "... src/Rook.s"
-	@echo "... src/helper.obj"
+	@echo "... src/helper.o"
 	@echo "... src/helper.i"
 	@echo "... src/helper.s"
-	@echo "... src/main.obj"
+	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
 .PHONY : help

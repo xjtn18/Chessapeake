@@ -25,7 +25,7 @@ void parseMoveRequest(std::string input, GameInstance& game){
 	} else if (patternMatch(input, "king")){
 		int dcol = coordMap.at(input[1]) - 1;
 		int drow = std::atoi(&input[2]) - 1;
-		c = game.findKing();
+		c = GameInstance::findKing(game.mainboard, game.toMove);
 		game.requestMove(c,{dcol,drow});
 
 	// bishop move
@@ -63,7 +63,6 @@ void readMoveList(std::string filename, GameInstance& game){
 		parseMoveRequest(input, game);
 	}
 }
-
 
 
 

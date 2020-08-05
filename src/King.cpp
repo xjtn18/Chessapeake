@@ -2,6 +2,7 @@
 #include "../inc/GameInstance.h"
 
 
+
 King::King(std::string init_color) : AbstractPiece(init_color, 'K') { }
 
 
@@ -25,6 +26,7 @@ std::vector<Coord> King::getPlacements(FlatMatrix<AbstractPiece> board, int col,
 	
 	if (depth == 2){
 		this->checkCastling(board, col, row, placements); // will add castling priviliges if valid
+		GameInstance::filterSuicide(board, placements, col, row, color);
 	}
 	
 	return placements;

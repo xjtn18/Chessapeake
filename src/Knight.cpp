@@ -1,4 +1,5 @@
 #include "../inc/Pieces.h"
+#include "../inc/GameInstance.h"
 
 
 Knight::Knight(std::string init_color) : AbstractPiece(init_color, 'N') { }
@@ -19,6 +20,9 @@ std::vector<Coord> Knight::getPlacements(FlatMatrix<AbstractPiece> board, int co
 		}
 	}
 			
+	if (depth == 2){
+		GameInstance::filterSuicide(board, placements, col, row, color);
+	}
 	return placements;
 }
 

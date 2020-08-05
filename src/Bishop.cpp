@@ -1,5 +1,5 @@
 #include "../inc/Pieces.h"
-
+#include "../inc/GameInstance.h"
 
 Bishop::Bishop(std::string init_color) : AbstractPiece(init_color, 'B') { }
 
@@ -23,6 +23,10 @@ std::vector<Coord> Bishop::getPlacements(FlatMatrix<AbstractPiece> board, int co
 				break;
 			}
 		}
+	}
+
+	if (depth == 2){
+		GameInstance::filterSuicide(board, placements, col, row, color);
 	}
 			
 	return placements;

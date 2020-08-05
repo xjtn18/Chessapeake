@@ -1,4 +1,5 @@
 #include "../inc/Pieces.h"
+#include "../inc/GameInstance.h"
 
 
 Rook::Rook(std::string init_color) : AbstractPiece(init_color, 'R') { }
@@ -25,6 +26,9 @@ std::vector<Coord> Rook::getPlacements(FlatMatrix<AbstractPiece> board, int col,
 		}
 	}
 			
+	if (depth == 2){
+		GameInstance::filterSuicide(board, placements, col, row, color);
+	}
 	return placements;
 }
 

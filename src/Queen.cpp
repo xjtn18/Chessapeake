@@ -1,4 +1,5 @@
 #include "../inc/Pieces.h"
+#include "../inc/GameInstance.h"
 
 
 Queen::Queen(std::string init_color) : AbstractPiece(init_color, 'Q')  { }
@@ -23,6 +24,9 @@ std::vector<Coord> Queen::getPlacements(FlatMatrix<AbstractPiece> board, int col
 				break;
 			}
 		}
+	}
+	if (depth == 2){
+		GameInstance::filterSuicide(board, placements, col, row, color);
 	}
 			
 	return placements;

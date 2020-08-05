@@ -19,6 +19,16 @@
 #endif
 */
 
+void PrintHelp(){
+	CLEAROUT;
+	std::cout << "Commands: \n\
+u - undo \n\
+r - redo \n\
+exit - end program \n"
+		<< std::endl;
+	std::string _;
+	std::getline(std::cin, _);
+}
 
 
 void commandLoop(GameInstance& game){
@@ -40,6 +50,9 @@ void commandLoop(GameInstance& game){
 		} else if (input == "r"){
 			game.redo();
 
+		} else if (input == "help"){
+			PrintHelp();
+
 		} else {
 			parseMoveRequest(input, game); // check move request
 			if (game.gameOver){
@@ -53,7 +66,7 @@ void commandLoop(GameInstance& game){
 int main(){
 	GameInstance game = GameInstance(8,8); // create an 8x8 board
 	std::string filename = "../init_moves.txt";
-	//readMoveList(filename, game);
+	readMoveList(filename, game);
 	commandLoop(game);
 	
 	return 0;

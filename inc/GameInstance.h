@@ -49,9 +49,12 @@ public:
 	std::string swapPlayer(std::string color);
 	void undo();
 	void redo();
-	static std::vector<Coord> allAttackedSquares(FlatMatrix<AbstractPiece>& board, std::string defenderColor);
+	void handleCastle(AbstractPiece* mover, AbstractPiece* capture, Coord c, Coord d, State& state);
+	static void filterSuicide(FlatMatrix<AbstractPiece> board, std::vector<Coord>& placements, std::string color);
+	static void filterSuicide(FlatMatrix<AbstractPiece> board, std::vector<Coord>& placements, int col, int row, std::string color);
+	static std::vector<Coord> allAttackedSquares(FlatMatrix<AbstractPiece>& board, std::string defenderColor, int depth = 2);
 	Coord findPawn(int col, int row);
-	Coord findKing();
+	static Coord findKing(FlatMatrix<AbstractPiece> board, std::string color);
 
 	// templates must always be defined in headers
 	template<typename T>

@@ -6,17 +6,17 @@
 
 #IncludeRegexTransform: 
 
-C:/dev/projects/ChessLand/inc/Coord.h
+C:/dev/projects/Chessapeake/inc/Coord.h
 iostream
 -
 
-C:/dev/projects/ChessLand/inc/GameInstance.h
+C:/dev/projects/Chessapeake/inc/GameInstance.h
 Coord.h
-C:/dev/projects/ChessLand/inc/Coord.h
+C:/dev/projects/Chessapeake/inc/Coord.h
 Pieces.h
-C:/dev/projects/ChessLand/inc/Pieces.h
+C:/dev/projects/Chessapeake/inc/Pieces.h
 helper.h
-C:/dev/projects/ChessLand/inc/helper.h
+C:/dev/projects/Chessapeake/inc/helper.h
 algorithm
 -
 stack
@@ -24,9 +24,9 @@ stack
 fstream
 -
 
-C:/dev/projects/ChessLand/inc/MoveParser.h
+C:/dev/projects/Chessapeake/inc/MoveParser.h
 GameInstance.h
-C:/dev/projects/ChessLand/inc/GameInstance.h
+C:/dev/projects/Chessapeake/inc/GameInstance.h
 iostream
 -
 string
@@ -34,17 +34,17 @@ string
 regex
 -
 
-C:/dev/projects/ChessLand/inc/Pieces.h
+C:/dev/projects/Chessapeake/inc/Pieces.h
 iterator
 -
 vector
 -
 Coord.h
-C:/dev/projects/ChessLand/inc/Coord.h
+C:/dev/projects/Chessapeake/inc/Coord.h
 helper.h
-C:/dev/projects/ChessLand/inc/helper.h
+C:/dev/projects/Chessapeake/inc/helper.h
 
-C:/dev/projects/ChessLand/inc/helper.h
+C:/dev/projects/Chessapeake/inc/helper.h
 chrono
 -
 thread
@@ -52,7 +52,7 @@ thread
 vector
 -
 Coord.h
-C:/dev/projects/ChessLand/inc/Coord.h
+C:/dev/projects/Chessapeake/inc/Coord.h
 map
 -
 iostream
@@ -62,23 +62,57 @@ math.h
 stdexcept
 -
 
-C:/dev/projects/ChessLand/src/GameInstance.cpp
-../inc/GameInstance.h
-C:/dev/projects/ChessLand/inc/GameInstance.h
-
-C:/dev/projects/ChessLand/src/King.cpp
+C:/dev/projects/Chessapeake/src/Bishop.cpp
 ../inc/Pieces.h
-C:/dev/projects/ChessLand/inc/Pieces.h
+C:/dev/projects/Chessapeake/inc/Pieces.h
 ../inc/GameInstance.h
-C:/dev/projects/ChessLand/inc/GameInstance.h
+C:/dev/projects/Chessapeake/inc/GameInstance.h
 
-C:/dev/projects/ChessLand/src/main.cpp
+C:/dev/projects/Chessapeake/src/GameInstance.cpp
+../inc/GameInstance.h
+C:/dev/projects/Chessapeake/inc/GameInstance.h
+
+C:/dev/projects/Chessapeake/src/King.cpp
 ../inc/Pieces.h
-C:/dev/projects/ChessLand/inc/Pieces.h
-../inc/Coord.h
-C:/dev/projects/ChessLand/inc/Coord.h
+C:/dev/projects/Chessapeake/inc/Pieces.h
+../inc/GameInstance.h
+C:/dev/projects/Chessapeake/inc/GameInstance.h
+
+C:/dev/projects/Chessapeake/src/Knight.cpp
+../inc/Pieces.h
+C:/dev/projects/Chessapeake/inc/Pieces.h
+../inc/GameInstance.h
+C:/dev/projects/Chessapeake/inc/GameInstance.h
+
+C:/dev/projects/Chessapeake/src/MoveParser.cpp
 ../inc/MoveParser.h
-C:/dev/projects/ChessLand/inc/MoveParser.h
+C:/dev/projects/Chessapeake/inc/MoveParser.h
+
+C:/dev/projects/Chessapeake/src/Pawn.cpp
+../inc/Pieces.h
+C:/dev/projects/Chessapeake/inc/Pieces.h
+../inc/GameInstance.h
+C:/dev/projects/Chessapeake/inc/GameInstance.h
+
+C:/dev/projects/Chessapeake/src/Queen.cpp
+../inc/Pieces.h
+C:/dev/projects/Chessapeake/inc/Pieces.h
+../inc/GameInstance.h
+C:/dev/projects/Chessapeake/inc/GameInstance.h
+
+C:/dev/projects/Chessapeake/src/Rook.cpp
+../inc/Pieces.h
+C:/dev/projects/Chessapeake/inc/Pieces.h
+../inc/GameInstance.h
+C:/dev/projects/Chessapeake/inc/GameInstance.h
+
+C:/dev/projects/Chessapeake/src/main.cpp
+../inc/Pieces.h
+C:/dev/projects/Chessapeake/inc/Pieces.h
+../inc/Coord.h
+C:/dev/projects/Chessapeake/inc/Coord.h
+../inc/MoveParser.h
+C:/dev/projects/Chessapeake/inc/MoveParser.h
 stdlib.h
 -
 process.h

@@ -102,11 +102,15 @@ public:
 		: high(numRow), wide(numCol), mat(new C*[numCol * numRow]), SIZE(numCol * numRow)
 	{}
 
-	/*
-	FlatMatrix(const FlatMatrix& rhs)
-		: mat(new C*[])
-	{ }
-	*/
+
+	FlatMatrix(FlatMatrix& rhs)
+		: high(rhs.high), wide(rhs.wide), mat(new C*[rhs.wide * rhs.high]), SIZE(rhs.wide * rhs.high)
+	{
+		for (int x = 0; x < rhs.SIZE; x++){
+			//p("stackdumper");
+			mat[x] = rhs[x];
+		}
+	}
 
 	C*& operator()(int col, int row){
 		// Use THIS to index the matrix, as if it were a normal 2D matrix

@@ -1,4 +1,5 @@
 #include "../inc/Pieces.h"
+#include "../inc/GameInstance.h"
 
 
 Pawn::Pawn(std::string init_color) : AbstractPiece(init_color, 'P'){ }
@@ -35,6 +36,9 @@ std::vector<Coord> Pawn::getPlacements(FlatMatrix<AbstractPiece> board, int col,
 		}
 	} catch (const std::out_of_range& oor){}
 	
+	if (depth == 2){
+		GameInstance::filterSuicide(board, placements, col, row, color);
+	}
 	return placements;
 }
 	
