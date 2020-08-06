@@ -14,6 +14,10 @@ GameInstance::~GameInstance(){
 
 
 void GameInstance::setupBoard(){
+	//
+	// Places all the pieces on to the board (TODO: only works with 8x8 board; need specific functions for select configs)
+	//
+
 	// place Pawns
 	for (int x = 0; x < boardWidth; x++){
 		mainboard(x,1) = new Pawn("white");
@@ -50,14 +54,28 @@ void GameInstance::setupBoard(){
 
 
 void GameInstance::tick(){
+	//
+	// Represents a new turn in the game state
+	// Currently only swaps the player but may do more in the future
+	//
 	this->toMove = swapPlayer(this->toMove);
 }
 
 
+std::string GameInstance::swapPlayer(std::string color){
+	//
+	// Returns opposite player color
+	//
+	return color == "white" ? "black" : "white";
+}
 
 
 void GameInstance::requestMove(Coord c, Coord d){
+	// 
+	// Ask if the game state supports this move.
+	// If it does, make the move.
 	// c being moved piece coordinates, d being destination coordinates
+	//
 	std::vector<Coord> v = mainboard(c.x,c.y)->getPlacements(mainboard, c.x, c.y, 2);
 	if (std::find(v.begin(), v.end(), d) != v.end()){
 		this->makeMove(c, d);
@@ -68,6 +86,10 @@ void GameInstance::requestMove(Coord c, Coord d){
 
 
 void GameInstance::makeMove(Coord c, Coord d){
+	//
+	// This function is called after the move has been verified.
+	// Alters the mainboard to reflect the move and pushes the previous state to the undo stack
+	//
 	State state;
 	AbstractPiece* mover = mainboard(c.x, c.y);
 	AbstractPiece* capture = mainboard(d.x, d.y);
@@ -92,20 +114,20 @@ void GameInstance::makeMove(Coord c, Coord d){
 
 
 bool GameInstance::GameOver(std::string player_color){
+	//
 	// returns true if the giver player has checkmated their opponent
+	//
 	std::vector<Coord> all_attacked = GameInstance::allAttackedSquares(mainboard, player_color, 2);
-	//for (auto e : all_attacked){
-	//	std::cout << e << std::endl;
-	//}
-	//std::string _;
-	//std::getline(std::cin, _);
 	return all_attacked.empty();
 }
 
 
 
 void GameInstance::filterSuicide(FlatMatrix<AbstractPiece> board, std::vector<Coord>& placements, int col, int row, std::string color){
-	// disregard placements that put yourself in check (illegal)
+	//
+	// Disregard placements that put yourself in check (illegal).
+	// Takes reference to placements vector and remove placements that put yourself in check
+	//
 	Coord d;
 	for (int x = 0; x < placements.size(); x++){
 		d = placements[x];
@@ -127,6 +149,9 @@ void GameInstance::filterSuicide(FlatMatrix<AbstractPiece> board, std::vector<Co
 
 // NOTE: you dont write 'static' in the cpp definition, only the header; static in .cpp means something DIFFERENT
 std::vector<Coord> GameInstance::allAttackedSquares(FlatMatrix<AbstractPiece>& board, std::string defenderColor, int depth){
+	//
+	// Returns all the squares that are attacked by the defender's oppononent.
+	//
 	AbstractPiece* square;
 	std::vector<Coord> allPlacements, currPlacements;
 	for (int x = 0; x < board.wide; x++){
@@ -144,7 +169,9 @@ std::vector<Coord> GameInstance::allAttackedSquares(FlatMatrix<AbstractPiece>& b
 
 
 void GameInstance::handleCastle(AbstractPiece* mover, AbstractPiece* capture, Coord c, Coord d, State& state){
-	// check if castle move
+	//
+	// Checks if the latest move was a castle move and moves the caslted rook accordingly
+	//
 	int rook_position;
 	if (dynamic_cast<King*>(mover) != nullptr && abs(c.x - d.x) == 2){ // if a King was moved two squares, then they castled
 		if (c.x < d.x){ // kingside castle
@@ -159,16 +186,12 @@ void GameInstance::handleCastle(AbstractPiece* mover, AbstractPiece* capture, Co
 	}
 }
 
-std::string GameInstance::swapPlayer(std::string color){
-	if (color == "white"){
-		return "black";
-	} else {
-		return "white";
-	}
-}
 
 
 void GameInstance::undo(){
+	//
+	// Reverts to the last state at the top of the undoStack
+	//
 	if (this->undoStack.empty()) // nothing to undo
 		return;
 
@@ -187,6 +210,9 @@ void GameInstance::undo(){
 
 
 void GameInstance::redo(){
+	//
+	// Reverts to the last state at the top of the redoStack
+	//
 	if (this->redoStack.empty()) // nothing to undo
 		return;
 
@@ -206,7 +232,9 @@ void GameInstance::redo(){
 
 
 void GameInstance::printBoard(){
-	// Takes a width and a height
+	//
+	// Displays the board in the terminal
+	//
 	int idx;
 	int h = mainboard.high;
 	for (int x = 0; x < mainboard.SIZE; x++){
@@ -225,6 +253,9 @@ void GameInstance::printBoard(){
 
 
 Coord GameInstance::findPawn(int col, int row){
+	//
+	// Finds the pawn that can move (not capture) to the given column and row
+	//
 	Coord c = {-1,-1};
 	Coord d = {col, row};
 	AbstractPiece* piece;
@@ -246,6 +277,9 @@ Coord GameInstance::findPawn(int col, int row){
 
 
 Coord GameInstance::findKing(FlatMatrix<AbstractPiece> board, std::string color){
+	//
+	// Finds the King of the given color on the board.
+	//
 	Coord c = {-1,-1};
 	AbstractPiece* piece;
 	for (int x = 0; x < board.SIZE; x++){

@@ -28,6 +28,7 @@ struct State {
 
 
 class GameInstance {
+	// Stores the model and gamestate of the Chess match
 
 public:
 	FlatMatrix<AbstractPiece> mainboard;
