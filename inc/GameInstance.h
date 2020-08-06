@@ -8,7 +8,7 @@
 
 
 struct State {
-	// stores the state needed to properly undo a move
+	// stores the all of the state information needed to properly undo/redo a move
 	std::vector<AbstractPiece*> movers;
 	std::vector<AbstractPiece*> captures;
 	std::vector<bool> hasMoved;
@@ -34,7 +34,8 @@ public:
 	int boardWidth = 8;
 	int boardHeight = 8;
 	std::string toMove = "white";
-	bool gameOver = false;
+	bool game_over = false;
+	std::string game_winner = "";
 	std::stack<State> undoStack;
 	std::stack<State> redoStack;
 
@@ -50,15 +51,21 @@ public:
 	void undo();
 	void redo();
 	void handleCastle(AbstractPiece* mover, AbstractPiece* capture, Coord c, Coord d, State& state);
+	bool GameOver(std::string player_color);
 	static void filterSuicide(FlatMatrix<AbstractPiece> board, std::vector<Coord>& placements, std::string color);
 	static void filterSuicide(FlatMatrix<AbstractPiece> board, std::vector<Coord>& placements, int col, int row, std::string color);
-	static std::vector<Coord> allAttackedSquares(FlatMatrix<AbstractPiece>& board, std::string defenderColor, int depth = 2);
+	static std::vector<Coord> allAttackedSquares(FlatMatrix<AbstractPiece>& board, std::string defenderColor, int depth = 1);
 	Coord findPawn(int col, int row);
 	static Coord findKing(FlatMatrix<AbstractPiece> board, std::string color);
+
 
 	// templates must always be defined in headers
 	template<typename T>
 	Coord findPiece(int col, int row){
+		//
+		// Finds the piece that can make the requested move.
+		// Throws an error if no piece is found that can make such a move.
+		// 
 		Coord c = {-1,-1};
 		Coord d = {col, row};
 		AbstractPiece* piece;

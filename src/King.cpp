@@ -35,7 +35,7 @@ std::vector<Coord> King::getPlacements(FlatMatrix<AbstractPiece> board, int col,
 
 void King::checkCastling(FlatMatrix<AbstractPiece>& board, int col, int row, std::vector<Coord>& placements){
 	std::vector<Coord> passingSquares;
-	std::vector<Coord> allAttacked = GameInstance::allAttackedSquares(board, this->color);
+	std::vector<Coord> allAttacked = GameInstance::allAttackedSquares(board, this->color, 1);
 	Coord c = {col, row}; // current king position
 	if (this->moved || std::find(allAttacked.begin(), allAttacked.end(), c) != allAttacked.end()) // if in check or has moved
 		return;
@@ -45,7 +45,7 @@ void King::checkCastling(FlatMatrix<AbstractPiece>& board, int col, int row, std
 	AbstractPiece* kingsideRook = board(board.wide-1, row); // assuming rook is on the edge
 	bool passingSafe = true;
 	if (!kingsideRook->moved){
-		// check passing squares and if currently in check
+		// check passing squares
 		for ( auto ps : passingSquares){
 			if (board(ps.x, ps.y) != nullptr || std::find(allAttacked.begin(), allAttacked.end(), ps) != allAttacked.end()){
 				passingSafe = false;
@@ -61,7 +61,7 @@ void King::checkCastling(FlatMatrix<AbstractPiece>& board, int col, int row, std
 	AbstractPiece* queensideRook = board(0, row); // assuming rook is on the edge
 	passingSafe = true;
 	if (!queensideRook->moved){
-		// check passing squares and if currently in check
+		// check passing squares
 		for ( auto p : passingSquares){
 			if (board(p.x, p.y) != nullptr || std::find(allAttacked.begin(), allAttacked.end(), p) != allAttacked.end()){
 				passingSafe = false;

@@ -58,7 +58,7 @@ void GameInstance::tick(){
 
 void GameInstance::requestMove(Coord c, Coord d){
 	// c being moved piece coordinates, d being destination coordinates
-	std::vector<Coord> v = mainboard(c.x,c.y)->getPlacements(mainboard, c.x, c.y);
+	std::vector<Coord> v = mainboard(c.x,c.y)->getPlacements(mainboard, c.x, c.y, 2);
 	if (std::find(v.begin(), v.end(), d) != v.end()){
 		this->makeMove(c, d);
 	} else {
@@ -80,8 +80,66 @@ void GameInstance::makeMove(Coord c, Coord d){
 	undoStack.push(state); // store state so it can be undone
 	redoStack = {}; // clear the redo stack; a move was made in a previous position
 
+	if(GameOver(this->toMove)){
+		this->game_winner = this->toMove;
+		this->game_over = true;
+	}
+
 	mover->moved = true;
 	this->tick();
+}
+
+
+
+bool GameInstance::GameOver(std::string player_color){
+	// returns true if the giver player has checkmated their opponent
+	std::vector<Coord> all_attacked = GameInstance::allAttackedSquares(mainboard, player_color, 2);
+	//for (auto e : all_attacked){
+	//	std::cout << e << std::endl;
+	//}
+	//std::string _;
+	//std::getline(std::cin, _);
+	return all_attacked.empty();
+}
+
+
+
+void GameInstance::filterSuicide(FlatMatrix<AbstractPiece> board, std::vector<Coord>& placements, int col, int row, std::string color){
+	// disregard placements that put yourself in check (illegal)
+	Coord d;
+	for (int x = 0; x < placements.size(); x++){
+		d = placements[x];
+		AbstractPiece* mover = board(col, row);
+		AbstractPiece* capture = board(d.x, d.y);
+		board(d.x, d.y) = mover;
+		board(col, row) = nullptr; // empty previous residing square
+		Coord k = GameInstance::findKing(board, color);
+		std::vector<Coord> all_attacked = GameInstance::allAttackedSquares(board, color, 1);
+		if (std::find(all_attacked.begin(), all_attacked.end(), k) != all_attacked.end()){
+			placements.erase(placements.begin() + x);
+			x--;
+		}
+		board(d.x, d.y) = capture;
+		board(col, row) = mover; // empty previous residing square
+	}
+}
+
+
+// NOTE: you dont write 'static' in the cpp definition, only the header; static in .cpp means something DIFFERENT
+std::vector<Coord> GameInstance::allAttackedSquares(FlatMatrix<AbstractPiece>& board, std::string defenderColor, int depth){
+	AbstractPiece* square;
+	std::vector<Coord> allPlacements, currPlacements;
+	for (int x = 0; x < board.wide; x++){
+		for (int y = 0; y < board.high; y++){
+			square = board(x,y);
+			if (square != nullptr && square->color != defenderColor){
+				currPlacements = square->getPlacements(board, x, y, depth);
+				for (auto e : currPlacements)
+					allPlacements.push_back(e);
+			}
+		}
+	}
+	return allPlacements;
 }
 
 
@@ -146,6 +204,7 @@ void GameInstance::redo(){
 }
 
 
+
 void GameInstance::printBoard(){
 	// Takes a width and a height
 	int idx;
@@ -163,7 +222,6 @@ void GameInstance::printBoard(){
 			std::cout << "\n";
 	}
 }
-
 
 
 Coord GameInstance::findPawn(int col, int row){
@@ -199,47 +257,6 @@ Coord GameInstance::findKing(FlatMatrix<AbstractPiece> board, std::string color)
 	}
 	return c;
 }
-
-
-
-// NOTE: you dont write 'static' in the cpp definition, only the header; static in .cpp means something DIFFERENT
-std::vector<Coord> GameInstance::allAttackedSquares(FlatMatrix<AbstractPiece>& board, std::string defenderColor, int depth){
-	AbstractPiece* square;
-	std::vector<Coord> allPlacements, currPlacements;
-	for (int x = 0; x < board.wide; x++){
-		for (int y = 0; y < board.high; y++){
-			square = board(x,y);
-			if (square != nullptr && square->color != defenderColor){
-				currPlacements = square->getPlacements(board, x, y, 1);
-				for (auto e : currPlacements)
-					allPlacements.push_back(e);
-			}
-		}
-	}
-	return allPlacements;
-}
-
-
-void GameInstance::filterSuicide(FlatMatrix<AbstractPiece> board, std::vector<Coord>& placements, int col, int row, std::string color){
-	// disregard placements that put yourself in check (illegal)
-	Coord d;
-	for (int x = 0; x < placements.size(); x++){
-		d = placements[x];
-		AbstractPiece* mover = board(col, row);
-		AbstractPiece* capture = board(d.x, d.y);
-		board(d.x, d.y) = mover;
-		board(col, row) = nullptr; // empty previous residing square
-		Coord k = GameInstance::findKing(board, color);
-		std::vector<Coord> all_attacked = GameInstance::allAttackedSquares(board, color, 1);
-		if (std::find(all_attacked.begin(), all_attacked.end(), k) != all_attacked.end()){
-			placements.erase(placements.begin() + x);
-			x--;
-		}
-		board(d.x, d.y) = capture;
-		board(col, row) = mover; // empty previous residing square
-	}
-}
-
 
 
 

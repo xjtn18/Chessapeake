@@ -57,6 +57,15 @@ void p(std::vector<T> v){
 	p("");
 }
 
+
+template <typename T>
+void buffer(T input){
+	std::cout << input << std::endl;
+	std::string _;
+	std::getline(std::cin, _);
+}
+
+
 // ##################
 //chess land helper functions/ class templates
 // ##################

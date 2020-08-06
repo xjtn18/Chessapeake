@@ -55,7 +55,12 @@ void commandLoop(GameInstance& game){
 
 		} else {
 			parseMoveRequest(input, game); // check move request
-			if (game.gameOver){
+			// dangerous in scenario that game_over was set but game_winner was not
+			if (game.game_over){
+				CLEAROUT;
+				game.printBoard();
+				std::cout << "\n" << game.game_winner << " wins." << std::endl; // TODO: store how the player won as well (time/checkmate)
+				buffer("");
 				return;
 			}
 		}
@@ -66,7 +71,7 @@ void commandLoop(GameInstance& game){
 int main(){
 	GameInstance game = GameInstance(8,8); // create an 8x8 board
 	std::string filename = "../init_moves.txt";
-	readMoveList(filename, game);
+	//readMoveList(filename, game);
 	commandLoop(game);
 	
 	return 0;

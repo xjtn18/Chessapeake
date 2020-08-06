@@ -11,7 +11,7 @@ void readMoveList(std::string filename, GameInstance& game);
 const std::map<std::string, std::string> piecePatterns{
 	{"pawn", "[a-h][1-8]"},
 	{"king", "K[a-h][1-8]"},
-	{"bishop", "B[a-h][1-8]"}, 
+	{"bishop", "B[a-h][1-8]"},
 	{"queen", "Q[a-h][1-8]"},
 	{"rook", "R[a-h][1-8]"},
 	{"knight", "N[a-h][1-8]"}
