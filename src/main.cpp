@@ -71,7 +71,7 @@ void commandLoop(GameInstance& game){
 int main(){
 	GameInstance game = GameInstance(8,8); // create an 8x8 board
 	std::string filename = "../init_moves.txt";
-	//readMoveList(filename, game);
+	//readMoveList(filename, game); // set board position by making all moves listed in txt file
 	commandLoop(game);
 	
 	return 0;

@@ -1,6 +1,13 @@
 #include "../inc/GameInstance.h"
 
 
+
+namespace Check{
+	bool IsCapture(FlatMatrix<AbstractPiece>& board, Coord d){
+		return board(d.x, d.y) != nullptr;
+	}
+}
+
 GameInstance::GameInstance(int numCol, int numRow)
  	: boardWidth(numCol), boardHeight(numRow), mainboard(FlatMatrix<AbstractPiece>(numCol, numRow))
 {

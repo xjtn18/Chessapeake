@@ -7,6 +7,11 @@
 #include <fstream>
 
 
+namespace Check{
+	bool IsCapture(FlatMatrix<AbstractPiece>& board, Coord d);
+};
+
+
 struct State {
 	// stores the all of the state information needed to properly undo/redo a move
 	std::vector<AbstractPiece*> movers;
@@ -62,14 +67,35 @@ public:
 
 	// templates must always be defined in headers
 	template<typename T>
-	Coord findPiece(int col, int row){
+	Coord findPiece(int dcol, int drow, bool capture_requested, int pawn_col = -1){
 		//
 		// Finds the piece that can make the requested move.
 		// Throws an error if no piece is found that can make such a move.
-		// 
+		//
+
+
+		bool found = false;
 		Coord c = {-1,-1};
-		Coord d = {col, row};
+		Coord d = {dcol, drow};
+		if (Check::IsCapture(mainboard, d) != capture_requested){ // check to make sure user specified 'takes' when they should have
+			return c;
+		}
 		AbstractPiece* piece;
+
+		if (pawn_col != -1){
+			for (int y = 0; y < mainboard.high; y++){
+				piece = mainboard(pawn_col, y);
+				if (piece != nullptr && piece->color == this->toMove){
+					std::vector<Coord> v = piece->getPlacements(mainboard, pawn_col, y);
+					if (std::find(v.begin(), v.end(), d) != v.end()){
+						c = {pawn_col, y};
+						break;
+					}
+				}
+			}
+			return c;
+		}
+
 		for (int x = 0; x < mainboard.wide; x++){
 			for (int y = 0; y < mainboard.high; y++){
 				piece = mainboard(x, y);
@@ -77,13 +103,16 @@ public:
 					std::vector<Coord> v = piece->getPlacements(mainboard, x, y);
 					if (std::find(v.begin(), v.end(), d) != v.end()){
 						c = {x, y};
-						break;
+						if (found){ // if we have already found another similar piece that can make this move
+							std::cout << "Ambiguous" << std::endl;
+							c = {-1,-1}; // set c to bad
+							return c;
+						}
+						found = true;
 					}
 				}
 			}
 		}
-		if (!c)
-			p("Invalid Move");
 		return c;
 	}
 

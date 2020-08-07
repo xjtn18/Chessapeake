@@ -8,26 +8,38 @@ bool patternMatch(std::string input, std::string piece_str);
 void parseMoveRequest(std::string input, GameInstance& game);
 void readMoveList(std::string filename, GameInstance& game);
 
-const std::map<std::string, std::string> piecePatterns{
-	{"pawn", "[a-h][1-8]"},
-	{"king", "K[a-h][1-8]"},
-	{"bishop", "B[a-h][1-8]"},
-	{"queen", "Q[a-h][1-8]"},
-	{"rook", "R[a-h][1-8]"},
-	{"knight", "N[a-h][1-8]"}
+
+struct InvalidMove : public std::exception
+{
+	std::string err() const throw (){
+		return "Invalid move was requested";
+	}
 };
 
+const std::map<std::string, std::string> piecePatterns{
+	{"pawn", "[a-h](x[a-h])?[1-8]"},
+	{"king", "Kx?[a-h][1-8]"},
+	{"bishop", "Bx?[a-h][1-8]"},
+	{"queen", "Qx?[a-h][1-8]"},
+	{"rook", "Rx?[a-h][1-8]"},
+	{"knight", "Nx?[a-h][1-8]"}
+};
+
+
 template<typename T>
-void getCurrentAndDestination(std::string input, GameInstance& game){
+void getCurrentAndDestination(std::string input, GameInstance& game, Coord& c, Coord& d){
 	// pulls current coordinate and destination coordinate and edits reference coordinates
-	Coord c, d;
-	int dcol = coordMap.at(input[1]) - 1;
-	int drow = std::atoi(&input[2]) - 1;
-	c = game.findPiece<T>(dcol, drow);
+	int dcol, drow, pawn_col = -1;
+	dcol = coordMap.at(input[input.length()-2]) - 1;
+	drow = std::atoi(&(input[input.length()-1])) - 1;
+	bool capture_requested = (input.find('x') != std::string::npos); // true if 'x' was found in the notation
+	if (patternMatch(input, "pawn")){
+		pawn_col = coordMap.at(input[0]) - 1;
+	}
+	c = game.findPiece<T>(dcol, drow, capture_requested, pawn_col);
 	if (!c)
-		return;
+		throw InvalidMove();
 	d = {dcol, drow};
-	game.requestMove(c, d);
 }
 
 

@@ -44,7 +44,7 @@ void King::checkCastling(FlatMatrix<AbstractPiece>& board, int col, int row, std
 	passingSquares = {{col + 1, row}, {col + 2, row}};
 	AbstractPiece* kingsideRook = board(board.wide-1, row); // assuming rook is on the edge
 	bool passingSafe = true;
-	if (!kingsideRook->moved){
+	if (kingsideRook != nullptr && !kingsideRook->moved){
 		// check passing squares
 		for ( auto ps : passingSquares){
 			if (board(ps.x, ps.y) != nullptr || std::find(allAttacked.begin(), allAttacked.end(), ps) != allAttacked.end()){
@@ -60,7 +60,7 @@ void King::checkCastling(FlatMatrix<AbstractPiece>& board, int col, int row, std
 	passingSquares = {{col - 1, row}, {col - 2, row}};
 	AbstractPiece* queensideRook = board(0, row); // assuming rook is on the edge
 	passingSafe = true;
-	if (!queensideRook->moved){
+	if (queensideRook != nullptr && !queensideRook->moved){
 		// check passing squares
 		for ( auto p : passingSquares){
 			if (board(p.x, p.y) != nullptr || std::find(allAttacked.begin(), allAttacked.end(), p) != allAttacked.end()){
