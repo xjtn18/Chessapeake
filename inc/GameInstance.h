@@ -7,8 +7,44 @@
 #include <fstream>
 
 
-namespace Check{
+namespace NotationInputManager{
 	bool IsCapture(FlatMatrix<AbstractPiece>& board, Coord d);
+	Coord FindPawn(FlatMatrix<AbstractPiece> board, Coord d, int pawn_col, std::string player);
+
+	// templates must always be defined in headers
+	template<typename T>
+	Coord FindPiece(FlatMatrix<AbstractPiece> board, Coord d, std::string player, bool capture_requested){
+		//
+		// Finds the piece that can make the requested move.
+		// Throws an error if no piece is found that can make such a move.
+		//
+		bool found = false;
+		Coord c;
+		AbstractPiece* piece;
+
+		if (NotationInputManager::IsCapture(board, d) != capture_requested){ // check to make sure user specified 'takes' when they should have
+			return c;
+		}
+
+		for (int x = 0; x < board.wide; x++){
+			for (int y = 0; y < board.high; y++){
+				piece = board(x, y);
+				if (dynamic_cast<T*>(piece) != nullptr && piece->color == player){ // if its the type piece we're looking for
+					std::vector<Coord> v = piece->getPlacements(board, x, y, 2);
+					if (std::find(v.begin(), v.end(), d) != v.end()){
+						c = {x, y};
+						if (found){ // if we have already found another similar piece that can make this move
+							std::cout << "Ambiguous" << std::endl;
+							c = {-1,-1}; // set c to back to bad coordinate
+							return c;
+						}
+						found = true;
+					}
+				}
+			}
+		}
+		return c;
+	}
 };
 
 
@@ -61,60 +97,9 @@ public:
 	static void filterSuicide(FlatMatrix<AbstractPiece> board, std::vector<Coord>& placements, std::string color);
 	static void filterSuicide(FlatMatrix<AbstractPiece> board, std::vector<Coord>& placements, int col, int row, std::string color);
 	static std::vector<Coord> allAttackedSquares(FlatMatrix<AbstractPiece>& board, std::string defenderColor, int depth = 1);
-	Coord findPawn(int col, int row);
 	static Coord findKing(FlatMatrix<AbstractPiece> board, std::string color);
 
 
-	// templates must always be defined in headers
-	template<typename T>
-	Coord findPiece(int dcol, int drow, bool capture_requested, int pawn_col = -1){
-		//
-		// Finds the piece that can make the requested move.
-		// Throws an error if no piece is found that can make such a move.
-		//
-
-
-		bool found = false;
-		Coord c = {-1,-1};
-		Coord d = {dcol, drow};
-		if (Check::IsCapture(mainboard, d) != capture_requested){ // check to make sure user specified 'takes' when they should have
-			return c;
-		}
-		AbstractPiece* piece;
-
-		if (pawn_col != -1){
-			for (int y = 0; y < mainboard.high; y++){
-				piece = mainboard(pawn_col, y);
-				if (piece != nullptr && piece->color == this->toMove){
-					std::vector<Coord> v = piece->getPlacements(mainboard, pawn_col, y);
-					if (std::find(v.begin(), v.end(), d) != v.end()){
-						c = {pawn_col, y};
-						break;
-					}
-				}
-			}
-			return c;
-		}
-
-		for (int x = 0; x < mainboard.wide; x++){
-			for (int y = 0; y < mainboard.high; y++){
-				piece = mainboard(x, y);
-				if (dynamic_cast<T*>(piece) != nullptr && piece->color == this->toMove){ // if its the type piece we're looking for
-					std::vector<Coord> v = piece->getPlacements(mainboard, x, y);
-					if (std::find(v.begin(), v.end(), d) != v.end()){
-						c = {x, y};
-						if (found){ // if we have already found another similar piece that can make this move
-							std::cout << "Ambiguous" << std::endl;
-							c = {-1,-1}; // set c to bad
-							return c;
-						}
-						found = true;
-					}
-				}
-			}
-		}
-		return c;
-	}
 
 };
 

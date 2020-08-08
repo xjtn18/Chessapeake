@@ -29,14 +29,16 @@ const std::map<std::string, std::string> piecePatterns{
 template<typename T>
 void getCurrentAndDestination(std::string input, GameInstance& game, Coord& c, Coord& d){
 	// pulls current coordinate and destination coordinate and edits reference coordinates
-	int dcol, drow, pawn_col = -1;
+	int dcol, drow, pawn_col;
 	dcol = coordMap.at(input[input.length()-2]) - 1;
 	drow = std::atoi(&(input[input.length()-1])) - 1;
 	bool capture_requested = (input.find('x') != std::string::npos); // true if 'x' was found in the notation
 	if (patternMatch(input, "pawn")){
 		pawn_col = coordMap.at(input[0]) - 1;
+		c = NotationInputManager::FindPawn(game.mainboard, {dcol, drow}, pawn_col, game.toMove);
+	} else {
+		c = NotationInputManager::FindPiece<T>(game.mainboard, {dcol, drow}, game.toMove, capture_requested);
 	}
-	c = game.findPiece<T>(dcol, drow, capture_requested, pawn_col);
 	if (!c)
 		throw InvalidMove();
 	d = {dcol, drow};

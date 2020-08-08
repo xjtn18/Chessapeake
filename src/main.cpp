@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 // Change to 'CLS' instead of 'clear' this if you are running on windows without cygwin
-#define CLEAROUT system("clear") 
+const bool kCLEAR = true;
 
 
 // below doesnt work
@@ -19,8 +19,14 @@
 #endif
 */
 
+void ClearShell(){
+	if (kCLEAR){
+		system("clear");
+	}
+}
+
 void PrintHelp(){
-	CLEAROUT;
+	ClearShell();
 	std::cout << "Commands: \n\
 u - undo \n\
 r - redo \n\
@@ -36,7 +42,7 @@ void commandLoop(GameInstance& game){
 	std::string input;
 
 	while (!GAME_EXIT){
-		CLEAROUT;
+		ClearShell();
 		game.printBoard(); // display chess board
 		std::cout << "\n" << game.toMove << " to move :: ";
 		std::getline(std::cin, input); // pull move input
@@ -57,7 +63,7 @@ void commandLoop(GameInstance& game){
 			parseMoveRequest(input, game); // check move request
 			// dangerous in scenario that game_over was set but game_winner was not
 			if (game.game_over){
-				CLEAROUT;
+				ClearShell();
 				game.printBoard();
 				std::cout << "\n" << game.game_winner << " wins." << std::endl; // TODO: store how the player won as well (time/checkmate)
 				buffer("");

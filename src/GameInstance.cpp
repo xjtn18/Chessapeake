@@ -2,10 +2,29 @@
 
 
 
-namespace Check{
+namespace NotationInputManager{
 	bool IsCapture(FlatMatrix<AbstractPiece>& board, Coord d){
 		return board(d.x, d.y) != nullptr;
 	}
+
+	Coord FindPawn(FlatMatrix<AbstractPiece> board, Coord d, int pawn_col, std::string player){
+		AbstractPiece* piece;
+		Coord c;
+		if (pawn_col != -1){
+			for (int y = 0; y < board.high; y++){
+				piece = board(pawn_col, y);
+				if (piece != nullptr && piece->color == player){
+					std::vector<Coord> v = piece->getPlacements(board, pawn_col, y, 2);
+					if (std::find(v.begin(), v.end(), d) != v.end()){
+						c = {pawn_col, y};
+						break;
+					}
+				}
+			}
+		}
+		return c;
+	}
+
 }
 
 GameInstance::GameInstance(int numCol, int numRow)
@@ -257,31 +276,6 @@ void GameInstance::printBoard(){
 			std::cout << "\n";
 	}
 }
-
-
-Coord GameInstance::findPawn(int col, int row){
-	//
-	// Finds the pawn that can move (not capture) to the given column and row
-	//
-	Coord c = {-1,-1};
-	Coord d = {col, row};
-	AbstractPiece* piece;
-	for (int y = 0; y < mainboard.high; y++){
-		piece = mainboard(col, y);
-		if (dynamic_cast<Pawn*>(piece) != nullptr && piece->color == this->toMove){ // if its a Pawn
-			std::vector<Coord> v = piece->getPlacements(mainboard, col, y);
-			if (std::find(v.begin(), v.end(), d) != v.end()){
-				c = {col, y};
-				break;
-			}
-		}
-	}
-	// didnt find pawn that could make this move; invalid
-	if (!c)
-		p("Invalid Move");
-	return c;
-}
-
 
 Coord GameInstance::findKing(FlatMatrix<AbstractPiece> board, std::string color){
 	//
