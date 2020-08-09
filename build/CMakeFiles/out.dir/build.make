@@ -174,18 +174,18 @@ CMakeFiles/out.dir/src/GameInstance.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/out.dir/src/GameInstance.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jacob/dev/projects/Chessapeake/src/GameInstance.cpp -o CMakeFiles/out.dir/src/GameInstance.cpp.s
 
-CMakeFiles/out.dir/src/helper.cpp.o: CMakeFiles/out.dir/flags.make
-CMakeFiles/out.dir/src/helper.cpp.o: ../src/helper.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jacob/dev/projects/Chessapeake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/out.dir/src/helper.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out.dir/src/helper.cpp.o -c /home/jacob/dev/projects/Chessapeake/src/helper.cpp
+CMakeFiles/out.dir/src/debug.cpp.o: CMakeFiles/out.dir/flags.make
+CMakeFiles/out.dir/src/debug.cpp.o: ../src/debug.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jacob/dev/projects/Chessapeake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/out.dir/src/debug.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out.dir/src/debug.cpp.o -c /home/jacob/dev/projects/Chessapeake/src/debug.cpp
 
-CMakeFiles/out.dir/src/helper.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/out.dir/src/helper.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jacob/dev/projects/Chessapeake/src/helper.cpp > CMakeFiles/out.dir/src/helper.cpp.i
+CMakeFiles/out.dir/src/debug.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/out.dir/src/debug.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jacob/dev/projects/Chessapeake/src/debug.cpp > CMakeFiles/out.dir/src/debug.cpp.i
 
-CMakeFiles/out.dir/src/helper.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/out.dir/src/helper.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jacob/dev/projects/Chessapeake/src/helper.cpp -o CMakeFiles/out.dir/src/helper.cpp.s
+CMakeFiles/out.dir/src/debug.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/out.dir/src/debug.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jacob/dev/projects/Chessapeake/src/debug.cpp -o CMakeFiles/out.dir/src/debug.cpp.s
 
 CMakeFiles/out.dir/src/MoveParser.cpp.o: CMakeFiles/out.dir/flags.make
 CMakeFiles/out.dir/src/MoveParser.cpp.o: ../src/MoveParser.cpp
@@ -211,7 +211,7 @@ out_OBJECTS = \
 "CMakeFiles/out.dir/src/Knight.cpp.o" \
 "CMakeFiles/out.dir/src/Bishop.cpp.o" \
 "CMakeFiles/out.dir/src/GameInstance.cpp.o" \
-"CMakeFiles/out.dir/src/helper.cpp.o" \
+"CMakeFiles/out.dir/src/debug.cpp.o" \
 "CMakeFiles/out.dir/src/MoveParser.cpp.o"
 
 # External object files for target out
@@ -226,7 +226,7 @@ out: CMakeFiles/out.dir/src/Rook.cpp.o
 out: CMakeFiles/out.dir/src/Knight.cpp.o
 out: CMakeFiles/out.dir/src/Bishop.cpp.o
 out: CMakeFiles/out.dir/src/GameInstance.cpp.o
-out: CMakeFiles/out.dir/src/helper.cpp.o
+out: CMakeFiles/out.dir/src/debug.cpp.o
 out: CMakeFiles/out.dir/src/MoveParser.cpp.o
 out: CMakeFiles/out.dir/build.make
 out: CMakeFiles/out.dir/link.txt

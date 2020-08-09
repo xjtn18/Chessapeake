@@ -4,7 +4,7 @@
 
 Rook::Rook(std::string init_color) : AbstractPiece(init_color, 'R') { }
 
-std::vector<Coord> Rook::getPlacements(FlatMatrix<AbstractPiece> board, int col, int row, int depth){
+std::vector<Coord> Rook::getPlacements(FlatMatrix<AbstractPiece>& board, int col, int row, int depth){
 	std::vector<Coord> placements;
 	std::vector<Coord> directions = {{1,0}, {-1,0}, {0,-1}, {0,1}};
 	AbstractPiece* square;

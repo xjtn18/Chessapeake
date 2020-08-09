@@ -366,32 +366,32 @@ src/Rook.cpp.s:
 	$(MAKE) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/Rook.cpp.s
 .PHONY : src/Rook.cpp.s
 
-src/helper.o: src/helper.cpp.o
+src/debug.o: src/debug.cpp.o
 
-.PHONY : src/helper.o
+.PHONY : src/debug.o
 
 # target to build an object file
-src/helper.cpp.o:
-	$(MAKE) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/helper.cpp.o
-.PHONY : src/helper.cpp.o
+src/debug.cpp.o:
+	$(MAKE) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/debug.cpp.o
+.PHONY : src/debug.cpp.o
 
-src/helper.i: src/helper.cpp.i
+src/debug.i: src/debug.cpp.i
 
-.PHONY : src/helper.i
+.PHONY : src/debug.i
 
 # target to preprocess a source file
-src/helper.cpp.i:
-	$(MAKE) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/helper.cpp.i
-.PHONY : src/helper.cpp.i
+src/debug.cpp.i:
+	$(MAKE) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/debug.cpp.i
+.PHONY : src/debug.cpp.i
 
-src/helper.s: src/helper.cpp.s
+src/debug.s: src/debug.cpp.s
 
-.PHONY : src/helper.s
+.PHONY : src/debug.s
 
 # target to generate assembly for a file
-src/helper.cpp.s:
-	$(MAKE) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/helper.cpp.s
-.PHONY : src/helper.cpp.s
+src/debug.cpp.s:
+	$(MAKE) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/debug.cpp.s
+.PHONY : src/debug.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -456,9 +456,9 @@ help:
 	@echo "... src/Rook.o"
 	@echo "... src/Rook.i"
 	@echo "... src/Rook.s"
-	@echo "... src/helper.o"
-	@echo "... src/helper.i"
-	@echo "... src/helper.s"
+	@echo "... src/debug.o"
+	@echo "... src/debug.i"
+	@echo "... src/debug.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

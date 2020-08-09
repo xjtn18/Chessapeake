@@ -4,7 +4,7 @@
 
 Knight::Knight(std::string init_color) : AbstractPiece(init_color, 'N') { }
 
-std::vector<Coord> Knight::getPlacements(FlatMatrix<AbstractPiece> board, int col, int row, int depth){
+std::vector<Coord> Knight::getPlacements(FlatMatrix<AbstractPiece>& board, int col, int row, int depth){
 	std::vector<Coord> placements;
 	std::vector<Coord> directions = {{1,2}, {1,-2}, {-1,2}, {-1,-2}, {2,-1}, {2,1}, {-2,1}, {-2,-1}};
 	AbstractPiece* square;

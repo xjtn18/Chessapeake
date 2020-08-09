@@ -4,23 +4,12 @@
 #include <stdlib.h>
 
 // Change to 'CLS' instead of 'clear' this if you are running on windows without cygwin
-const bool kCLEAR = true;
+#define kRefresh true
 
-
-// below doesnt work
-/*
-#ifdef __unix
-#define CLEAROUT system("clear")
-#endif
-
-#ifdef _WIN32
-#include <process.h>
-#define CLEAROUT system("CLS")
-#endif
-*/
 
 void ClearShell(){
-	if (kCLEAR){
+	if (kRefresh){
+		//std::cout << std::string(100, '\n');
 		system("clear");
 	}
 }

@@ -5,7 +5,7 @@
 Pawn::Pawn(std::string init_color) : AbstractPiece(init_color, 'P'){ }
 
 
-std::vector<Coord> Pawn::getPlacements(FlatMatrix<AbstractPiece> board, int col, int row, int depth){
+std::vector<Coord> Pawn::getPlacements(FlatMatrix<AbstractPiece>& board, int col, int row, int depth){
 	std::vector<Coord> placements;
 	Coord c;
 

@@ -1,50 +1,60 @@
 #include "../inc/MoveParser.h"
 
 
+bool IsCapture(FlatMatrix<AbstractPiece>& board, Coord d){
+	return board(d.x, d.y) != nullptr;
+}
+
+
+Coord FindPawn(FlatMatrix<AbstractPiece>& board, Coord d, int pawn_col, std::string player){
+	AbstractPiece* piece;
+	Coord c;
+	for (int y = 0; y < board.high; y++){
+		piece = board(pawn_col, y);
+		if (dynamic_cast<Pawn*>(piece) != nullptr && piece->color == player){ // if its the type piece we're looking for
+			std::vector<Coord> v = piece->getPlacements(board, pawn_col, y, 2);
+			if (std::find(v.begin(), v.end(), d) != v.end()){
+				c = {pawn_col, y};
+				break;
+			}
+		}
+	}
+	return c;
+}
+
+
 bool patternMatch(std::string input, std::string piece_str){
 	return std::regex_match(input, std::regex(piecePatterns.at(piece_str)));
 }
 
 
-
 void parseMoveRequest(std::string input, GameInstance& game){
-	Coord c = {-1,-1}, d = {-1,-1};
+	Coord c, d;
 
 	try {
 		// pawn move
 		if (patternMatch(input, "pawn")){
-			//int dcol = coordMap.at(input[0]) - 1;
-			//int drow = std::atoi(&input[1]) - 1;
-			//c = game.findPawn(dcol, drow);
-			//if (!c) return; // no such pawn that can make this move; invalid
-			//game.requestMove(c,{dcol, drow}, capture_requested);
-			//return;
-			getCurrentAndDestination<Pawn>(input, game, c, d);
+			CheckMove<Pawn>(input, game, c, d);
 		
 		// king move
 		} else if (patternMatch(input, "king")){
-			//int dcol = coordMap.at(input[1]) - 1;
-			//int drow = std::atoi(&input[2]) - 1;
-			//c = GameInstance::findKing(game.mainboard, game.toMove);
-			//game.requestMove(c,{dcol,drow}, capture_requested);
-			//return;
-			getCurrentAndDestination<King>(input, game, c, d);
+			CheckMove<King>(input, game, c, d);
 
 		// bishop move
 		} else if (patternMatch(input, "bishop")){
-			getCurrentAndDestination<Bishop>(input, game, c, d);
+			CheckMove<Bishop>(input, game, c, d);
 
 		// knight move
 		} else if (patternMatch(input, "knight")){
-			getCurrentAndDestination<Knight>(input, game, c, d);
+			CheckMove<Knight>(input, game, c, d);
 
 		// rook move
 		} else if (patternMatch(input, "rook")){
-			getCurrentAndDestination<Rook>(input, game, c, d);
+			CheckMove<Rook>(input, game, c, d);
 
 		// queen move
 		} else if (patternMatch(input, "queen")){
-			getCurrentAndDestination<Queen>(input, game, c, d);
+			CheckMove<Queen>(input, game, c, d);
 		
 		} else if (input == "O-O"){
 			
@@ -54,7 +64,7 @@ void parseMoveRequest(std::string input, GameInstance& game){
 			return;
 		}
 
-		game.requestMove(c, d);
+		game.makeMove(c, d);
 
 	} catch (InvalidMove& ex){
 		p("Invalid Move");

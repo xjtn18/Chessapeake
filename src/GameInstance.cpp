@@ -1,38 +1,11 @@
 #include "../inc/GameInstance.h"
 
 
-
-namespace NotationInputManager{
-	bool IsCapture(FlatMatrix<AbstractPiece>& board, Coord d){
-		return board(d.x, d.y) != nullptr;
-	}
-
-	Coord FindPawn(FlatMatrix<AbstractPiece> board, Coord d, int pawn_col, std::string player){
-		AbstractPiece* piece;
-		Coord c;
-		if (pawn_col != -1){
-			for (int y = 0; y < board.high; y++){
-				piece = board(pawn_col, y);
-				if (piece != nullptr && piece->color == player){
-					std::vector<Coord> v = piece->getPlacements(board, pawn_col, y, 2);
-					if (std::find(v.begin(), v.end(), d) != v.end()){
-						c = {pawn_col, y};
-						break;
-					}
-				}
-			}
-		}
-		return c;
-	}
-
-}
-
 GameInstance::GameInstance(int numCol, int numRow)
  	: boardWidth(numCol), boardHeight(numRow), mainboard(FlatMatrix<AbstractPiece>(numCol, numRow))
 {
 	setupBoard();
 }
-
 
 
 GameInstance::~GameInstance(){
@@ -96,19 +69,6 @@ std::string GameInstance::swapPlayer(std::string color){
 }
 
 
-void GameInstance::requestMove(Coord c, Coord d){
-	// 
-	// Ask if the game state supports this move.
-	// If it does, make the move.
-	// c being moved piece coordinates, d being destination coordinates
-	//
-	std::vector<Coord> v = mainboard(c.x,c.y)->getPlacements(mainboard, c.x, c.y, 2);
-	if (std::find(v.begin(), v.end(), d) != v.end()){
-		this->makeMove(c, d);
-	} else {
-		p("Invalid Move");
-	}
-}
 
 
 void GameInstance::makeMove(Coord c, Coord d){
@@ -149,7 +109,7 @@ bool GameInstance::GameOver(std::string player_color){
 
 
 
-void GameInstance::filterSuicide(FlatMatrix<AbstractPiece> board, std::vector<Coord>& placements, int col, int row, std::string color){
+void GameInstance::filterSuicide(FlatMatrix<AbstractPiece>& board, std::vector<Coord>& placements, int col, int row, std::string color){
 	//
 	// Disregard placements that put yourself in check (illegal).
 	// Takes reference to placements vector and remove placements that put yourself in check
@@ -263,7 +223,7 @@ void GameInstance::printBoard(){
 	//
 	int idx;
 	int h = mainboard.high;
-	for (int x = 0; x < mainboard.SIZE; x++){
+	for (int x = 0; x < mainboard.size; x++){
 		// get clockwise rotated index
 		idx = (x % h + 1) * h - floor(x / h) - 1;
 
@@ -277,13 +237,13 @@ void GameInstance::printBoard(){
 	}
 }
 
-Coord GameInstance::findKing(FlatMatrix<AbstractPiece> board, std::string color){
+Coord GameInstance::findKing(FlatMatrix<AbstractPiece>& board, std::string color){
 	//
 	// Finds the King of the given color on the board.
 	//
-	Coord c = {-1,-1};
+	Coord c;
 	AbstractPiece* piece;
-	for (int x = 0; x < board.SIZE; x++){
+	for (int x = 0; x < board.size; x++){
 		piece = board[x];
 		if (dynamic_cast<King*>(piece) != nullptr && piece->color == color){ // if its the King we want
 			c = board.rawIndexTo2D(x);

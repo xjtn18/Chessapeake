@@ -13,7 +13,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/jacob/dev/projects/Chessapeake/src/Pawn.cpp" "/home/jacob/dev/projects/Chessapeake/build/CMakeFiles/out.dir/src/Pawn.cpp.o"
   "/home/jacob/dev/projects/Chessapeake/src/Queen.cpp" "/home/jacob/dev/projects/Chessapeake/build/CMakeFiles/out.dir/src/Queen.cpp.o"
   "/home/jacob/dev/projects/Chessapeake/src/Rook.cpp" "/home/jacob/dev/projects/Chessapeake/build/CMakeFiles/out.dir/src/Rook.cpp.o"
-  "/home/jacob/dev/projects/Chessapeake/src/helper.cpp" "/home/jacob/dev/projects/Chessapeake/build/CMakeFiles/out.dir/src/helper.cpp.o"
+  "/home/jacob/dev/projects/Chessapeake/src/debug.cpp" "/home/jacob/dev/projects/Chessapeake/build/CMakeFiles/out.dir/src/debug.cpp.o"
   "/home/jacob/dev/projects/Chessapeake/src/main.cpp" "/home/jacob/dev/projects/Chessapeake/build/CMakeFiles/out.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
