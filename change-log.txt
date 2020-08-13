@@ -5,6 +5,7 @@ Change Log
 	- fixed call to allAttackedSquares in checkCastle that was being passed with a depth of 2
 	- fixed segfault in checkCastle where we were acessing ->moved on a nullptr if the the rook was not in the expected corner
 
-Issues:  
+TODO:  
 	- switch to unique_ptr's for safer memory cleanup  
-	- accept ambiguity clarifiying moves in the regex patterns
+	- accept ambiguity clarifiying moves in the regex patterns  
+	- pass boards as const and implement 'at' method in FlatMatrix that returns read-only element
