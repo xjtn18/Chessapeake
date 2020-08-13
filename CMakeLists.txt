@@ -16,7 +16,6 @@ add_executable(out
 	src/Knight.cpp
 	src/Bishop.cpp
 	src/GameInstance.cpp
-	src/debug.cpp
 	src/MoveParser.cpp
 )
 

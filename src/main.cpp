@@ -32,7 +32,7 @@ void commandLoop(GameInstance& game){
 
 	while (!GAME_EXIT){
 		ClearShell();
-		//game.printBoard(); // display chess board
+		game.printBoard(); // display chess board
 		std::cout << "\n" << game.mainstate.toMove << " to move :: ";
 		std::getline(std::cin, input); // pull move input
 

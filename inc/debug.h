@@ -1,6 +1,6 @@
 #pragma once
 #include "Coord.h"
-#include <chrono>
+#include <unistd.h>
 #include <thread>
 #include <vector>
 #include <iostream>
@@ -8,18 +8,17 @@
 #define PRINT_DEBUG 1 // set this to 0 if you dont want to see any of your debug prints
 
 //declarations
-void sleep(int sleeptime);
 
 
 // this template prints anything (singular value)
 template <typename T>
-void p(T x, bool nl = true, int sleeptime = 1){
+void p(T x, bool nl = true, uint sleeptime = 5){
 	if (!PRINT_DEBUG)
 		return;
 	std::cout << x;
 	if (nl)
 		std::cout << "\n";
-	sleep(sleeptime);
+	usleep(sleeptime * 100000);
 }
 
 

@@ -16,7 +16,7 @@ public:
 	int size; // raw length of the array
 
 	FlatMatrix(int numCol, int numRow)
-		: high(numRow), wide(numCol), mat(new C*[numCol * numRow]), size(numCol * numRow)
+		: high(numRow), wide(numCol), size(numCol * numRow), mat(new C*[numCol * numRow])
 	{
 		// fill with nullptrs;
 		for (int x = 0; x < this->size; x++){
@@ -24,19 +24,36 @@ public:
 		}
 	}
 
+
 	FlatMatrix(const FlatMatrix& other)
 		: high(other.high), wide(other.wide), mat(new C*[other.size]), size(other.size)
 	{
 		for (int x = 0; x < size; x++){
 			if (other.mat[x] != nullptr){
-				//p("piece");
-				mat[x] = other.mat[x]->clone();
+				mat[x] = other.mat[x]->clone(); // 'clone' method is the standard interface for cloning child objects
 			} else {
-				//p("null");
 				mat[x] = nullptr;
 			}
 		}
 	}
+
+
+	FlatMatrix& operator=(const FlatMatrix& other)
+	{
+		if (this != &other){
+			this->deallocate(); // deallocate the memory stored here now
+			for (int x = 0; x < size; x++){
+				if (other.mat[x] != nullptr){
+					mat[x] = other.mat[x]->clone(); // 'clone' method is the standard interface for cloning child objects
+				} else {
+					mat[x] = nullptr;
+				}
+			}
+			//return *FlatMatrix(other);
+		}
+		return *this;
+	}
+
 
 	C*& operator()(int col, int row){
 		// Use THIS to index the matrix, as if it were a normal 2D matrix
@@ -46,12 +63,14 @@ public:
 		throw std::out_of_range("Bad board index");
 	}
 
+
 	C*& operator[](int ind){
 		// Use this if you have a raw index into the 1D array; will probably rarely be used if ever.
 		if (ind >= 0 && ind < this->size)
 			return mat[ind];
 		throw std::out_of_range("Bad board index");
 	}
+
 
 	bool outBounds(int col, int row){
 		return col >= this->wide ||
@@ -60,28 +79,40 @@ public:
 			row < 0;
 	}
 
+
 	Coord rawIndexTo2D(int idx){
 		return {int(floor(idx / this->high)), idx % this->high};
 	}
 
-	~FlatMatrix(){
-		//delete[] mat;
-		///*
+
+	void clear(int col, int row){
+		// deletes element at given index
+		delete mat[col * this->high + row];
+		mat[col * this->high + row] = nullptr;
+	}
+
+
+	void deallocate(){
 		for (int i = 0; i < this->size; i++){
 			delete mat[i]; // delete the heap elements
 		}
-		delete[] mat; // delete the heap board
-		//*/
+	}
+	
+
+	~FlatMatrix(){
+		this->deallocate(); // causes segfualt as of now; not sure why TODO
+		delete[] mat;
 	}
 
 };
+
 
 
 template <typename C>
 std::ostream& operator<<(std::ostream &os, FlatMatrix<C>& fm)
 {
 	//
-	// Displays the board in the terminal
+	// Displays a FlatMatrix in the terminal
 	//
 	int idx;
 	int h = fm.high;

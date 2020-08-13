@@ -76,16 +76,18 @@ void GameInstance::makeMove(Coord c, Coord d){
 	// This function is called after the move has been verified.
 	// Alters the mainstate.board to reflect the move and pushes the previous state to the undo stack
 	//
+	undoStack.push(mainstate); // stores a copy of the current state on the undo stack
+	redoStack = {}; // clear the redo stack; a the line was changed
+
 	AbstractPiece* mover = mainstate.board(c.x, c.y);
-	AbstractPiece* capture = mainstate.board(d.x, d.y);
+	//AbstractPiece* capture = mainstate.board(d.x, d.y);
+	mainstate.board.clear(d.x, d.y);
 	mainstate.board(d.x, d.y) = mover;
 	mainstate.board(c.x, c.y) = nullptr; // empty previous residing square
 
 	HandleEnPassant(mover, c, d);
-	handleCastle(mover, capture, c, d);
+	handleCastle(mover, c, d);
 	
-	undoStack.push(mainstate); // stores a copy of the current state on the undo stack
-	redoStack = {}; // clear the redo stack; a the line was changed
 
 	if(GameOver(mainstate.toMove)){
 		mainstate.game_winner = mainstate.toMove;
@@ -100,9 +102,9 @@ void GameInstance::makeMove(Coord c, Coord d){
 void GameInstance::HandleEnPassant(AbstractPiece* mover, Coord c, Coord d){
 	// clear all en_passants first
 	for (int x = 0; x < mainstate.board.size; ++x){
-		Pawn* p = dynamic_cast<Pawn*>(mainstate.board[x]);
-		if (p)
-			p->en_passant = false;
+		Pawn* pawn = dynamic_cast<Pawn*>(mainstate.board[x]);
+		if (pawn)
+			pawn->en_passant = false;
 	}
 
 	// add en_passant if valid
@@ -116,7 +118,7 @@ void GameInstance::HandleEnPassant(AbstractPiece* mover, Coord c, Coord d){
 }
 
 
-void GameInstance::handleCastle(AbstractPiece* mover, AbstractPiece* capture, Coord c, Coord d){
+void GameInstance::handleCastle(AbstractPiece* mover, Coord c, Coord d){
 	//
 	// Checks if the latest move was a castle move and moves the caslted rook accordingly
 	//
@@ -192,34 +194,30 @@ std::vector<Coord> GameInstance::allAttackedSquares(FlatMatrix<AbstractPiece>& b
 
 
 void GameInstance::undo(){
-	//
 	// Reverts to the last state at the top of the undoStack
-	//
 	if (undoStack.empty()) // nothing to undo
 		return;
+
+	redoStack.push(mainstate);
 
 	State prev_state = undoStack.top(); // get the top UndoState
 	mainstate = prev_state;
 
-	redoStack.push(prev_state);
 	undoStack.pop(); // remove the top UndoState
-	tick(); // might need to make this a 'tick back' function in the future
 }
 
 
 void GameInstance::redo(){
-	//
 	// Reverts to the last state at the top of the redoStack
-	//
 	if (redoStack.empty()) // nothing to undo
 		return;
+
+	undoStack.push(mainstate);
 
 	State later_state = redoStack.top(); // get the top UndoState
 	mainstate = later_state;
 
-	undoStack.push(later_state);
 	redoStack.pop(); // remove the top UndoState
-	tick(); // might need to make this a 'tick back' function in the future
 }
 
 

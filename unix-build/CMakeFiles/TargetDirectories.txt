@@ -1,0 +1,3 @@
+/home/jacob/dev/projects/Chessapeake/unix-build/CMakeFiles/rebuild_cache.dir
+/home/jacob/dev/projects/Chessapeake/unix-build/CMakeFiles/edit_cache.dir
+/home/jacob/dev/projects/Chessapeake/unix-build/CMakeFiles/out.dir

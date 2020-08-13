@@ -38,7 +38,7 @@ public:
 	std::string swapPlayer(std::string color);
 	void undo();
 	void redo();
-	void handleCastle(AbstractPiece* mover, AbstractPiece* capture, Coord c, Coord d);
+	void handleCastle(AbstractPiece* mover, Coord c, Coord d);
 	void HandleEnPassant(AbstractPiece* mover, Coord c, Coord d);
 	bool GameOver(std::string player_color);
 	static void filterSuicide(FlatMatrix<AbstractPiece>& board, std::vector<Coord>& placements, std::string color);
