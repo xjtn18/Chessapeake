@@ -22,7 +22,8 @@ class AbstractPiece {
 		int dir; // direction in which the pawns of this colored piece are attacking
 
 		virtual std::vector<Coord> getPlacements(FlatMatrix<AbstractPiece>& board, int col, int row, int depth = 1) = 0;
-		//virtual ~AbstractPiece(){};
+		virtual AbstractPiece* clone() const = 0;
+		virtual ~AbstractPiece(){}
 
 	protected:
 		AbstractPiece(std::string init_color, char symbol = '?') : color(init_color), dir(kOrientMap.at(init_color)), symb(symbol) { }
@@ -32,8 +33,13 @@ class AbstractPiece {
 
 class Pawn : public AbstractPiece {
 public:
+	bool en_passant = false;
 	Pawn(std::string init_color);
 	std::vector<Coord> getPlacements(FlatMatrix<AbstractPiece>& board, int col, int row, int depth = 1);
+	void CheckEnPassant(FlatMatrix<AbstractPiece>& board, std::vector<Coord>& placements, int col, int row);
+	AbstractPiece* clone() const {
+		return new Pawn(*this);
+	}
 
 };
 
@@ -43,6 +49,9 @@ public:
 	King(std::string init_color);
 	std::vector<Coord> getPlacements(FlatMatrix<AbstractPiece>& board, int col, int row, int depth = 1);
 	void checkCastling(FlatMatrix<AbstractPiece>& board, int col, int row, std::vector<Coord>& placements);
+	AbstractPiece* clone() const {
+		return new King(*this);
+	}
 
 };
 
@@ -50,6 +59,9 @@ class Bishop : public AbstractPiece {
 public:
 	Bishop(std::string init_color);
 	std::vector<Coord> getPlacements(FlatMatrix<AbstractPiece>& board, int col, int row, int depth = 1);
+	AbstractPiece* clone() const {
+		return new Bishop(*this);
+	}
 
 };
 
@@ -58,6 +70,9 @@ class Queen : public AbstractPiece {
 public:
 	Queen(std::string init_color);
 	std::vector<Coord> getPlacements(FlatMatrix<AbstractPiece>& board, int col, int row, int depth = 1);
+	AbstractPiece* clone() const {
+		return new Queen(*this);
+	}
 
 };
 
@@ -66,6 +81,9 @@ class Rook : public AbstractPiece {
 public:
 	Rook(std::string init_color);
 	std::vector<Coord> getPlacements(FlatMatrix<AbstractPiece>& board, int col, int row, int depth = 1);
+	AbstractPiece* clone() const {
+		return new Rook(*this);
+	}
 
 };
 
@@ -74,6 +92,9 @@ class Knight : public AbstractPiece {
 public:
 	Knight(std::string init_color);
 	std::vector<Coord> getPlacements(FlatMatrix<AbstractPiece>& board, int col, int row, int depth = 1);
+	AbstractPiece* clone() const {
+		return new Knight(*this);
+	}
 
 };
 

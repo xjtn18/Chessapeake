@@ -2,7 +2,7 @@
 
 
 GameInstance::GameInstance(int numCol, int numRow)
- 	: boardWidth(numCol), boardHeight(numRow), mainboard(FlatMatrix<AbstractPiece>(numCol, numRow))
+ 	: mainstate({FlatMatrix<AbstractPiece>(numCol, numRow), "white", false, ""})
 {
 	setupBoard();
 }
@@ -18,37 +18,37 @@ void GameInstance::setupBoard(){
 	//
 
 	// place Pawns
-	for (int x = 0; x < boardWidth; x++){
-		mainboard(x,1) = new Pawn("white");
-		mainboard(x,6) = new Pawn("black");
+	for (int x = 0; x < mainstate.board.wide; x++){
+		mainstate.board(x,1) = new Pawn("white");
+		mainstate.board(x,6) = new Pawn("black");
 	}
 
 
 	// place King
-	mainboard(4,0) = new King("white");
-	mainboard(4,7) = new King("black");
+	mainstate.board(4,0) = new King("white");
+	mainstate.board(4,7) = new King("black");
 
 	// place Queen
-	mainboard(3,0) = new Queen("white");
-	mainboard(3,7) = new Queen("black");
+	mainstate.board(3,0) = new Queen("white");
+	mainstate.board(3,7) = new Queen("black");
 	
 	// place Bishops
-	mainboard(2,0) = new Bishop("white");
-	mainboard(5,0) = new Bishop("white");
-	mainboard(2,7) = new Bishop("black");
-	mainboard(5,7) = new Bishop("black");
+	mainstate.board(2,0) = new Bishop("white");
+	mainstate.board(5,0) = new Bishop("white");
+	mainstate.board(2,7) = new Bishop("black");
+	mainstate.board(5,7) = new Bishop("black");
 	
 	// place Rooks
-	mainboard(0,0) = new Rook("white");
-	mainboard(7,0) = new Rook("white");
-	mainboard(0,7) = new Rook("black");
-	mainboard(7,7) = new Rook("black");
+	mainstate.board(0,0) = new Rook("white");
+	mainstate.board(7,0) = new Rook("white");
+	mainstate.board(0,7) = new Rook("black");
+	mainstate.board(7,7) = new Rook("black");
 	
 	// place Knights
-	mainboard(1,0) = new Knight("white");
-	mainboard(6,0) = new Knight("white");
-	mainboard(1,7) = new Knight("black");
-	mainboard(6,7) = new Knight("black");
+	mainstate.board(1,0) = new Knight("white");
+	mainstate.board(6,0) = new Knight("white");
+	mainstate.board(1,7) = new Knight("black");
+	mainstate.board(6,7) = new Knight("black");
 }
 
 
@@ -57,14 +57,14 @@ void GameInstance::tick(){
 	// Represents a new turn in the game state
 	// Currently only swaps the player but may do more in the future
 	//
-	this->toMove = swapPlayer(this->toMove);
+	mainstate.toMove = swapPlayer(mainstate.toMove);
 }
 
 
+
+
 std::string GameInstance::swapPlayer(std::string color){
-	//
 	// Returns opposite player color
-	//
 	return color == "white" ? "black" : "white";
 }
 
@@ -74,27 +74,63 @@ std::string GameInstance::swapPlayer(std::string color){
 void GameInstance::makeMove(Coord c, Coord d){
 	//
 	// This function is called after the move has been verified.
-	// Alters the mainboard to reflect the move and pushes the previous state to the undo stack
+	// Alters the mainstate.board to reflect the move and pushes the previous state to the undo stack
 	//
-	State state;
-	AbstractPiece* mover = mainboard(c.x, c.y);
-	AbstractPiece* capture = mainboard(d.x, d.y);
-	mainboard(d.x, d.y) = mover;
-	mainboard(c.x, c.y) = nullptr; // empty previous residing square
-	state.add(mover, capture, c, d);
+	AbstractPiece* mover = mainstate.board(c.x, c.y);
+	AbstractPiece* capture = mainstate.board(d.x, d.y);
+	mainstate.board(d.x, d.y) = mover;
+	mainstate.board(c.x, c.y) = nullptr; // empty previous residing square
 
-	handleCastle(mover, capture, c, d, state);
+	HandleEnPassant(mover, c, d);
+	handleCastle(mover, capture, c, d);
 	
-	undoStack.push(state); // store state so it can be undone
-	redoStack = {}; // clear the redo stack; a move was made in a previous position
+	undoStack.push(mainstate); // stores a copy of the current state on the undo stack
+	redoStack = {}; // clear the redo stack; a the line was changed
 
-	if(GameOver(this->toMove)){
-		this->game_winner = this->toMove;
-		this->game_over = true;
+	if(GameOver(mainstate.toMove)){
+		mainstate.game_winner = mainstate.toMove;
+		mainstate.game_over = true;
 	}
 
 	mover->moved = true;
-	this->tick();
+	tick();
+}
+
+
+void GameInstance::HandleEnPassant(AbstractPiece* mover, Coord c, Coord d){
+	// clear all en_passants first
+	for (int x = 0; x < mainstate.board.size; ++x){
+		Pawn* p = dynamic_cast<Pawn*>(mainstate.board[x]);
+		if (p)
+			p->en_passant = false;
+	}
+
+	// add en_passant if valid
+	Pawn* pmover = dynamic_cast<Pawn*>(mover);
+	if (pmover && abs(d.y - c.y) == 2){
+		pmover->en_passant = true;
+	}
+
+	// check if an en passant move was made TODO
+	
+}
+
+
+void GameInstance::handleCastle(AbstractPiece* mover, AbstractPiece* capture, Coord c, Coord d){
+	//
+	// Checks if the latest move was a castle move and moves the caslted rook accordingly
+	//
+	int rook_position;
+	if (dynamic_cast<King*>(mover) != nullptr && abs(c.x - d.x) == 2){ // if a King was moved two squares, then they castled
+		if (c.x < d.x){ // kingside castle
+			rook_position = mainstate.board.wide - 1;
+		} else { // queenside castle
+			rook_position = 0;
+		}
+		AbstractPiece* castled_rook = mainstate.board(rook_position, d.y);
+		mainstate.board(d.x + 1 - (int)(c.x < d.x) * 2, d.y) = mainstate.board(rook_position, d.y); // move the rook
+		mainstate.board(rook_position, d.y) = nullptr; // empty previous residing corner
+	}
 }
 
 
@@ -103,7 +139,7 @@ bool GameInstance::GameOver(std::string player_color){
 	//
 	// returns true if the giver player has checkmated their opponent
 	//
-	std::vector<Coord> all_attacked = GameInstance::allAttackedSquares(mainboard, player_color, 2);
+	std::vector<Coord> all_attacked = GameInstance::allAttackedSquares(mainstate.board, player_color, 2);
 	return all_attacked.empty();
 }
 
@@ -154,44 +190,20 @@ std::vector<Coord> GameInstance::allAttackedSquares(FlatMatrix<AbstractPiece>& b
 }
 
 
-void GameInstance::handleCastle(AbstractPiece* mover, AbstractPiece* capture, Coord c, Coord d, State& state){
-	//
-	// Checks if the latest move was a castle move and moves the caslted rook accordingly
-	//
-	int rook_position;
-	if (dynamic_cast<King*>(mover) != nullptr && abs(c.x - d.x) == 2){ // if a King was moved two squares, then they castled
-		if (c.x < d.x){ // kingside castle
-			rook_position = mainboard.wide - 1;
-		} else { // queenside castle
-			rook_position = 0;
-		}
-		AbstractPiece* castled_rook = mainboard(rook_position, d.y);
-		mainboard(d.x + 1 - (int)(c.x < d.x) * 2, d.y) = mainboard(rook_position, d.y); // move the rook
-		mainboard(rook_position, d.y) = nullptr; // empty previous residing corner
-		state.add(castled_rook, nullptr, {rook_position, d.y}, {d.x + 1 - (int)(c.x < d.x) * 2, d.y});
-	}
-}
-
-
 
 void GameInstance::undo(){
 	//
 	// Reverts to the last state at the top of the undoStack
 	//
-	if (this->undoStack.empty()) // nothing to undo
+	if (undoStack.empty()) // nothing to undo
 		return;
 
-	State us = this->undoStack.top(); // get the top UndoState
+	State prev_state = undoStack.top(); // get the top UndoState
+	mainstate = prev_state;
 
-	for (int i = 0; i < us.movers.size(); i++){
-		mainboard(us.origins[i].x, us.origins[i].y) = us.movers[i];
-		mainboard(us.landings[i].x, us.landings[i].y) = us.captures[i];
-		us.movers[i]->moved = us.hasMoved[i]; // set the piece's 'moved' boolean to what is was before the move was made
-	}
-
-	redoStack.push(us);
-	this->undoStack.pop(); // remove the top UndoState
-	this->tick(); // might need to make this a 'tick back' function in the future
+	redoStack.push(prev_state);
+	undoStack.pop(); // remove the top UndoState
+	tick(); // might need to make this a 'tick back' function in the future
 }
 
 
@@ -199,43 +211,23 @@ void GameInstance::redo(){
 	//
 	// Reverts to the last state at the top of the redoStack
 	//
-	if (this->redoStack.empty()) // nothing to undo
+	if (redoStack.empty()) // nothing to undo
 		return;
 
-	State us = this->redoStack.top(); // get the top UndoState
+	State later_state = redoStack.top(); // get the top UndoState
+	mainstate = later_state;
 
-	for (int i = 0; i < us.movers.size(); i++){
-		mainboard(us.origins[i].x, us.origins[i].y) = nullptr;
-		mainboard(us.landings[i].x, us.landings[i].y) = us.movers[i];
-		us.movers[i]->moved = !us.hasMoved[i]; // set the piece's 'moved' boolean to what is was before the move was made
-	}
-
-	undoStack.push(us);
-	this->redoStack.pop(); // remove the top UndoState
-	this->tick(); // might need to make this a 'tick back' function in the future
+	undoStack.push(later_state);
+	redoStack.pop(); // remove the top UndoState
+	tick(); // might need to make this a 'tick back' function in the future
 }
 
 
 
 void GameInstance::printBoard(){
-	//
-	// Displays the board in the terminal
-	//
-	int idx;
-	int h = mainboard.high;
-	for (int x = 0; x < mainboard.size; x++){
-		// get clockwise rotated index
-		idx = (x % h + 1) * h - floor(x / h) - 1;
-
-		if (mainboard[idx] != nullptr){
-			std::cout << mainboard[idx]->symb << " ";
-		} else {
-			std::cout << ". ";
-		}
-		if (x % h == h-1)
-			std::cout << "\n";
-	}
+	std::cout << mainstate.board;
 }
+
 
 Coord GameInstance::findKing(FlatMatrix<AbstractPiece>& board, std::string color){
 	//

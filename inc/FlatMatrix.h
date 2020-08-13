@@ -1,4 +1,5 @@
 #pragma once
+#include "debug.h"
 #include "Coord.h"
 #include <math.h>
 #include <stdexcept>
@@ -23,18 +24,18 @@ public:
 		}
 	}
 
-	FlatMatrix(FlatMatrix& rhs)
-		: high(rhs.high), wide(rhs.wide), mat(new C*[rhs.wide * rhs.high]), size(rhs.wide * rhs.high)
+	FlatMatrix(const FlatMatrix& other)
+		: high(other.high), wide(other.wide), mat(new C*[other.size]), size(other.size)
 	{
-		/*
-		for (int x = 0; x < this->size; x++){
-			mat[x] = nullptr;
-			C*
-			if (rhs[x] != nullptr){
-				*(mat[x]) = *(rhs[x]);
+		for (int x = 0; x < size; x++){
+			if (other.mat[x] != nullptr){
+				//p("piece");
+				mat[x] = other.mat[x]->clone();
+			} else {
+				//p("null");
+				mat[x] = nullptr;
 			}
 		}
-		*/
 	}
 
 	C*& operator()(int col, int row){
@@ -74,5 +75,31 @@ public:
 	}
 
 };
+
+
+template <typename C>
+std::ostream& operator<<(std::ostream &os, FlatMatrix<C>& fm)
+{
+	//
+	// Displays the board in the terminal
+	//
+	int idx;
+	int h = fm.high;
+	for (int x = 0; x < fm.size; x++){
+		// get clockwise rotated index
+		idx = (x % h + 1) * h - floor(x / h) - 1;
+
+		if (fm[idx] != nullptr){
+			os << fm[idx]->symb << " ";
+		} else {
+			os << ". ";
+		}
+		if (x % h == h-1)
+			os << "\n";
+	}
+
+	return os;
+}
+
 
 

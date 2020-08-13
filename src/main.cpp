@@ -32,8 +32,8 @@ void commandLoop(GameInstance& game){
 
 	while (!GAME_EXIT){
 		ClearShell();
-		game.printBoard(); // display chess board
-		std::cout << "\n" << game.toMove << " to move :: ";
+		//game.printBoard(); // display chess board
+		std::cout << "\n" << game.mainstate.toMove << " to move :: ";
 		std::getline(std::cin, input); // pull move input
 
 		if (input == "exit"){
@@ -51,10 +51,10 @@ void commandLoop(GameInstance& game){
 		} else {
 			parseMoveRequest(input, game); // check move request
 			// dangerous in scenario that game_over was set but game_winner was not
-			if (game.game_over){
+			if (game.mainstate.game_over){
 				ClearShell();
 				game.printBoard();
-				std::cout << "\n" << game.game_winner << " wins." << std::endl; // TODO: store how the player won as well (time/checkmate)
+				std::cout << "\n" << game.mainstate.game_winner << " wins." << std::endl; // TODO: store how the player won as well (time/checkmate)
 				buffer("");
 				return;
 			}

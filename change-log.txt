@@ -7,6 +7,4 @@ Change Log
 
 Issues:  
 	- switch to unique_ptr's for safer memory cleanup  
-	- accept clarifiying ambiguous moves in the regex patterns
-	- check FlatMatrix's being passed by value
-	- clean up all memory leaks
+	- accept ambiguity clarifiying moves in the regex patterns

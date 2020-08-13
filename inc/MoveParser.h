@@ -88,9 +88,9 @@ void CheckMove(std::string input, GameInstance& game, Coord& c, Coord& d){
 	bool capture_requested = (input.find('x') != std::string::npos); // true if 'x' was found in the notation
 	if (patternMatch(input, "pawn")){
 		pawn_col = coordMap.at(input[0]) - 1;
-		c = FindPawn(game.mainboard, {dcol, drow}, pawn_col, game.toMove);
+		c = FindPawn(game.mainstate.board, {dcol, drow}, pawn_col, game.mainstate.toMove);
 	} else {
-		c = FindPiece<T>(game.mainboard, {dcol, drow}, game.toMove, capture_requested);
+		c = FindPiece<T>(game.mainstate.board, {dcol, drow}, game.mainstate.toMove, capture_requested);
 	}
 	if (!c)
 		throw InvalidMove();

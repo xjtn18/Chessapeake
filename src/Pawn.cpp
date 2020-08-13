@@ -35,12 +35,32 @@ std::vector<Coord> Pawn::getPlacements(FlatMatrix<AbstractPiece>& board, int col
 			placements.push_back(c);
 		}
 	} catch (const std::out_of_range& oor){}
-	
+
+
+
 	if (depth == 2){
+		this->CheckEnPassant(board, placements, col, row);
 		GameInstance::filterSuicide(board, placements, col, row, color);
 	}
+
 	return placements;
 }
-	
-	
+
+
+void Pawn::CheckEnPassant(FlatMatrix<AbstractPiece>& board, std::vector<Coord>& placements, int col, int row){
+	AbstractPiece* neighbor;
+	int sides[2] = {1, -1};
+	for (int i = 0; i < 2; ++i){
+		try {
+			neighbor = board(col+sides[i], row);
+		} catch (const std::out_of_range& oor){
+			continue;
+		}
+		Pawn* pneighbor = dynamic_cast<Pawn*>(neighbor);
+		if (pneighbor && pneighbor->en_passant && pneighbor->color != this->color){
+			placements.push_back({col + sides[i], row + this->dir});
+		}
+	}
+}
+
 

@@ -10,7 +10,9 @@ file(REMOVE_RECURSE
   "CMakeFiles/out.dir/src/Rook.cpp.o"
   "CMakeFiles/out.dir/src/debug.cpp.o"
   "CMakeFiles/out.dir/src/main.cpp.o"
-  "out"
+  "libout.dll.a"
+  "out.exe"
+  "out.exe.manifest"
   "out.pdb"
 )
 
