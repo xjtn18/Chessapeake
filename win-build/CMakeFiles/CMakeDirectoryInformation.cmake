@@ -3,7 +3,7 @@
 
 # Relative path conversion top directories.
 set(CMAKE_RELATIVE_PATH_TOP_SOURCE "C:/dev/projects/Chessapeake")
-set(CMAKE_RELATIVE_PATH_TOP_BINARY "C:/dev/projects/Chessapeake/build")
+set(CMAKE_RELATIVE_PATH_TOP_BINARY "C:/dev/projects/Chessapeake/win-build")
 
 # Force unix paths in dependencies.
 set(CMAKE_FORCE_UNIX_PATHS 1)

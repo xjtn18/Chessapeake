@@ -1,3 +1,3 @@
-C:/dev/projects/Chessapeake/build/CMakeFiles/out.dir
-C:/dev/projects/Chessapeake/build/CMakeFiles/edit_cache.dir
-C:/dev/projects/Chessapeake/build/CMakeFiles/rebuild_cache.dir
+C:/dev/projects/Chessapeake/win-build/CMakeFiles/out.dir
+C:/dev/projects/Chessapeake/win-build/CMakeFiles/edit_cache.dir
+C:/dev/projects/Chessapeake/win-build/CMakeFiles/rebuild_cache.dir

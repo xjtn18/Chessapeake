@@ -63,7 +63,7 @@ vector
 C:/dev/projects/Chessapeake/inc/debug.h
 Coord.h
 C:/dev/projects/Chessapeake/inc/Coord.h
-chrono
+unistd.h
 -
 thread
 -
@@ -77,6 +77,10 @@ C:/dev/projects/Chessapeake/src/Bishop.cpp
 C:/dev/projects/Chessapeake/inc/Pieces.h
 ../inc/GameInstance.h
 C:/dev/projects/Chessapeake/inc/GameInstance.h
+
+C:/dev/projects/Chessapeake/src/Coord.cpp
+../inc/Coord.h
+C:/dev/projects/Chessapeake/inc/Coord.h
 
 C:/dev/projects/Chessapeake/src/GameInstance.cpp
 ../inc/GameInstance.h

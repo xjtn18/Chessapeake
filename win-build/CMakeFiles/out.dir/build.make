@@ -66,7 +66,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = C:/dev/projects/Chessapeake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:/dev/projects/Chessapeake/build
+CMAKE_BINARY_DIR = C:/dev/projects/Chessapeake/win-build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/out.dir/depend.make
@@ -79,7 +79,7 @@ include CMakeFiles/out.dir/flags.make
 
 CMakeFiles/out.dir/src/Coord.cpp.o: CMakeFiles/out.dir/flags.make
 CMakeFiles/out.dir/src/Coord.cpp.o: ../src/Coord.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/dev/projects/Chessapeake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/out.dir/src/Coord.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/dev/projects/Chessapeake/win-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/out.dir/src/Coord.cpp.o"
 	C:/cygwin64/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out.dir/src/Coord.cpp.o -c C:/dev/projects/Chessapeake/src/Coord.cpp
 
 CMakeFiles/out.dir/src/Coord.cpp.i: cmake_force
@@ -92,7 +92,7 @@ CMakeFiles/out.dir/src/Coord.cpp.s: cmake_force
 
 CMakeFiles/out.dir/src/main.cpp.o: CMakeFiles/out.dir/flags.make
 CMakeFiles/out.dir/src/main.cpp.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/dev/projects/Chessapeake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/out.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/dev/projects/Chessapeake/win-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/out.dir/src/main.cpp.o"
 	C:/cygwin64/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out.dir/src/main.cpp.o -c C:/dev/projects/Chessapeake/src/main.cpp
 
 CMakeFiles/out.dir/src/main.cpp.i: cmake_force
@@ -105,7 +105,7 @@ CMakeFiles/out.dir/src/main.cpp.s: cmake_force
 
 CMakeFiles/out.dir/src/Pawn.cpp.o: CMakeFiles/out.dir/flags.make
 CMakeFiles/out.dir/src/Pawn.cpp.o: ../src/Pawn.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/dev/projects/Chessapeake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/out.dir/src/Pawn.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/dev/projects/Chessapeake/win-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/out.dir/src/Pawn.cpp.o"
 	C:/cygwin64/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out.dir/src/Pawn.cpp.o -c C:/dev/projects/Chessapeake/src/Pawn.cpp
 
 CMakeFiles/out.dir/src/Pawn.cpp.i: cmake_force
@@ -118,7 +118,7 @@ CMakeFiles/out.dir/src/Pawn.cpp.s: cmake_force
 
 CMakeFiles/out.dir/src/King.cpp.o: CMakeFiles/out.dir/flags.make
 CMakeFiles/out.dir/src/King.cpp.o: ../src/King.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/dev/projects/Chessapeake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/out.dir/src/King.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/dev/projects/Chessapeake/win-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/out.dir/src/King.cpp.o"
 	C:/cygwin64/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out.dir/src/King.cpp.o -c C:/dev/projects/Chessapeake/src/King.cpp
 
 CMakeFiles/out.dir/src/King.cpp.i: cmake_force
@@ -131,7 +131,7 @@ CMakeFiles/out.dir/src/King.cpp.s: cmake_force
 
 CMakeFiles/out.dir/src/Queen.cpp.o: CMakeFiles/out.dir/flags.make
 CMakeFiles/out.dir/src/Queen.cpp.o: ../src/Queen.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/dev/projects/Chessapeake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/out.dir/src/Queen.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/dev/projects/Chessapeake/win-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/out.dir/src/Queen.cpp.o"
 	C:/cygwin64/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out.dir/src/Queen.cpp.o -c C:/dev/projects/Chessapeake/src/Queen.cpp
 
 CMakeFiles/out.dir/src/Queen.cpp.i: cmake_force
@@ -144,7 +144,7 @@ CMakeFiles/out.dir/src/Queen.cpp.s: cmake_force
 
 CMakeFiles/out.dir/src/Rook.cpp.o: CMakeFiles/out.dir/flags.make
 CMakeFiles/out.dir/src/Rook.cpp.o: ../src/Rook.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/dev/projects/Chessapeake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/out.dir/src/Rook.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/dev/projects/Chessapeake/win-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/out.dir/src/Rook.cpp.o"
 	C:/cygwin64/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out.dir/src/Rook.cpp.o -c C:/dev/projects/Chessapeake/src/Rook.cpp
 
 CMakeFiles/out.dir/src/Rook.cpp.i: cmake_force
@@ -157,7 +157,7 @@ CMakeFiles/out.dir/src/Rook.cpp.s: cmake_force
 
 CMakeFiles/out.dir/src/Knight.cpp.o: CMakeFiles/out.dir/flags.make
 CMakeFiles/out.dir/src/Knight.cpp.o: ../src/Knight.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/dev/projects/Chessapeake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/out.dir/src/Knight.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/dev/projects/Chessapeake/win-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/out.dir/src/Knight.cpp.o"
 	C:/cygwin64/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out.dir/src/Knight.cpp.o -c C:/dev/projects/Chessapeake/src/Knight.cpp
 
 CMakeFiles/out.dir/src/Knight.cpp.i: cmake_force
@@ -170,7 +170,7 @@ CMakeFiles/out.dir/src/Knight.cpp.s: cmake_force
 
 CMakeFiles/out.dir/src/Bishop.cpp.o: CMakeFiles/out.dir/flags.make
 CMakeFiles/out.dir/src/Bishop.cpp.o: ../src/Bishop.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/dev/projects/Chessapeake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/out.dir/src/Bishop.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/dev/projects/Chessapeake/win-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/out.dir/src/Bishop.cpp.o"
 	C:/cygwin64/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out.dir/src/Bishop.cpp.o -c C:/dev/projects/Chessapeake/src/Bishop.cpp
 
 CMakeFiles/out.dir/src/Bishop.cpp.i: cmake_force
@@ -183,7 +183,7 @@ CMakeFiles/out.dir/src/Bishop.cpp.s: cmake_force
 
 CMakeFiles/out.dir/src/GameInstance.cpp.o: CMakeFiles/out.dir/flags.make
 CMakeFiles/out.dir/src/GameInstance.cpp.o: ../src/GameInstance.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/dev/projects/Chessapeake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/out.dir/src/GameInstance.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/dev/projects/Chessapeake/win-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/out.dir/src/GameInstance.cpp.o"
 	C:/cygwin64/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out.dir/src/GameInstance.cpp.o -c C:/dev/projects/Chessapeake/src/GameInstance.cpp
 
 CMakeFiles/out.dir/src/GameInstance.cpp.i: cmake_force
@@ -194,22 +194,9 @@ CMakeFiles/out.dir/src/GameInstance.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/out.dir/src/GameInstance.cpp.s"
 	C:/cygwin64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/dev/projects/Chessapeake/src/GameInstance.cpp -o CMakeFiles/out.dir/src/GameInstance.cpp.s
 
-CMakeFiles/out.dir/src/debug.cpp.o: CMakeFiles/out.dir/flags.make
-CMakeFiles/out.dir/src/debug.cpp.o: ../src/debug.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/dev/projects/Chessapeake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/out.dir/src/debug.cpp.o"
-	C:/cygwin64/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out.dir/src/debug.cpp.o -c C:/dev/projects/Chessapeake/src/debug.cpp
-
-CMakeFiles/out.dir/src/debug.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/out.dir/src/debug.cpp.i"
-	C:/cygwin64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:/dev/projects/Chessapeake/src/debug.cpp > CMakeFiles/out.dir/src/debug.cpp.i
-
-CMakeFiles/out.dir/src/debug.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/out.dir/src/debug.cpp.s"
-	C:/cygwin64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/dev/projects/Chessapeake/src/debug.cpp -o CMakeFiles/out.dir/src/debug.cpp.s
-
 CMakeFiles/out.dir/src/MoveParser.cpp.o: CMakeFiles/out.dir/flags.make
 CMakeFiles/out.dir/src/MoveParser.cpp.o: ../src/MoveParser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/dev/projects/Chessapeake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/out.dir/src/MoveParser.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/dev/projects/Chessapeake/win-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/out.dir/src/MoveParser.cpp.o"
 	C:/cygwin64/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out.dir/src/MoveParser.cpp.o -c C:/dev/projects/Chessapeake/src/MoveParser.cpp
 
 CMakeFiles/out.dir/src/MoveParser.cpp.i: cmake_force
@@ -231,7 +218,6 @@ out_OBJECTS = \
 "CMakeFiles/out.dir/src/Knight.cpp.o" \
 "CMakeFiles/out.dir/src/Bishop.cpp.o" \
 "CMakeFiles/out.dir/src/GameInstance.cpp.o" \
-"CMakeFiles/out.dir/src/debug.cpp.o" \
 "CMakeFiles/out.dir/src/MoveParser.cpp.o"
 
 # External object files for target out
@@ -246,11 +232,10 @@ out.exe: CMakeFiles/out.dir/src/Rook.cpp.o
 out.exe: CMakeFiles/out.dir/src/Knight.cpp.o
 out.exe: CMakeFiles/out.dir/src/Bishop.cpp.o
 out.exe: CMakeFiles/out.dir/src/GameInstance.cpp.o
-out.exe: CMakeFiles/out.dir/src/debug.cpp.o
 out.exe: CMakeFiles/out.dir/src/MoveParser.cpp.o
 out.exe: CMakeFiles/out.dir/build.make
 out.exe: CMakeFiles/out.dir/objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:/dev/projects/Chessapeake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable out.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:/dev/projects/Chessapeake/win-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable out.exe"
 	"C:/Program Files/CMake/bin/cmake.exe" -E rm -f CMakeFiles/out.dir/objects.a
 	C:/cygwin64/bin/ar.exe cr CMakeFiles/out.dir/objects.a @CMakeFiles/out.dir/objects1.rsp
 	C:/cygwin64/bin/c++.exe    -Wl,--whole-archive CMakeFiles/out.dir/objects.a -Wl,--no-whole-archive  -o out.exe -Wl,--out-implib,libout.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
@@ -265,6 +250,6 @@ CMakeFiles/out.dir/clean:
 .PHONY : CMakeFiles/out.dir/clean
 
 CMakeFiles/out.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" C:/dev/projects/Chessapeake C:/dev/projects/Chessapeake C:/dev/projects/Chessapeake/build C:/dev/projects/Chessapeake/build C:/dev/projects/Chessapeake/build/CMakeFiles/out.dir/DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" C:/dev/projects/Chessapeake C:/dev/projects/Chessapeake C:/dev/projects/Chessapeake/win-build C:/dev/projects/Chessapeake/win-build C:/dev/projects/Chessapeake/win-build/CMakeFiles/out.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/out.dir/depend
 

@@ -61,10 +61,6 @@ CMakeFiles/out.dir/src/Rook.cpp.o
  C:/dev/projects/Chessapeake/inc/Pieces.h
  C:/dev/projects/Chessapeake/inc/debug.h
  C:/dev/projects/Chessapeake/src/Rook.cpp
-CMakeFiles/out.dir/src/debug.cpp.o
- C:/dev/projects/Chessapeake/inc/Coord.h
- C:/dev/projects/Chessapeake/inc/debug.h
- C:/dev/projects/Chessapeake/src/debug.cpp
 CMakeFiles/out.dir/src/main.cpp.o
  C:/dev/projects/Chessapeake/inc/Coord.h
  C:/dev/projects/Chessapeake/inc/FlatMatrix.h

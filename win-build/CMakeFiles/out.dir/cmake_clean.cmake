@@ -8,7 +8,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/out.dir/src/Pawn.cpp.o"
   "CMakeFiles/out.dir/src/Queen.cpp.o"
   "CMakeFiles/out.dir/src/Rook.cpp.o"
-  "CMakeFiles/out.dir/src/debug.cpp.o"
   "CMakeFiles/out.dir/src/main.cpp.o"
   "libout.dll.a"
   "out.exe"

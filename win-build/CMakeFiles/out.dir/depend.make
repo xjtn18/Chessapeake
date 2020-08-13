@@ -61,10 +61,6 @@ CMakeFiles/out.dir/src/Rook.cpp.o: ../inc/Pieces.h
 CMakeFiles/out.dir/src/Rook.cpp.o: ../inc/debug.h
 CMakeFiles/out.dir/src/Rook.cpp.o: ../src/Rook.cpp
 
-CMakeFiles/out.dir/src/debug.cpp.o: ../inc/Coord.h
-CMakeFiles/out.dir/src/debug.cpp.o: ../inc/debug.h
-CMakeFiles/out.dir/src/debug.cpp.o: ../src/debug.cpp
-
 CMakeFiles/out.dir/src/main.cpp.o: ../inc/Coord.h
 CMakeFiles/out.dir/src/main.cpp.o: ../inc/FlatMatrix.h
 CMakeFiles/out.dir/src/main.cpp.o: ../inc/GameInstance.h

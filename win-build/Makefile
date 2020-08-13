@@ -71,7 +71,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = C:/dev/projects/Chessapeake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:/dev/projects/Chessapeake/build
+CMAKE_BINARY_DIR = C:/dev/projects/Chessapeake/win-build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -100,9 +100,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:/dev/projects/Chessapeake/build/CMakeFiles C:/dev/projects/Chessapeake/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:/dev/projects/Chessapeake/win-build/CMakeFiles C:/dev/projects/Chessapeake/win-build/CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:/dev/projects/Chessapeake/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:/dev/projects/Chessapeake/win-build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -386,33 +386,6 @@ src/Rook.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/Rook.cpp.s
 .PHONY : src/Rook.cpp.s
 
-src/debug.o: src/debug.cpp.o
-
-.PHONY : src/debug.o
-
-# target to build an object file
-src/debug.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/debug.cpp.o
-.PHONY : src/debug.cpp.o
-
-src/debug.i: src/debug.cpp.i
-
-.PHONY : src/debug.i
-
-# target to preprocess a source file
-src/debug.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/debug.cpp.i
-.PHONY : src/debug.cpp.i
-
-src/debug.s: src/debug.cpp.s
-
-.PHONY : src/debug.s
-
-# target to generate assembly for a file
-src/debug.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/src/debug.cpp.s
-.PHONY : src/debug.cpp.s
-
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -476,9 +449,6 @@ help:
 	@echo "... src/Rook.o"
 	@echo "... src/Rook.i"
 	@echo "... src/Rook.s"
-	@echo "... src/debug.o"
-	@echo "... src/debug.i"
-	@echo "... src/debug.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
