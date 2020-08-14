@@ -26,6 +26,7 @@ public:
 	State mainstate;
 	std::stack<State> undoStack;
 	std::stack<State> redoStack;
+	bool flipped;
 	
 	// methods
 	GameInstance(int numCol, int numRow);
@@ -36,6 +37,7 @@ public:
 	void makeMove(Coord c, Coord d);
 	void tick();
 	std::string swapPlayer(std::string color);
+	void FlipBoardOrientation();
 	void undo();
 	void redo();
 	void handleCastle(AbstractPiece* mover, Coord c, Coord d);

@@ -2,7 +2,7 @@
 
 
 GameInstance::GameInstance(int numCol, int numRow)
- 	: mainstate({FlatMatrix<AbstractPiece>(numCol, numRow), "white", false, ""})
+ 	: mainstate({FlatMatrix<AbstractPiece>(numCol, numRow), "white", false, ""}), flipped (false)
 {
 	setupBoard();
 }
@@ -224,9 +224,26 @@ void GameInstance::redo(){
 }
 
 
+void GameInstance::FlipBoardOrientation(){
+	flipped = !flipped;
+}
 
 void GameInstance::printBoard(){
-	std::cout << mainstate.board;
+	int idx;
+	int h = mainstate.board.high;
+	for (int x = 0; x < mainstate.board.size; x++){
+		// get clockwise rotated index
+		idx = (x % h + 1) * h - floor(x / h) - 1;
+		idx = (this->flipped) ? mainstate.board.size - 1 - idx : idx;
+
+		if (mainstate.board[idx] != nullptr){
+			std::cout << mainstate.board[idx]->symb << " ";
+		} else {
+			std::cout << ". ";
+		}
+		if (x % h == h-1)
+			std::cout << "\n";
+	}
 }
 
 

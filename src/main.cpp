@@ -44,6 +44,9 @@ void commandLoop(GameInstance& game){
 		} else if (input == "r"){
 			game.redo();
 
+		} else if (input == "f"){
+			game.FlipBoardOrientation();
+
 		} else if (input == "help"){
 			PrintHelp();
 

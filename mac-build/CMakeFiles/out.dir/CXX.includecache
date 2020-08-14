@@ -62,9 +62,7 @@ vector
 iostream
 -
 
-/Users/Jacob/dev/projects/Chessapeake/src/Pawn.cpp
-../inc/Pieces.h
-/Users/Jacob/dev/projects/Chessapeake/inc/Pieces.h
+/Users/Jacob/dev/projects/Chessapeake/src/GameInstance.cpp
 ../inc/GameInstance.h
 /Users/Jacob/dev/projects/Chessapeake/inc/GameInstance.h
 
