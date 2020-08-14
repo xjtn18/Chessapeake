@@ -80,26 +80,27 @@ void GameInstance::makeMove(Coord c, Coord d){
 	redoStack = {}; // clear the redo stack; a the line was changed
 
 	AbstractPiece* mover = mainstate.board(c.x, c.y);
-	//AbstractPiece* capture = mainstate.board(d.x, d.y);
-	mainstate.board.clear(d.x, d.y);
+	// clone whatever piece we capture because we are freeing its memory before we need to use it
+	AbstractPiece* capture = (mainstate.board(d.x, d.y) == nullptr) ? nullptr : mainstate.board(d.x, d.y)->clone();
+	mainstate.board.clear(d.x, d.y); // clear the landing square and free the memory there
 	mainstate.board(d.x, d.y) = mover;
 	mainstate.board(c.x, c.y) = nullptr; // empty previous residing square
 
-	HandleEnPassant(mover, c, d);
+	HandleEnPassant(mover, capture, c, d);
 	handleCastle(mover, c, d);
 	
-
 	if(GameOver(mainstate.toMove)){
 		mainstate.game_winner = mainstate.toMove;
 		mainstate.game_over = true;
 	}
 
+	delete capture;
 	mover->moved = true;
 	tick();
 }
 
 
-void GameInstance::HandleEnPassant(AbstractPiece* mover, Coord c, Coord d){
+void GameInstance::HandleEnPassant(AbstractPiece* mover, AbstractPiece* capture, Coord c, Coord d){
 	// clear all en_passants first
 	for (int x = 0; x < mainstate.board.size; ++x){
 		Pawn* pawn = dynamic_cast<Pawn*>(mainstate.board[x]);
@@ -113,8 +114,10 @@ void GameInstance::HandleEnPassant(AbstractPiece* mover, Coord c, Coord d){
 		pmover->en_passant = true;
 	}
 
-	// check if an en passant move was made TODO
-	
+	// check if an en passant move was made
+	if (pmover && abs(d.x - c.x) == 1 && capture == nullptr){
+		mainstate.board.clear(d.x, d.y - pmover->dir); // remove pawn captured by en passant
+	}
 }
 
 

@@ -1,0 +1,3 @@
+/Users/Jacob/dev/projects/Chessapeake/mac-build/CMakeFiles/rebuild_cache.dir
+/Users/Jacob/dev/projects/Chessapeake/mac-build/CMakeFiles/edit_cache.dir
+/Users/Jacob/dev/projects/Chessapeake/mac-build/CMakeFiles/out.dir
