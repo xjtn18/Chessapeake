@@ -5,12 +5,11 @@
 
 // Change to 'CLS' instead of 'clear' this if you are running on windows without cygwin
 #define kRefresh true
-
+#define CLEAR_SHELL_COMMAND "clear"
 
 void ClearShell(){
 	if (kRefresh){
-		//std::cout << std::string(100, '\n');
-		system("clear");
+		system(CLEAR_SHELL_COMMAND);
 	}
 }
 
