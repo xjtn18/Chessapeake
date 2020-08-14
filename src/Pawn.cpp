@@ -2,7 +2,7 @@
 #include "../inc/GameInstance.h"
 
 
-Pawn::Pawn(std::string init_color) : AbstractPiece(init_color, 'P'){ }
+Pawn::Pawn(std::string init_color) : AbstractPiece(init_color, kSymbolMap.at(init_color).at("pawn")){ }
 
 
 std::vector<Coord> Pawn::getPlacements(FlatMatrix<AbstractPiece>& board, int col, int row, int depth){

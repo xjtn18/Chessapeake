@@ -2,7 +2,7 @@
 #include "../inc/GameInstance.h"
 
 
-Rook::Rook(std::string init_color) : AbstractPiece(init_color, 'R') { }
+Rook::Rook(std::string init_color) : AbstractPiece(init_color, kSymbolMap.at(init_color).at("rook")) { }
 
 std::vector<Coord> Rook::getPlacements(FlatMatrix<AbstractPiece>& board, int col, int row, int depth){
 	std::vector<Coord> placements;

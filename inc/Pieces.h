@@ -8,11 +8,36 @@
 
 
 const std::map<std::string, int> kOrientMap =
-	{
-		{"white", 1},
-		{"black", -1}
-	};
+{
+	{"white", 1},
+	{"black", -1}
+};
 
+
+const std::map<std::string, std::map<std::string, char>> kSymbolMap = 
+{
+	{"white", 
+		{
+			{"pawn", 'P'},
+			{"rook", 'R'},
+			{"knight", 'N'},
+			{"queen", 'Q'},
+			{"king", 'K'},
+			{"bishop", 'B'}
+		}
+	},
+	{"black",
+		{
+			{"pawn", 'p'},
+			{"rook", 'r'},
+			{"knight", 'n'},
+			{"queen", 'q'},
+			{"king", 'k'},
+			{"bishop", 'b'}
+		}
+	}
+};
+			
 
 class AbstractPiece {
 	public:

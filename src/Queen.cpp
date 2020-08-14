@@ -2,7 +2,7 @@
 #include "../inc/GameInstance.h"
 
 
-Queen::Queen(std::string init_color) : AbstractPiece(init_color, 'Q')  { }
+Queen::Queen(std::string init_color) : AbstractPiece(init_color, kSymbolMap.at(init_color).at("queen"))  { }
 
 std::vector<Coord> Queen::getPlacements(FlatMatrix<AbstractPiece>& board, int col, int row, int depth){
 	std::vector<Coord> placements;

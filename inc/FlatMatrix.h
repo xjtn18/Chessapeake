@@ -24,7 +24,6 @@ public:
 		}
 	}
 
-
 	FlatMatrix(const FlatMatrix& other)
 		: high(other.high), wide(other.wide), mat(new C*[other.size]), size(other.size)
 	{
@@ -36,7 +35,6 @@ public:
 			}
 		}
 	}
-
 
 	FlatMatrix& operator=(const FlatMatrix& other)
 	{
@@ -54,7 +52,6 @@ public:
 		return *this;
 	}
 
-
 	C*& operator()(int col, int row){
 		// Use THIS to index the matrix, as if it were a normal 2D matrix
 		// Same idea applies, first index is the x axis (column) and second index is the y axis (row)
@@ -63,14 +60,12 @@ public:
 		throw std::out_of_range("Bad board index");
 	}
 
-
 	C*& operator[](int ind){
 		// Use this if you have a raw index into the 1D array; will probably rarely be used if ever.
 		if (ind >= 0 && ind < this->size)
 			return mat[ind];
 		throw std::out_of_range("Bad board index");
 	}
-
 
 	bool outBounds(int col, int row){
 		return col >= this->wide ||
@@ -79,11 +74,9 @@ public:
 			row < 0;
 	}
 
-
 	Coord rawIndexTo2D(int idx){
 		return {int(floor(idx / this->high)), idx % this->high};
 	}
-
 
 	void clear(int col, int row){
 		// deletes element at given index
@@ -91,14 +84,12 @@ public:
 		mat[col * this->high + row] = nullptr;
 	}
 
-
 	void deallocate(){
 		for (int i = 0; i < this->size; i++){
 			delete mat[i]; // delete the heap elements
 		}
 	}
 	
-
 	~FlatMatrix(){
 		this->deallocate(); // causes segfualt as of now; not sure why TODO
 		delete[] mat;

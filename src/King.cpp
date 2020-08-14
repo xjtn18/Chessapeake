@@ -3,7 +3,7 @@
 
 
 
-King::King(std::string init_color) : AbstractPiece(init_color, 'K') { }
+King::King(std::string init_color) : AbstractPiece(init_color, kSymbolMap.at(init_color).at("king")) { }
 
 
 std::vector<Coord> King::getPlacements(FlatMatrix<AbstractPiece>& board, int col, int row, int depth){

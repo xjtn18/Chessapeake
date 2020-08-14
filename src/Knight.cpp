@@ -2,7 +2,7 @@
 #include "../inc/GameInstance.h"
 
 
-Knight::Knight(std::string init_color) : AbstractPiece(init_color, 'N') { }
+Knight::Knight(std::string init_color) : AbstractPiece(init_color, kSymbolMap.at(init_color).at("knight")) { }
 
 std::vector<Coord> Knight::getPlacements(FlatMatrix<AbstractPiece>& board, int col, int row, int depth){
 	std::vector<Coord> placements;

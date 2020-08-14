@@ -1,7 +1,7 @@
 #include "../inc/Pieces.h"
 #include "../inc/GameInstance.h"
 
-Bishop::Bishop(std::string init_color) : AbstractPiece(init_color, 'B') { }
+Bishop::Bishop(std::string init_color) : AbstractPiece(init_color, kSymbolMap.at(init_color).at("bishop")) { }
 
 std::vector<Coord> Bishop::getPlacements(FlatMatrix<AbstractPiece>& board, int col, int row, int depth){
 	std::vector<Coord> placements;
