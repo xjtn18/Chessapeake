@@ -1,5 +1,5 @@
-#include "../inc/Pieces.h"
-#include "../inc/GameInstance.h"
+#include "Pieces.h"
+#include "GameInstance.h"
 
 
 Pawn::Pawn(std::string init_color) : AbstractPiece(init_color, kSymbolMap.at(init_color).at("pawn")){ }

@@ -6,29 +6,29 @@
 
 #IncludeRegexTransform: 
 
-C:/dev/projects/Chessapeake/inc/Coord.h
+../inc/Coord.h
 iostream
 -
 
-C:/dev/projects/Chessapeake/inc/FlatMatrix.h
+../inc/FlatMatrix.h
 debug.h
-C:/dev/projects/Chessapeake/inc/debug.h
+../inc/debug.h
 Coord.h
-C:/dev/projects/Chessapeake/inc/Coord.h
+../inc/Coord.h
 math.h
 -
 stdexcept
 -
 
-C:/dev/projects/Chessapeake/inc/GameInstance.h
+../inc/GameInstance.h
 FlatMatrix.h
-C:/dev/projects/Chessapeake/inc/FlatMatrix.h
+../inc/FlatMatrix.h
 Coord.h
-C:/dev/projects/Chessapeake/inc/Coord.h
+../inc/Coord.h
 Pieces.h
-C:/dev/projects/Chessapeake/inc/Pieces.h
+../inc/Pieces.h
 debug.h
-C:/dev/projects/Chessapeake/inc/debug.h
+../inc/debug.h
 algorithm
 -
 stack
@@ -36,9 +36,9 @@ stack
 fstream
 -
 
-C:/dev/projects/Chessapeake/inc/MoveParser.h
+../inc/MoveParser.h
 GameInstance.h
-C:/dev/projects/Chessapeake/inc/GameInstance.h
+../inc/GameInstance.h
 iostream
 -
 string
@@ -46,13 +46,13 @@ string
 regex
 -
 
-C:/dev/projects/Chessapeake/inc/Pieces.h
+../inc/Pieces.h
 FlatMatrix.h
-C:/dev/projects/Chessapeake/inc/FlatMatrix.h
+../inc/FlatMatrix.h
 Coord.h
-C:/dev/projects/Chessapeake/inc/Coord.h
+../inc/Coord.h
 debug.h
-C:/dev/projects/Chessapeake/inc/debug.h
+../inc/debug.h
 map
 -
 iterator
@@ -60,9 +60,9 @@ iterator
 vector
 -
 
-C:/dev/projects/Chessapeake/inc/debug.h
+../inc/debug.h
 Coord.h
-C:/dev/projects/Chessapeake/inc/Coord.h
+../inc/Coord.h
 unistd.h
 -
 thread
@@ -73,60 +73,60 @@ iostream
 -
 
 C:/dev/projects/Chessapeake/src/Bishop.cpp
-../inc/Pieces.h
-C:/dev/projects/Chessapeake/inc/Pieces.h
-../inc/GameInstance.h
-C:/dev/projects/Chessapeake/inc/GameInstance.h
+Pieces.h
+C:/dev/projects/Chessapeake/src/Pieces.h
+GameInstance.h
+C:/dev/projects/Chessapeake/src/GameInstance.h
 
 C:/dev/projects/Chessapeake/src/Coord.cpp
-../inc/Coord.h
-C:/dev/projects/Chessapeake/inc/Coord.h
+Coord.h
+C:/dev/projects/Chessapeake/src/Coord.h
 
 C:/dev/projects/Chessapeake/src/GameInstance.cpp
-../inc/GameInstance.h
-C:/dev/projects/Chessapeake/inc/GameInstance.h
+GameInstance.h
+C:/dev/projects/Chessapeake/src/GameInstance.h
 
 C:/dev/projects/Chessapeake/src/King.cpp
-../inc/Pieces.h
-C:/dev/projects/Chessapeake/inc/Pieces.h
-../inc/GameInstance.h
-C:/dev/projects/Chessapeake/inc/GameInstance.h
+Pieces.h
+C:/dev/projects/Chessapeake/src/Pieces.h
+GameInstance.h
+C:/dev/projects/Chessapeake/src/GameInstance.h
 
 C:/dev/projects/Chessapeake/src/Knight.cpp
-../inc/Pieces.h
-C:/dev/projects/Chessapeake/inc/Pieces.h
-../inc/GameInstance.h
-C:/dev/projects/Chessapeake/inc/GameInstance.h
+Pieces.h
+C:/dev/projects/Chessapeake/src/Pieces.h
+GameInstance.h
+C:/dev/projects/Chessapeake/src/GameInstance.h
 
 C:/dev/projects/Chessapeake/src/MoveParser.cpp
-../inc/MoveParser.h
-C:/dev/projects/Chessapeake/inc/MoveParser.h
+MoveParser.h
+C:/dev/projects/Chessapeake/src/MoveParser.h
 
 C:/dev/projects/Chessapeake/src/Pawn.cpp
-../inc/Pieces.h
-C:/dev/projects/Chessapeake/inc/Pieces.h
-../inc/GameInstance.h
-C:/dev/projects/Chessapeake/inc/GameInstance.h
+Pieces.h
+C:/dev/projects/Chessapeake/src/Pieces.h
+GameInstance.h
+C:/dev/projects/Chessapeake/src/GameInstance.h
 
 C:/dev/projects/Chessapeake/src/Queen.cpp
-../inc/Pieces.h
-C:/dev/projects/Chessapeake/inc/Pieces.h
-../inc/GameInstance.h
-C:/dev/projects/Chessapeake/inc/GameInstance.h
+Pieces.h
+C:/dev/projects/Chessapeake/src/Pieces.h
+GameInstance.h
+C:/dev/projects/Chessapeake/src/GameInstance.h
 
 C:/dev/projects/Chessapeake/src/Rook.cpp
-../inc/Pieces.h
-C:/dev/projects/Chessapeake/inc/Pieces.h
-../inc/GameInstance.h
-C:/dev/projects/Chessapeake/inc/GameInstance.h
+Pieces.h
+C:/dev/projects/Chessapeake/src/Pieces.h
+GameInstance.h
+C:/dev/projects/Chessapeake/src/GameInstance.h
 
 C:/dev/projects/Chessapeake/src/main.cpp
-../inc/Pieces.h
-C:/dev/projects/Chessapeake/inc/Pieces.h
-../inc/Coord.h
-C:/dev/projects/Chessapeake/inc/Coord.h
-../inc/MoveParser.h
-C:/dev/projects/Chessapeake/inc/MoveParser.h
+Pieces.h
+C:/dev/projects/Chessapeake/src/Pieces.h
+Coord.h
+C:/dev/projects/Chessapeake/src/Coord.h
+MoveParser.h
+C:/dev/projects/Chessapeake/src/MoveParser.h
 stdlib.h
 -
 

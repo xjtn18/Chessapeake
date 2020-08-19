@@ -1,5 +1,5 @@
-#include "../inc/Pieces.h"
-#include "../inc/GameInstance.h"
+#include "Pieces.h"
+#include "GameInstance.h"
 
 
 

@@ -1,4 +1,4 @@
-#include "../inc/GameInstance.h"
+#include "GameInstance.h"
 
 
 GameInstance::GameInstance(int numCol, int numRow)

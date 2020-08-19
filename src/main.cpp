@@ -1,6 +1,6 @@
-#include "../inc/Pieces.h"
-#include "../inc/Coord.h"
-#include "../inc/MoveParser.h"
+#include "Pieces.h"
+#include "Coord.h"
+#include "MoveParser.h"
 #include <stdlib.h>
 
 // Change to 'CLS' instead of 'clear' this if you are running on windows without cygwin

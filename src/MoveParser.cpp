@@ -1,4 +1,4 @@
-#include "../inc/MoveParser.h"
+#include "MoveParser.h"
 
 
 bool IsCapture(FlatMatrix<AbstractPiece>& board, Coord d){

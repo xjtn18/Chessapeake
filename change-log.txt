@@ -9,5 +9,4 @@ TODO:
 	- switch to unique_ptr's for safer memory cleanup  
 	- accept ambiguity clarifiying moves in the regex patterns  
 	- pass boards as const and implement 'at' method in FlatMatrix that returns read-only element
-	- allow users to flip the board view
 

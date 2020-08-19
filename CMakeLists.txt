@@ -4,7 +4,6 @@ set (CMAKE_CXX_STANDARD 17)
 project(Chessapeake)
 
 
-#set(incName C:/dev/projects/ChessLand/inc)
 
 add_executable(out
 	src/Coord.cpp
@@ -19,5 +18,5 @@ add_executable(out
 	src/MoveParser.cpp
 )
 
-#target_include_directories(out PRIVATE $(incName))
+target_include_directories(out PUBLIC inc)
 
