@@ -40,7 +40,7 @@ std::vector<Coord> Pawn::getPlacements(FlatMatrix<AbstractPiece>& board, int col
 
 	if (depth == 2){
 		this->CheckEnPassant(board, placements, col, row);
-		GameInstance::filterSuicide(board, placements, col, row, color);
+		GameInstance::FilterSuicide(board, placements, col, row, color);
 	}
 
 	return placements;

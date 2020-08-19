@@ -23,37 +23,37 @@ Coord FindPawn(FlatMatrix<AbstractPiece>& board, Coord d, int pawn_col, std::str
 }
 
 
-bool patternMatch(std::string input, std::string piece_str){
+bool PatternMatch(std::string input, std::string piece_str){
 	return std::regex_match(input, std::regex(piecePatterns.at(piece_str)));
 }
 
 
-void parseMoveRequest(std::string input, GameInstance& game){
+void ParseMoveRequest(std::string input, GameInstance& game){
 	Coord c, d;
 
 	try {
 		// pawn move
-		if (patternMatch(input, "pawn")){
+		if (PatternMatch(input, "pawn")){
 			CheckMove<Pawn>(input, game, c, d);
 		
 		// king move
-		} else if (patternMatch(input, "king")){
+		} else if (PatternMatch(input, "king")){
 			CheckMove<King>(input, game, c, d);
 
 		// bishop move
-		} else if (patternMatch(input, "bishop")){
+		} else if (PatternMatch(input, "bishop")){
 			CheckMove<Bishop>(input, game, c, d);
 
 		// knight move
-		} else if (patternMatch(input, "knight")){
+		} else if (PatternMatch(input, "knight")){
 			CheckMove<Knight>(input, game, c, d);
 
 		// rook move
-		} else if (patternMatch(input, "rook")){
+		} else if (PatternMatch(input, "rook")){
 			CheckMove<Rook>(input, game, c, d);
 
 		// queen move
-		} else if (patternMatch(input, "queen")){
+		} else if (PatternMatch(input, "queen")){
 			CheckMove<Queen>(input, game, c, d);
 		
 		} else if (input == "O-O"){
@@ -64,7 +64,7 @@ void parseMoveRequest(std::string input, GameInstance& game){
 			return;
 		}
 
-		game.makeMove(c, d);
+		game.MakeMove(c, d);
 
 	} catch (InvalidMove& ex){
 		p("Invalid Move");
@@ -74,11 +74,11 @@ void parseMoveRequest(std::string input, GameInstance& game){
 }
 
 
-void readMoveList(std::string filename, GameInstance& game){
+void ReadMoveList(std::string filename, GameInstance& game){
 	std::fstream infile(filename);
 	std::string input;
 	while (infile >> input){
-		parseMoveRequest(input, game);
+		ParseMoveRequest(input, game);
 	}
 }
 

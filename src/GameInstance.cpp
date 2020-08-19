@@ -4,7 +4,7 @@
 GameInstance::GameInstance(int numCol, int numRow)
  	: mainstate({FlatMatrix<AbstractPiece>(numCol, numRow), "white", false, ""}), flipped (false)
 {
-	setupBoard();
+	SetupBoard();
 }
 
 
@@ -12,7 +12,7 @@ GameInstance::~GameInstance(){
 }
 
 
-void GameInstance::setupBoard(){
+void GameInstance::SetupBoard(){
 	//
 	// Places all the pieces on to the board (TODO: only works with 8x8 board; need specific functions for select configs)
 	//
@@ -52,18 +52,18 @@ void GameInstance::setupBoard(){
 }
 
 
-void GameInstance::tick(){
+void GameInstance::Tick(){
 	//
 	// Represents a new turn in the game state
 	// Currently only swaps the player but may do more in the future
 	//
-	mainstate.toMove = swapPlayer(mainstate.toMove);
+	mainstate.toMove = SwapPlayer(mainstate.toMove);
 }
 
 
 
 
-std::string GameInstance::swapPlayer(std::string color){
+std::string GameInstance::SwapPlayer(std::string color){
 	// Returns opposite player color
 	return color == "white" ? "black" : "white";
 }
@@ -71,7 +71,7 @@ std::string GameInstance::swapPlayer(std::string color){
 
 
 
-void GameInstance::makeMove(Coord c, Coord d){
+void GameInstance::MakeMove(Coord c, Coord d){
 	//
 	// This function is called after the move has been verified.
 	// Alters the mainstate.board to reflect the move and pushes the previous state to the undo stack
@@ -87,7 +87,7 @@ void GameInstance::makeMove(Coord c, Coord d){
 	mainstate.board(c.x, c.y) = nullptr; // empty previous residing square
 
 	HandleEnPassant(mover, capture, c, d);
-	handleCastle(mover, c, d);
+	HandleCastle(mover, c, d);
 	
 	if(GameOver(mainstate.toMove)){
 		mainstate.game_winner = mainstate.toMove;
@@ -96,7 +96,7 @@ void GameInstance::makeMove(Coord c, Coord d){
 
 	delete capture;
 	mover->moved = true;
-	tick();
+	Tick();
 }
 
 
@@ -121,7 +121,7 @@ void GameInstance::HandleEnPassant(AbstractPiece* mover, AbstractPiece* capture,
 }
 
 
-void GameInstance::handleCastle(AbstractPiece* mover, Coord c, Coord d){
+void GameInstance::HandleCastle(AbstractPiece* mover, Coord c, Coord d){
 	//
 	// Checks if the latest move was a castle move and moves the caslted rook accordingly
 	//
@@ -144,13 +144,13 @@ bool GameInstance::GameOver(std::string player_color){
 	//
 	// returns true if the giver player has checkmated their opponent
 	//
-	std::vector<Coord> all_attacked = GameInstance::allAttackedSquares(mainstate.board, player_color, 2);
+	std::vector<Coord> all_attacked = GameInstance::AllAttackedSquares(mainstate.board, player_color, 2);
 	return all_attacked.empty();
 }
 
 
 
-void GameInstance::filterSuicide(FlatMatrix<AbstractPiece>& board, std::vector<Coord>& placements, int col, int row, std::string color){
+void GameInstance::FilterSuicide(FlatMatrix<AbstractPiece>& board, std::vector<Coord>& placements, int col, int row, std::string color){
 	//
 	// Disregard placements that put yourself in check (illegal).
 	// Takes reference to placements vector and remove placements that put yourself in check
@@ -162,8 +162,8 @@ void GameInstance::filterSuicide(FlatMatrix<AbstractPiece>& board, std::vector<C
 		AbstractPiece* capture = board(d.x, d.y);
 		board(d.x, d.y) = mover;
 		board(col, row) = nullptr; // empty previous residing square
-		Coord k = GameInstance::findKing(board, color);
-		std::vector<Coord> all_attacked = GameInstance::allAttackedSquares(board, color, 1);
+		Coord k = GameInstance::FindKing(board, color);
+		std::vector<Coord> all_attacked = GameInstance::AllAttackedSquares(board, color, 1);
 		if (std::find(all_attacked.begin(), all_attacked.end(), k) != all_attacked.end()){
 			placements.erase(placements.begin() + x);
 			x--;
@@ -175,7 +175,7 @@ void GameInstance::filterSuicide(FlatMatrix<AbstractPiece>& board, std::vector<C
 
 
 // NOTE: you dont write 'static' in the cpp definition, only the header; static in .cpp means something DIFFERENT
-std::vector<Coord> GameInstance::allAttackedSquares(FlatMatrix<AbstractPiece>& board, std::string defenderColor, int depth){
+std::vector<Coord> GameInstance::AllAttackedSquares(FlatMatrix<AbstractPiece>& board, std::string defenderColor, int depth){
 	//
 	// Returns all the squares that are attacked by the defender's oppononent.
 	//
@@ -196,7 +196,7 @@ std::vector<Coord> GameInstance::allAttackedSquares(FlatMatrix<AbstractPiece>& b
 
 
 
-void GameInstance::undo(){
+void GameInstance::Undo(){
 	// Reverts to the last state at the top of the undoStack
 	if (undoStack.empty()) // nothing to undo
 		return;
@@ -210,7 +210,7 @@ void GameInstance::undo(){
 }
 
 
-void GameInstance::redo(){
+void GameInstance::Redo(){
 	// Reverts to the last state at the top of the redoStack
 	if (redoStack.empty()) // nothing to undo
 		return;
@@ -228,7 +228,7 @@ void GameInstance::FlipBoardOrientation(){
 	flipped = !flipped;
 }
 
-void GameInstance::printBoard(){
+void GameInstance::PrintBoard(){
 	int idx;
 	int h = mainstate.board.high;
 	for (int x = 0; x < mainstate.board.size; x++){
@@ -247,7 +247,7 @@ void GameInstance::printBoard(){
 }
 
 
-Coord GameInstance::findKing(FlatMatrix<AbstractPiece>& board, std::string color){
+Coord GameInstance::FindKing(FlatMatrix<AbstractPiece>& board, std::string color){
 	//
 	// Finds the King of the given color on the board.
 	//

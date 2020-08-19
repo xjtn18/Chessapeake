@@ -25,17 +25,17 @@ std::vector<Coord> King::getPlacements(FlatMatrix<AbstractPiece>& board, int col
 	}
 	
 	if (depth == 2){
-		this->checkCastling(board, col, row, placements); // will add castling priviliges if valid
-		GameInstance::filterSuicide(board, placements, col, row, color);
+		this->CheckCastling(board, col, row, placements); // will add castling priviliges if valid
+		GameInstance::FilterSuicide(board, placements, col, row, color);
 	}
 	
 	return placements;
 }
 
 
-void King::checkCastling(FlatMatrix<AbstractPiece>& board, int col, int row, std::vector<Coord>& placements){
+void King::CheckCastling(FlatMatrix<AbstractPiece>& board, int col, int row, std::vector<Coord>& placements){
 	std::vector<Coord> passingSquares;
-	std::vector<Coord> allAttacked = GameInstance::allAttackedSquares(board, this->color, 1);
+	std::vector<Coord> allAttacked = GameInstance::AllAttackedSquares(board, this->color, 1);
 	Coord c = {col, row}; // current king position
 	if (this->moved || std::find(allAttacked.begin(), allAttacked.end(), c) != allAttacked.end()) // if in check or has moved
 		return;

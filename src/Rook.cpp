@@ -27,7 +27,7 @@ std::vector<Coord> Rook::getPlacements(FlatMatrix<AbstractPiece>& board, int col
 	}
 			
 	if (depth == 2){
-		GameInstance::filterSuicide(board, placements, col, row, color);
+		GameInstance::FilterSuicide(board, placements, col, row, color);
 	}
 	return placements;
 }

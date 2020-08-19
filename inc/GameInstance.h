@@ -32,21 +32,20 @@ public:
 	GameInstance(int numCol, int numRow);
 	GameInstance(const GameInstance& rhs);
 	~GameInstance();
-	void setupBoard();
-	void printBoard();
-	void makeMove(Coord c, Coord d);
-	void tick();
-	std::string swapPlayer(std::string color);
+	void SetupBoard();
+	void PrintBoard();
+	void MakeMove(Coord c, Coord d);
+	void Tick();
+	std::string SwapPlayer(std::string color);
 	void FlipBoardOrientation();
-	void undo();
-	void redo();
-	void handleCastle(AbstractPiece* mover, Coord c, Coord d);
+	void Undo();
+	void Redo();
+	void HandleCastle(AbstractPiece* mover, Coord c, Coord d);
 	void HandleEnPassant(AbstractPiece* mover, AbstractPiece* capture, Coord c, Coord d);
 	bool GameOver(std::string player_color);
-	static void filterSuicide(FlatMatrix<AbstractPiece>& board, std::vector<Coord>& placements, std::string color);
-	static void filterSuicide(FlatMatrix<AbstractPiece>& board, std::vector<Coord>& placements, int col, int row, std::string color);
-	static std::vector<Coord> allAttackedSquares(FlatMatrix<AbstractPiece>& board, std::string defenderColor, int depth = 1);
-	static Coord findKing(FlatMatrix<AbstractPiece>& board, std::string color);
+	static void FilterSuicide(FlatMatrix<AbstractPiece>& board, std::vector<Coord>& placements, int col, int row, std::string color);
+	static std::vector<Coord> AllAttackedSquares(FlatMatrix<AbstractPiece>& board, std::string defenderColor, int depth = 1);
+	static Coord FindKing(FlatMatrix<AbstractPiece>& board, std::string color);
 
 };
 

@@ -31,7 +31,7 @@ void commandLoop(GameInstance& game){
 
 	while (!GAME_EXIT){
 		ClearShell();
-		game.printBoard(); // display chess board
+		game.PrintBoard(); // display chess board
 		std::cout << "\n" << game.mainstate.toMove << " to move :: ";
 		std::getline(std::cin, input); // pull move input
 
@@ -39,10 +39,10 @@ void commandLoop(GameInstance& game){
 			GAME_EXIT = true; // break the loop
 
 		} else if (input == "u"){ // undo last move
-			game.undo();
+			game.Undo();
 		
 		} else if (input == "r"){
-			game.redo();
+			game.Redo();
 
 		} else if (input == "f"){
 			game.FlipBoardOrientation();
@@ -51,11 +51,11 @@ void commandLoop(GameInstance& game){
 			PrintHelp();
 
 		} else {
-			parseMoveRequest(input, game); // check move request
+			ParseMoveRequest(input, game); // check move request
 			// dangerous in scenario that game_over was set but game_winner was not
 			if (game.mainstate.game_over){
 				ClearShell();
-				game.printBoard();
+				game.PrintBoard();
 				std::cout << "\n" << game.mainstate.game_winner << " wins." << std::endl; // TODO: store how the player won as well (time/checkmate)
 				buffer("");
 				return;

@@ -73,7 +73,7 @@ class King : public AbstractPiece {
 public:
 	King(std::string init_color);
 	std::vector<Coord> getPlacements(FlatMatrix<AbstractPiece>& board, int col, int row, int depth = 1);
-	void checkCastling(FlatMatrix<AbstractPiece>& board, int col, int row, std::vector<Coord>& placements);
+	void CheckCastling(FlatMatrix<AbstractPiece>& board, int col, int row, std::vector<Coord>& placements);
 	AbstractPiece* clone() const {
 		return new King(*this);
 	}

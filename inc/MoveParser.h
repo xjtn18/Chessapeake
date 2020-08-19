@@ -4,9 +4,9 @@
 #include <string>
 #include <regex>
 
-bool patternMatch(std::string input, std::string piece_str);
-void parseMoveRequest(std::string input, GameInstance& game);
-void readMoveList(std::string filename, GameInstance& game);
+bool PatternMatch(std::string input, std::string piece_str);
+void ParseMoveRequest(std::string input, GameInstance& game);
+void ReadMoveList(std::string filename, GameInstance& game);
 bool IsCapture(FlatMatrix<AbstractPiece>& board, Coord d);
 Coord FindPawn(FlatMatrix<AbstractPiece>& board, Coord d, int pawn_col, std::string player);
 
@@ -86,7 +86,7 @@ void CheckMove(std::string input, GameInstance& game, Coord& c, Coord& d){
 	dcol = coordMap.at(input[input.length()-2]) - 1;
 	drow = std::atoi(&(input[input.length()-1])) - 1;
 	bool capture_requested = (input.find('x') != std::string::npos); // true if 'x' was found in the notation
-	if (patternMatch(input, "pawn")){
+	if (PatternMatch(input, "pawn")){
 		pawn_col = coordMap.at(input[0]) - 1;
 		c = FindPawn(game.mainstate.board, {dcol, drow}, pawn_col, game.mainstate.toMove);
 	} else {

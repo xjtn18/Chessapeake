@@ -26,7 +26,7 @@ std::vector<Coord> Queen::getPlacements(FlatMatrix<AbstractPiece>& board, int co
 		}
 	}
 	if (depth == 2){
-		GameInstance::filterSuicide(board, placements, col, row, color);
+		GameInstance::FilterSuicide(board, placements, col, row, color);
 	}
 			
 	return placements;
