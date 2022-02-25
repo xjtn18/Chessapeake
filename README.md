@@ -6,10 +6,10 @@ Simply 'cd' into the build directory respective of your OS (win-build, linux-bui
 
 ### How to build
 If you would like to build from source yourself, you can:  
-\>> mkdir build
-\>> cd build
-\>> cmake .. -G "Unix Makefiles"
-\>> make
+\>> mkdir build  
+\>> cd build  
+\>> cmake .. -G "Unix Makefiles"  
+\>> make  
 
 ### How to Play
 Simply type the algebraic chess notation for the move you would like to make and press Enter to submit it. Made for local 2-player play.
