@@ -3,3 +3,4 @@ tags
 *~
 *.stackdump
 *.dSYM/
+build 
